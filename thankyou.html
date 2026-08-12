@@ -121,7 +121,7 @@
   document.getElementById('d-citypin').textContent = `${get('city','—')} - ${get('province','—')}`;
   document.getElementById('d-payment').textContent = get('payment', 'Cash on Delivery');
   const price = params.get('price');
-  document.getElementById('d-price').textContent = price ? '₹' + Number(price).toLocaleString('en-IN') : '—';
+  document.getElementById('d-price').textContent = price ? 'Rs' + Number(price).toLocaleString('en-IN') : '—';
 
   // If someone lands here directly with no order data, send them back home.
   if (!params.get('name') && !params.get('orderId')) {
