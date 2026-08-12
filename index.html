@@ -504,10 +504,10 @@
             <input type="text" id="city" name="city" placeholder="City" required>
             <div class="field-error">Required.</div>
           </div>
-          <div class="field" id="f-pincode">
-            <label for="pincode">Pincode</label>
-            <input type="text" id="pincode" name="pincode" placeholder="e.g. 411001" required pattern="[0-9]{4,6}">
-            <div class="field-error">Enter a valid pincode.</div>
+          <div class="field" id="f-province">
+            <label for="province">Province</label>
+            <input type="text" id="province" name="province" placeholder="e.g. Bagmati" required>
+            <div class="field-error">Please enter your province.</div>
           </div>
         </div>
         <button type="submit" class="form-submit">Review Order</button>
@@ -616,14 +616,14 @@
     const phone = document.getElementById('phone');
     const address = document.getElementById('address');
     const city = document.getElementById('city');
-    const pincode = document.getElementById('pincode');
+    const province = document.getElementById('province');
 
     const validations = [
       validateField('f-name', name, () => name.value.trim().length > 1),
       validateField('f-phone', phone, () => /^[0-9+ ]{7,15}$/.test(phone.value.trim())),
       validateField('f-address', address, () => address.value.trim().length > 5),
       validateField('f-city', city, () => city.value.trim().length > 1),
-      validateField('f-pincode', pincode, () => /^[0-9]{4,6}$/.test(pincode.value.trim()))
+      validateField('f-province', province, () => province.value.trim().length > 1)
     ];
     if (validations.includes(false)) return;
 
@@ -633,7 +633,7 @@
       <div class="confirm-row"><dt>Name</dt><dd>${escapeHtml(name.value.trim())}</dd></div>
       <div class="confirm-row"><dt>Phone</dt><dd>${escapeHtml(phone.value.trim())}</dd></div>
       <div class="confirm-row"><dt>Address</dt><dd>${escapeHtml(address.value.trim())}</dd></div>
-      <div class="confirm-row"><dt>City / Pincode</dt><dd>${escapeHtml(city.value.trim())} - ${escapeHtml(pincode.value.trim())}</dd></div>
+      <div class="confirm-row"><dt>City / Province</dt><dd>${escapeHtml(city.value.trim())} - ${escapeHtml(province.value.trim())}</dd></div>
       <div class="confirm-row"><dt>Payment</dt><dd>Cash on Delivery</dd></div>
       <div class="confirm-row total"><dt>Total</dt><dd>${money(b.price)}</dd></div>
     `;
@@ -660,7 +660,7 @@
     modalStatus.classList.remove('show', 'error');
     modalStatus.textContent = '';
 
-    if (SCRIPT_URL.includes('https://script.google.com/macros/s/AKfycbxvkeDcFpQilfZUebLpZ23hOfpXbdwENNZFpdxVY4aZ8Ldh4yhOB5JU1BRVHQMe-XQt/exec')) {
+    if (SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE')) {
       modalStatus.textContent = "Order isn't connected yet — add your Apps Script URL in the script tag.";
       modalStatus.classList.add('show', 'error');
       return;
@@ -689,13 +689,13 @@
           phone: fd.get('phone'),
           address: fd.get('address'),
           city: fd.get('city'),
-          pincode: fd.get('pincode'),
+          province: fd.get('province'),
           bundle: b.label,
           strips: b.strips,
           price: b.price,
           payment: 'Cash on Delivery'
         });
-        window.location.href = 'thankyou.html?' + params.toString();
+        window.location.href = 'thank-you.html?' + params.toString();
       } else {
         throw new Error(data.error || 'Unknown error');
       }
