@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed — SWAS Mouth Patch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,500;1,9..144,440&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1ECE0; --card:#FBF9F3; --ink:#211D17;
+    --ink-70: rgba(33,29,23,0.72); --ink-50: rgba(33,29,23,0.5);
+    --line: rgba(33,29,23,0.14); --line-soft: rgba(33,29,23,0.08);
+    --walnut:#7C4E2A; --gold:#A9803F;
+    --font-display:'Fraunces', serif; --font-body:'Inter', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:var(--font-body); color:var(--ink); background:var(--paper);
+    -webkit-font-smoothing:antialiased; line-height:1.55; min-height:100vh;
+    display:flex; flex-direction:column;
+  }
+  .wrap{ max-width:640px; margin:0 auto; padding:0 24px; width:100%; }
+  header.nav{ padding:24px 0; border-bottom:1px solid var(--line-soft); }
+  .brand{ display:flex; align-items:center; gap:9px; font-family:var(--font-display); font-weight:500; font-size:1.05rem; }
+  main{ flex:1; padding:72px 0 60px; }
+  @media (max-width:600px){ main{ padding:48px 0 40px; } }
+
+  .check{ margin-bottom:28px; }
+  .eyebrow{ font-size:0.72rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--walnut); margin-bottom:16px; }
+  h1{ font-family:var(--font-display); font-weight:440; font-size:clamp(1.9rem,4vw,2.6rem); line-height:1.1; letter-spacing:-0.01em; margin-bottom:16px; }
+  .lead{ color:var(--ink-70); font-size:1.02rem; max-width:48ch; margin-bottom:44px; }
+
+  .order-card{ background:var(--card); border:1px solid var(--line); border-radius:22px; padding:34px 32px; margin-bottom:32px; }
+  @media (max-width:600px){ .order-card{ padding:26px 22px; } }
+  .order-id{ font-size:0.78rem; color:var(--ink-50); margin-bottom:22px; letter-spacing:0.02em; }
+  .order-id span{ color:var(--ink); font-weight:600; }
+  .row{ display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-top:1px solid var(--line-soft); font-size:0.94rem; }
+  .row:last-child{ border-bottom:1px solid var(--line-soft); }
+  .row dt{ color:var(--ink-50); flex-shrink:0; }
+  .row dd{ text-align:right; font-weight:500; max-width:60%; }
+  .row.total dd{ font-family:var(--font-display); font-size:1.2rem; font-weight:500; }
+
+  .next-steps{ margin-bottom:44px; }
+  .next-steps h3{ font-family:var(--font-display); font-weight:500; font-size:1.1rem; margin-bottom:14px; }
+  .next-steps ul{ list-style:none; }
+  .next-steps li{ display:flex; gap:12px; align-items:flex-start; padding:10px 0; font-size:0.9rem; color:var(--ink-70); }
+  .next-steps li .oval{ margin-top:5px; flex-shrink:0; }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px; background:var(--ink); color:var(--paper);
+    font-weight:500; font-size:0.92rem; padding:15px 28px; border-radius:999px; text-decoration:none;
+  }
+  footer{ padding:32px 0; border-top:1px solid var(--line-soft); }
+  footer p{ font-size:0.78rem; color:var(--ink-50); }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap brand">
+    <span class="oval"><svg width="26" height="15" viewBox="0 0 26 15" fill="none"><rect x="0.5" y="0.5" width="25" height="14" rx="7" fill="#211D17"/><ellipse cx="13" cy="7.5" rx="6.4" ry="3.8" fill="#F1ECE0"/></svg></span>
+    SWAS
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="check">
+      <svg width="54" height="32" viewBox="0 0 54 32" fill="none"><rect x="1.5" y="1.5" width="51" height="29" rx="14.5" stroke="#A9803F" stroke-width="1.6"/><path d="M19 16L24 21L35 10" stroke="#A9803F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="eyebrow">Order confirmed</div>
+    <h1 id="thanks-name">Thank you.</h1>
+    <p class="lead">Your order is placed. We'll call or WhatsApp you shortly to confirm delivery — no payment needed now.</p>
+
+    <div class="order-card">
+      <div class="order-id">Order ID <span id="order-id">—</span></div>
+      <dl>
+        <div class="row"><dt>Bundle</dt><dd id="d-bundle">—</dd></div>
+        <div class="row"><dt>Name</dt><dd id="d-name">—</dd></div>
+        <div class="row"><dt>Phone</dt><dd id="d-phone">—</dd></div>
+        <div class="row"><dt>Delivery address</dt><dd id="d-address">—</dd></div>
+        <div class="row"><dt>City / Pincode</dt><dd id="d-citypin">—</dd></div>
+        <div class="row"><dt>Payment</dt><dd id="d-payment">—</dd></div>
+        <div class="row total"><dt>Total</dt><dd id="d-price">—</dd></div>
+      </dl>
+    </div>
+
+    <div class="next-steps">
+      <h3>What happens next</h3>
+      <ul>
+        <li><span class="oval"><svg width="14" height="9" viewBox="0 0 14 9" fill="none"><rect x="0.5" y="0.5" width="13" height="8" rx="4" stroke="#A9803F" stroke-width="1"/></svg></span><span>We confirm your order by phone or WhatsApp within 24 hours.</span></li>
+        <li><span class="oval"><svg width="14" height="9" viewBox="0 0 14 9" fill="none"><rect x="0.5" y="0.5" width="13" height="8" rx="4" stroke="#A9803F" stroke-width="1"/></svg></span><span>Your box ships within 2–4 business days.</span></li>
+        <li><span class="oval"><svg width="14" height="9" viewBox="0 0 14 9" fill="none"><rect x="0.5" y="0.5" width="13" height="8" rx="4" stroke="#A9803F" stroke-width="1"/></svg></span><span>Pay in cash when it arrives at your door.</span></li>
+      </ul>
+    </div>
+
+    <a href="index.html" class="btn">Back to home</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 SWAS. Questions about your order? Reply to the confirmation message we send you.</p>
+  </div>
+</footer>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const get = (key, fallback) => params.get(key) && params.get(key).trim() !== '' ? params.get(key) : fallback;
+
+  const name = get('name', '');
+  document.getElementById('thanks-name').textContent = name ? `Thank you, ${name}.` : 'Thank you.';
+  document.getElementById('order-id').textContent = get('orderId', 'Pending');
+  document.getElementById('d-bundle').textContent = get('bundle', '—') + (params.get('strips') ? ` (${params.get('strips')} strips)` : '');
+  document.getElementById('d-name').textContent = get('name', '—');
+  document.getElementById('d-phone').textContent = get('phone', '—');
+  document.getElementById('d-address').textContent = get('address', '—');
+  document.getElementById('d-citypin').textContent = `${get('city','—')} - ${get('pincode','—')}`;
+  document.getElementById('d-payment').textContent = get('payment', 'Cash on Delivery');
+  const price = params.get('price');
+  document.getElementById('d-price').textContent = price ? '₹' + Number(price).toLocaleString('en-IN') : '—';
+
+  // If someone lands here directly with no order data, send them back home.
+  if (!params.get('name') && !params.get('orderId')) {
+    // Soft notice only — do not force-redirect in case this is being previewed.
+    document.querySelector('.lead').textContent = 'No recent order found. If you just placed one, check your confirmation message — otherwise head back to shop.';
+  }
+</script>
+
+</body>
+</html>
