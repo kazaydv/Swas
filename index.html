@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>SWAS Mouth Patch — Tape Away The Snore</title>
 <meta name="description" content="A gentle, skin-safe mouth patch that keeps your lips softly closed through the night, so you default to nasal breathing.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,500;0,9..144,600;1,9..144,440;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,500;0,9..144,600;1,9..144,440;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#F1ECE0;
@@ -35,13 +35,15 @@
     background:var(--paper);
     -webkit-font-smoothing:antialiased;
     line-height:1.55;
+    overflow-x:hidden;
   }
   img{max-width:100%; display:block;}
   a{color:inherit;}
   button{font-family:inherit;}
+  button, a{ -webkit-tap-highlight-color: transparent; }
   .wrap{max-width:var(--container); margin:0 auto; padding:0 28px;}
   section{position:relative; padding:120px 0;}
-  @media (max-width:640px){ section{padding:76px 0;} .wrap{padding:0 22px;} }
+  @media (max-width:640px){ section{padding:64px 0;} .wrap{padding:0 20px;} }
 
   /* ---------- oval mark ---------- */
   .oval{ display:inline-block; flex-shrink:0; }
@@ -59,84 +61,149 @@
   .bullet-list p{ color:var(--ink-70); font-size:0.93rem; max-width:52ch; }
 
   /* ---------- nav ---------- */
-  header.nav{ position:sticky; top:0; z-index:40; background:rgba(241,236,224,0.86); backdrop-filter:blur(8px); border-bottom:1px solid var(--line-soft); }
-  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:20px 28px; max-width:var(--container); margin:0 auto; }
+  header.nav{ position:sticky; top:0; z-index:40; background:rgba(241,236,224,0.9); backdrop-filter:blur(8px); border-bottom:1px solid var(--line-soft); }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:var(--container); margin:0 auto; }
   .brand{ display:flex; align-items:center; gap:9px; font-family:var(--font-display); font-weight:500; font-size:1.05rem; letter-spacing:0.01em; }
-  .nav-link{ font-size:0.85rem; font-weight:500; background:none; border:none; cursor:pointer; color:var(--ink); padding-bottom:2px; border-bottom:1px solid var(--ink); transition:opacity .2s ease; }
-  .nav-link:hover{ opacity:0.6; }
+  .nav-link{ font-size:0.85rem; font-weight:600; background:var(--ink); color:var(--paper); border:none; cursor:pointer; padding:11px 20px; border-radius:999px; transition:opacity .2s ease; min-height:40px; }
+  .nav-link:hover{ opacity:0.82; }
+  @media (max-width:640px){ .nav-inner{ padding:14px 20px; } }
 
-  /* ---------- hero ---------- */
-  .hero{ padding-top:96px; padding-bottom:80px; }
-  .hero-grid{ display:grid; grid-template-columns:1fr 0.82fr; gap:64px; align-items:center; }
-  @media (max-width:880px){ .hero-grid{ grid-template-columns:1fr; gap:48px; } .hero{ padding-top:56px; } }
+  /* ---------- buttons (shared) ---------- */
   .eyebrow{ font-size:0.72rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--walnut); margin-bottom:22px; }
-  h1{ font-family:var(--font-display); font-weight:440; font-size:clamp(2.5rem, 5vw, 3.9rem); line-height:1.05; letter-spacing:-0.01em; margin-bottom:26px; }
+  h1{ font-family:var(--font-display); font-weight:440; font-size:clamp(2rem, 4.2vw, 2.7rem); line-height:1.08; letter-spacing:-0.01em; margin-bottom:14px; }
   h1 em{ font-style:italic; font-weight:440; color:var(--walnut); }
-  .hero p.lead{ font-size:1.08rem; color:var(--ink-70); max-width:42ch; margin-bottom:38px; }
 
   .btn{
     display:inline-flex; align-items:center; justify-content:center; gap:10px;
-    background:transparent; color:var(--ink); font-weight:500; font-size:0.92rem; font-family:var(--font-body);
-    padding:15px 26px; border-radius:999px; text-decoration:none; border:1px solid var(--ink); cursor:pointer;
-    transition:background .25s ease, color .25s ease;
+    background:transparent; color:var(--ink); font-weight:600; font-size:0.92rem; font-family:var(--font-body);
+    padding:16px 28px; border-radius:999px; text-decoration:none; border:1px solid var(--ink); cursor:pointer;
+    transition:background .25s ease, color .25s ease, transform .15s ease;
+    min-height:48px;
   }
   .btn:hover{ background:var(--ink); color:var(--paper); }
+  .btn:active{ transform:scale(0.98); }
   .btn svg path{ transition:stroke .25s ease; }
   .btn:hover svg path{ stroke:var(--paper); }
   .btn-solid{ background:var(--ink); color:var(--paper); }
   .btn-solid:hover{ opacity:0.85; background:var(--ink); }
   .btn-block{ width:100%; }
 
-  .trust-line{ margin-top:30px; font-size:0.8rem; color:var(--ink-50); }
+  .trust-row{ display:flex; flex-wrap:wrap; gap:10px 20px; margin-top:22px; }
+  .trust-item{ display:flex; align-items:center; gap:7px; font-size:0.78rem; color:var(--ink-50); }
+  .trust-item svg{ flex-shrink:0; }
 
-  .hero-visual{ position:relative; display:flex; align-items:center; justify-content:center; }
-  .oval-frame{ position:relative; width:100%; max-width:400px; aspect-ratio:1/0.86; }
-  .oval-ring{ position:absolute; inset:-18px; border-radius:50%; }
-  .oval-photo{ width:100%; height:100%; overflow:hidden; clip-path: ellipse(48% 46% at 50% 50%); background:var(--card); }
-  .oval-photo img{ width:100%; height:100%; object-fit:cover; }
+  /* ---------- product page (gallery + details) ---------- */
+  .product{ padding-top:40px; padding-bottom:88px; }
+  @media (max-width:640px){ .product{ padding-top:20px; padding-bottom:56px; } }
+  .product-grid{ display:grid; grid-template-columns:0.95fr 1fr; gap:60px; align-items:flex-start; }
+  @media (max-width:920px){ .product-grid{ grid-template-columns:1fr; gap:28px; } }
+
+  /* gallery */
+  .gallery{ position:sticky; top:88px; }
+  @media (max-width:920px){ .gallery{ position:static; } }
+  .gallery-main{
+    position:relative; width:100%; aspect-ratio:1/1; border-radius:20px; overflow:hidden;
+    background:var(--card); border:1px solid var(--line);
+  }
+  .gallery-main img{ width:100%; height:100%; object-fit:cover; }
+  .gallery-badge{
+    position:absolute; top:16px; left:16px; background:rgba(251,249,243,0.92); backdrop-filter:blur(4px);
+    border:1px solid var(--line); border-radius:999px; padding:7px 14px; font-size:0.74rem; font-weight:600;
+    display:flex; align-items:center; gap:6px; color:var(--walnut); z-index:2;
+  }
+  .gallery-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+    width:40px; height:40px; border-radius:50%; border:1px solid var(--line);
+    background:rgba(251,249,243,0.92); backdrop-filter:blur(4px); cursor:pointer;
+    display:flex; align-items:center; justify-content:center; transition:background .18s ease, opacity .18s ease;
+  }
+  .gallery-arrow:hover{ background:var(--card); }
+  .gallery-arrow.prev{ left:14px; }
+  .gallery-arrow.next{ right:14px; }
+  .gallery-counter{
+    position:absolute; bottom:14px; right:14px; z-index:2; background:rgba(251,249,243,0.92); backdrop-filter:blur(4px);
+    border:1px solid var(--line); border-radius:999px; padding:5px 11px; font-size:0.72rem; font-weight:600; color:var(--ink-70);
+  }
+  @media (max-width:640px){ .gallery-arrow{ width:36px; height:36px; } }
+  .gallery-thumbs{ display:flex; gap:10px; margin-top:14px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px; }
+  .gallery-thumbs::-webkit-scrollbar{ display:none; }
+  .gallery-thumb{
+    flex:0 0 auto; width:76px; height:76px; border-radius:14px; overflow:hidden; cursor:pointer;
+    border:1.5px solid var(--line); background:var(--card); transition:border-color .2s ease; padding:0;
+  }
+  .gallery-thumb img{ width:100%; height:100%; object-fit:cover; }
+  .gallery-thumb.active{ border-color:var(--ink); }
+  @media (max-width:640px){ .gallery-main{ border-radius:16px; } .gallery-thumb{ width:64px; height:64px; } }
+
+  /* details */
+  .details-top{ display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+  .rating-stars{ display:flex; gap:2px; }
+  .rating-text{ font-size:0.8rem; color:var(--ink-50); }
+  .product-desc{ font-size:1rem; color:var(--ink-70); max-width:52ch; margin-bottom:28px; }
+
+  .price-block{ display:flex; align-items:baseline; gap:12px; margin-bottom:6px; }
+  .price-now{ font-family:var(--font-display); font-weight:500; font-size:2.4rem; letter-spacing:-0.01em; }
+  .price-was{ font-size:1rem; color:var(--ink-30); text-decoration:line-through; }
+  .price-save{
+    font-size:0.72rem; font-weight:700; color:var(--walnut); background:rgba(169,128,63,0.12);
+    padding:4px 10px; border-radius:999px;
+  }
+  .price-pernight{ font-size:0.85rem; color:var(--ink-50); margin-bottom:26px; }
+
+  .bundle-label-row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px; }
+  .bundle-label-row .lbl{ font-size:0.76rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-50); font-weight:600; }
+  .bundle-label-row .val{ font-size:0.82rem; color:var(--ink-70); }
+
+  .variant-list{ display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+  .variant{
+    display:flex; align-items:center; gap:14px; width:100%; text-align:left; cursor:pointer;
+    border:1.5px solid var(--line); background:var(--card); border-radius:16px; padding:14px 16px;
+    transition:border-color .18s ease, background .18s ease; min-height:64px;
+  }
+  .variant:hover{ border-color:var(--ink-30); }
+  .variant.active{ border-color:var(--ink); background:var(--paper-2); }
+  .variant-radio{
+    width:18px; height:18px; border-radius:50%; border:1.5px solid var(--ink-30); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; transition:border-color .18s ease;
+  }
+  .variant.active .variant-radio{ border-color:var(--ink); border-width:5px; }
+  .variant-mid{ flex:1; min-width:0; }
+  .variant-name{ font-size:0.94rem; font-weight:600; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .variant-sub{ font-size:0.78rem; color:var(--ink-50); margin-top:2px; }
+  .variant-tag{
+    font-size:0.65rem; font-weight:700; letter-spacing:0.03em; text-transform:uppercase; color:var(--walnut);
+    background:rgba(169,128,63,0.12); padding:3px 8px; border-radius:999px;
+  }
+  .variant-right{ text-align:right; flex-shrink:0; }
+  .variant-price{ font-family:var(--font-display); font-weight:500; font-size:1.15rem; line-height:1.1; }
+  .variant-compare{ font-size:0.74rem; color:var(--ink-30); text-decoration:line-through; }
+
+  .product-cta .btn{ min-height:54px; font-size:0.98rem; }
+  .product-cta-note{ text-align:center; font-size:0.78rem; color:var(--ink-50); margin-top:14px; }
+
+  .includes-strip{ display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:28px; padding-top:24px; border-top:1px solid var(--line-soft); }
 
   /* ---------- section head ---------- */
-  .section-head{ max-width:600px; margin-bottom:56px; }
+  .section-head{ max-width:600px; margin-bottom:52px; }
   .section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
   .rule{ width:100%; height:1px; background:var(--line); margin-bottom:36px; }
-  h2{ font-family:var(--font-display); font-weight:440; font-size:clamp(1.7rem,3.2vw,2.35rem); line-height:1.16; letter-spacing:-0.01em; }
+  h2{ font-family:var(--font-display); font-weight:440; font-size:clamp(1.6rem,4.5vw,2.35rem); line-height:1.16; letter-spacing:-0.01em; }
   .section-head p{ color:var(--ink-70); margin-top:16px; font-size:1rem; max-width:52ch; }
   .section-head.center p{ margin-left:auto; margin-right:auto; }
-
-  /* ---------- offers / bundles ---------- */
-  .bundles{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch; }
-  @media (max-width:860px){ .bundles{ grid-template-columns:1fr; max-width:400px; margin:0 auto; } }
-  .bundle-card{
-    position:relative; background:var(--card); border:1px solid var(--line); border-radius:22px;
-    padding:38px 30px; display:flex; flex-direction:column; text-align:center;
-  }
-  .bundle-card.popular{ border-color:var(--walnut); box-shadow:0 0 0 1px var(--walnut); }
-  .bundle-tag{
-    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
-    background:var(--walnut); color:var(--paper); font-size:0.68rem; font-weight:600;
-    letter-spacing:0.08em; text-transform:uppercase; padding:6px 14px; border-radius:999px; white-space:nowrap;
-  }
-  .bundle-boxes{ font-family:var(--font-display); font-weight:500; font-size:1.2rem; margin-bottom:6px; margin-top:6px; }
-  .bundle-strips{ font-size:0.82rem; color:var(--ink-50); margin-bottom:22px; }
-  .bundle-price-row{ display:flex; align-items:baseline; justify-content:center; gap:10px; margin-bottom:4px; }
-  .bundle-price{ font-family:var(--font-display); font-weight:500; font-size:2.1rem; }
-  .bundle-compare{ font-size:0.9rem; color:var(--ink-30); text-decoration:line-through; }
-  .bundle-perbox{ font-size:0.78rem; color:var(--ink-50); margin-bottom:26px; }
-  .bundle-save{ font-size:0.76rem; color:var(--walnut); font-weight:600; margin-bottom:20px; min-height:1em; }
-  .bundle-cta{ margin-top:auto; }
+  @media (max-width:640px){ .section-head{ margin-bottom:34px; } }
 
   /* ---------- how it works ---------- */
   .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:48px; }
-  @media (max-width:820px){ .steps{ grid-template-columns:1fr; gap:38px; } }
+  @media (max-width:820px){ .steps{ grid-template-columns:1fr; gap:34px; } }
   .step-num{ font-family:var(--font-display); font-style:italic; font-size:1rem; color:var(--walnut); margin-bottom:16px; }
   .step h3{ font-family:var(--font-display); font-weight:500; font-size:1.3rem; margin-bottom:10px; }
   .step p{ color:var(--ink-70); font-size:0.93rem; max-width:34ch; }
 
   /* ---------- safety ---------- */
   .safety{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; align-items:center; }
-  @media (max-width:860px){ .safety{ grid-template-columns:1fr; gap:36px; } }
+  @media (max-width:860px){ .safety{ grid-template-columns:1fr; gap:28px; } }
   .safety-visual{ display:flex; align-items:center; justify-content:center; }
-  .safety h3{ font-family:var(--font-display); font-weight:440; font-size:1.7rem; line-height:1.2; margin-bottom:16px; letter-spacing:-0.01em; }
+  .safety h3{ font-family:var(--font-display); font-weight:440; font-size:1.6rem; line-height:1.2; margin-bottom:16px; letter-spacing:-0.01em; }
   .safety p{ color:var(--ink-70); font-size:1rem; max-width:56ch; }
   .safety p + p{ margin-top:12px; }
 
@@ -145,8 +212,8 @@
   @media (max-width:760px){ .quotes{ grid-template-columns:1fr; } }
   .quote{ padding:0 40px 0 0; }
   .quote:last-child{ padding:0 0 0 40px; border-left:1px solid var(--line); }
-  @media (max-width:760px){ .quote{ padding:0 !important; border:none !important; } .quote:first-child{ padding-bottom:40px !important; border-bottom:1px solid var(--line) !important; margin-bottom:40px; } }
-  .quote p{ font-family:var(--font-display); font-style:italic; font-size:1.3rem; line-height:1.45; margin-bottom:20px; }
+  @media (max-width:760px){ .quote{ padding:0 !important; border:none !important; } .quote:first-child{ padding-bottom:36px !important; border-bottom:1px solid var(--line) !important; margin-bottom:36px; } }
+  .quote p{ font-family:var(--font-display); font-style:italic; font-size:1.25rem; line-height:1.45; margin-bottom:20px; }
   .quote .who{ font-size:0.82rem; color:var(--ink-50); }
 
   /* ---------- FAQ ---------- */
@@ -154,16 +221,17 @@
   .faq-item:last-child{ border-bottom:1px solid var(--line); }
   .faq-q{
     width:100%; text-align:left; background:none; border:none; color:var(--ink);
-    font-family:var(--font-body); font-size:1.02rem; font-weight:500; padding:24px 0;
+    font-family:var(--font-body); font-size:1rem; font-weight:500; padding:22px 4px;
     display:flex; justify-content:space-between; align-items:center; cursor:pointer; gap:20px;
+    min-height:44px;
   }
   .faq-q .plus{ font-family:var(--font-display); font-size:1.4rem; color:var(--walnut); transition:transform .25s ease; flex-shrink:0; font-weight:400; }
   .faq-item.open .faq-q .plus{ transform:rotate(45deg); }
   .faq-a{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
-  .faq-a p{ padding-bottom:24px; color:var(--ink-70); font-size:0.94rem; max-width:58ch; }
+  .faq-a p{ padding:0 4px 24px; color:var(--ink-70); font-size:0.94rem; max-width:58ch; }
 
   /* ---------- footer ---------- */
-  footer{ padding:56px 0 60px; }
+  footer{ padding:52px 0 56px; }
   .footer-inner{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; }
   .footer-inner .brand{ font-size:0.95rem; }
   footer p{ font-size:0.78rem; color:var(--ink-50); max-width:44ch; }
@@ -172,28 +240,32 @@
   .modal-overlay{
     position:fixed; inset:0; z-index:100; background:rgba(20,17,12,0.5);
     display:none; align-items:flex-start; justify-content:center; overflow-y:auto;
-    padding:40px 20px; backdrop-filter:blur(2px);
+    padding:40px 20px; backdrop-filter:blur(2px); -webkit-overflow-scrolling:touch;
   }
   .modal-overlay.show{ display:flex; }
   .modal{
     background:var(--paper); border-radius:24px; max-width:480px; width:100%;
-    padding:40px 34px 34px; position:relative; box-shadow:0 30px 70px rgba(20,17,12,0.35);
+    padding:38px 32px 32px; position:relative; box-shadow:0 30px 70px rgba(20,17,12,0.35);
     margin:auto 0;
   }
-  @media (max-width:520px){ .modal{ padding:32px 22px 26px; border-radius:18px; } }
+  @media (max-width:640px){
+    .modal-overlay{ padding:0; align-items:flex-end; }
+    .modal{ max-width:100%; border-radius:20px 20px 0 0; padding:26px 20px calc(24px + env(safe-area-inset-bottom)); max-height:92vh; overflow-y:auto; margin:0; }
+  }
   .modal-close{
-    position:absolute; top:18px; right:18px; width:32px; height:32px; border-radius:50%;
-    border:1px solid var(--line); background:transparent; color:var(--ink); font-size:1.1rem;
+    position:absolute; top:16px; right:16px; width:36px; height:36px; border-radius:50%;
+    border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:1.15rem;
     cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
     transition:background .2s ease;
   }
   .modal-close:hover{ background:var(--line-soft); }
-  .modal h3{ font-family:var(--font-display); font-weight:500; font-size:1.5rem; margin-bottom:24px; letter-spacing:-0.01em; }
+  .modal h3{ font-family:var(--font-display); font-weight:500; font-size:1.4rem; margin-bottom:22px; letter-spacing:-0.01em; padding-right:36px; }
 
-  .bundle-select{ display:flex; gap:10px; margin-bottom:22px; flex-wrap:wrap; }
+  .bundle-select{ display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
   .bundle-pill{
-    flex:1; min-width:120px; border:1px solid var(--line); background:var(--card); border-radius:14px;
-    padding:12px 10px; cursor:pointer; text-align:center; transition:border-color .2s ease, background .2s ease;
+    flex:1; min-width:100px; border:1px solid var(--line); background:var(--card); border-radius:14px;
+    padding:12px 8px; cursor:pointer; text-align:center; transition:border-color .2s ease, background .2s ease;
+    min-height:52px;
   }
   .bundle-pill.active{ border-color:var(--ink); background:var(--ink); color:var(--paper); }
   .bundle-pill .p-label{ font-size:0.82rem; font-weight:600; display:block; }
@@ -201,14 +273,14 @@
 
   .order-summary-line{
     display:flex; justify-content:space-between; align-items:center; font-size:0.88rem;
-    padding:14px 16px; background:var(--paper-2); border-radius:12px; margin-bottom:26px;
+    padding:14px 16px; background:var(--paper-2); border-radius:12px; margin-bottom:24px;
   }
   .order-summary-line .os-total{ font-family:var(--font-display); font-weight:500; font-size:1.05rem; }
 
-  #order-form{ display:flex; flex-direction:column; gap:18px; }
+  #order-form{ display:flex; flex-direction:column; gap:16px; }
   .field label{ display:block; font-size:0.76rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink-50); margin-bottom:8px; }
   .field input, .field textarea{
-    width:100%; padding:10px 2px 12px; border:none; border-bottom:1px solid var(--ink-30);
+    width:100%; padding:12px 2px 12px; border:none; border-bottom:1px solid var(--ink-30);
     background:transparent; color:var(--ink); font-family:var(--font-body); font-size:1rem;
     outline:none; transition:border-color .2s ease; resize:none;
   }
@@ -220,19 +292,21 @@
   .field.invalid .field-error{ display:block; }
 
   .form-submit{
-    margin-top:8px; background:var(--ink); color:var(--paper); font-weight:500; font-size:0.96rem;
+    margin-top:6px; background:var(--ink); color:var(--paper); font-weight:600; font-size:0.96rem;
     padding:16px; border:none; border-radius:999px; cursor:pointer; transition:opacity .2s ease; width:100%;
+    min-height:52px;
   }
   .form-submit:hover{ opacity:0.85; }
   .form-submit:disabled{ opacity:0.5; cursor:not-allowed; }
   .btn-ghost{
     background:none; border:1px solid var(--line); color:var(--ink); font-weight:500; font-size:0.9rem;
     padding:16px; border-radius:999px; cursor:pointer; width:100%; transition:background .2s ease;
+    min-height:48px;
   }
   .btn-ghost:hover{ background:var(--line-soft); }
   .confirm-actions{ display:flex; flex-direction:column; gap:10px; margin-top:8px; }
 
-  .confirm-list{ margin-bottom:26px; }
+  .confirm-list{ margin-bottom:24px; }
   .confirm-row{ display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-top:1px solid var(--line-soft); font-size:0.9rem; }
   .confirm-row:last-child{ border-bottom:1px solid var(--line-soft); }
   .confirm-row dt{ color:var(--ink-50); flex-shrink:0; }
@@ -246,13 +320,20 @@
   /* ---------- sticky mobile cta ---------- */
   .sticky-cta{
     position:fixed; bottom:0; left:0; right:0; z-index:50;
-    background:rgba(241,236,224,0.92); backdrop-filter:blur(8px);
+    background:rgba(241,236,224,0.94); backdrop-filter:blur(8px);
     border-top:1px solid var(--line);
-    padding:14px 22px; display:none; align-items:center; justify-content:space-between; gap:16px;
+    padding:12px 20px calc(12px + env(safe-area-inset-bottom));
+    display:none; align-items:center; justify-content:space-between; gap:14px;
   }
-  .sticky-cta .txt{ font-size:0.78rem; color:var(--ink-50); }
-  .sticky-cta .btn{ padding:11px 20px; font-size:0.85rem; }
-  @media (max-width:720px){ .sticky-cta{ display:flex; } body{ padding-bottom:76px; } }
+  .sticky-cta .txt{ font-size:0.76rem; color:var(--ink-50); line-height:1.3; }
+  .sticky-cta .txt strong{ display:block; color:var(--ink); font-size:0.86rem; font-weight:600; }
+  .sticky-cta .btn{ padding:12px 20px; font-size:0.85rem; flex-shrink:0; }
+  @media (max-width:720px){ .sticky-cta{ display:flex; } body{ padding-bottom:78px; } }
+
+  /* focus visibility for accessibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--walnut); outline-offset:2px;
+  }
 </style>
 </head>
 <body>
@@ -270,71 +351,77 @@
 </header>
 
 <main>
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
+  <!-- PRODUCT: gallery + details + bundle picker -->
+  <section class="product">
+    <div class="wrap product-grid">
+
+      <!-- gallery -->
+      <div class="gallery">
+        <div class="gallery-main">
+          <span class="gallery-badge">
+            <svg width="11" height="11" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="#7C4E2A"/><path d="M4 6.5L5.7 8.2L9.2 4.7" stroke="#7C4E2A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Dermatologically tested
+          </span>
+          <img src="swas-box.png" alt="SWAS Mouth Patch box" id="gallery-main-img">
+          <button class="gallery-arrow prev" id="gallery-prev" aria-label="Previous photo">
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8L10 13" stroke="#211D17" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="gallery-arrow next" id="gallery-next" aria-label="Next photo">
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none"><path d="M6 3L11 8L6 13" stroke="#211D17" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span class="gallery-counter" id="gallery-counter">1 / 4</span>
+        </div>
+        <div class="gallery-thumbs" id="gallery-thumbs">
+          <button class="gallery-thumb active" data-img="swas-box.png" aria-label="View product photo 1"><img src="swas-box.png" alt=""></button>
+          <button class="gallery-thumb" data-img="swas-box.png" aria-label="View product photo 2"><img src="swas-box.png" alt=""></button>
+          <button class="gallery-thumb" data-img="swas-box.png" aria-label="View product photo 3"><img src="swas-box.png" alt=""></button>
+          <button class="gallery-thumb" data-img="swas-box.png" aria-label="View product photo 4"><img src="swas-box.png" alt=""></button>
+        </div>
+      </div>
+
+      <!-- details -->
+      <div class="details">
         <div class="eyebrow">Sleep through your nose</div>
         <h1>Close your lips.<br>Open your <em>breath</em>.</h1>
-        <p class="lead">A gentle, skin-safe mouth patch that keeps your lips softly closed through the night — so your body defaults to nasal breathing, the way it's built to sleep.</p>
-        <a href="#offers" class="btn">
-          See Bundles &amp; Pricing
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="#211D17" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <div class="trust-line">Dermatologically tested · Oval breathing gap · Cash on delivery available</div>
-      </div>
-      <div class="hero-visual">
-        <div class="oval-frame">
-          <div class="oval-ring breathe" style="border:1px solid var(--line); border-radius:50%;"></div>
-          <div class="oval-photo">
-            <img src="swas-box.png" alt="SWAS Mouth Patch box">
-          </div>
+        <div class="details-top">
+          <span class="rating-stars" aria-hidden="true">
+            <svg width="78" height="14" viewBox="0 0 78 14" fill="none">
+              <g fill="#A9803F"><path d="M7 0l1.9 4.4L14 5l-3.9 3.3L11.3 13 7 10.4 2.7 13l1.2-4.7L0 5l5.1-.6z"/></g>
+              <g fill="#A9803F" transform="translate(16)"><path d="M7 0l1.9 4.4L14 5l-3.9 3.3L11.3 13 7 10.4 2.7 13l1.2-4.7L0 5l5.1-.6z"/></g>
+              <g fill="#A9803F" transform="translate(32)"><path d="M7 0l1.9 4.4L14 5l-3.9 3.3L11.3 13 7 10.4 2.7 13l1.2-4.7L0 5l5.1-.6z"/></g>
+              <g fill="#A9803F" transform="translate(48)"><path d="M7 0l1.9 4.4L14 5l-3.9 3.3L11.3 13 7 10.4 2.7 13l1.2-4.7L0 5l5.1-.6z"/></g>
+              <g fill="#A9803F" transform="translate(64)"><path d="M7 0l1.9 4.4L14 5l-3.9 3.3L11.3 13 7 10.4 2.7 13l1.2-4.7L0 5l5.1-.6z"/></g>
+            </svg>
+          </span>
+          <span class="rating-text">Early users report quieter nights</span>
         </div>
-      </div>
-    </div>
-  </section>
+        <p class="product-desc">A gentle, skin-safe mouth patch that keeps your lips softly closed through the night — so your body defaults to nasal breathing, the way it's built to sleep.</p>
 
-  <!-- OFFERS / BUNDLES -->
-  <section id="offers">
-    <div class="wrap">
-      <div class="rule"></div>
-      <div class="section-head center">
-        <div class="eyebrow" style="text-align:center;">Choose your bundle</div>
-        <h2>One box to try it. Three to make it a habit.</h2>
-        <p>Every bundle ships the same 30-strip box — the more nights you commit to, the more you save.</p>
-      </div>
-      <div class="bundles">
+        <div class="price-block">
+          <span class="price-now" id="price-now">Rs. 899</span>
+          <span class="price-was" id="price-was">Rs. 998</span>
+          <span class="price-save" id="price-save">Save Rs. 99</span>
+        </div>
+        <div class="price-pernight" id="price-pernight">≈ Rs. 15 per night · 60 strips · two months</div>
 
-        <div class="bundle-card">
-          <div class="bundle-boxes">1 Box</div>
-          <div class="bundle-strips">30 strips · one month</div>
-          <div class="bundle-price-row"><span class="bundle-price">₹499</span></div>
-          <div class="bundle-perbox">₹499 per box</div>
-          <div class="bundle-save">&nbsp;</div>
-          <div class="bundle-cta"><button class="btn btn-block" onclick="openModal('b1')">Choose this bundle</button></div>
+        <div class="bundle-label-row">
+          <span class="lbl">Choose your bundle</span>
+          <span class="val">30 strips per box</span>
+        </div>
+        <div class="variant-list" id="variant-list" role="radiogroup" aria-label="Choose your bundle"></div>
+
+        <div class="product-cta">
+          <button class="btn btn-solid btn-block" id="main-cta" onclick="openModal(selectedBundle)">Order Now · Cash on Delivery</button>
+          <div class="product-cta-note">Free delivery · Pay when it arrives at your door</div>
         </div>
 
-        <div class="bundle-card popular">
-          <div class="bundle-tag">Most Popular</div>
-          <div class="bundle-boxes">2 Boxes</div>
-          <div class="bundle-strips">60 strips · two months</div>
-          <div class="bundle-price-row"><span class="bundle-price">₹899</span><span class="bundle-compare">₹998</span></div>
-          <div class="bundle-perbox">₹450 per box</div>
-          <div class="bundle-save">You save ₹99</div>
-          <div class="bundle-cta"><button class="btn btn-solid btn-block" onclick="openModal('b2')">Choose this bundle</button></div>
+        <div class="includes-strip">
+          <span class="trust-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="#A9803F"/><path d="M4 6.5L5.7 8.2L9.2 4.7" stroke="#A9803F" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Fragrance-free adhesive</span>
+          <span class="trust-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="#A9803F"/><path d="M4 6.5L5.7 8.2L9.2 4.7" stroke="#A9803F" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Oval breathing gap</span>
+          <span class="trust-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="#A9803F"/><path d="M4 6.5L5.7 8.2L9.2 4.7" stroke="#A9803F" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Cash on delivery</span>
         </div>
-
-        <div class="bundle-card">
-          <div class="bundle-tag" style="background:var(--ink);">Best Value</div>
-          <div class="bundle-boxes">3 Boxes</div>
-          <div class="bundle-strips">90 strips · three months</div>
-          <div class="bundle-price-row"><span class="bundle-price">₹1,299</span><span class="bundle-compare">₹1,497</span></div>
-          <div class="bundle-perbox">₹433 per box</div>
-          <div class="bundle-save">You save ₹198</div>
-          <div class="bundle-cta"><button class="btn btn-block" onclick="openModal('b3')">Choose this bundle</button></div>
-        </div>
-
       </div>
+
     </div>
   </section>
 
@@ -465,8 +552,8 @@
 </footer>
 
 <div class="sticky-cta">
-  <span class="txt">30 strips · one month of quieter nights</span>
-  <button class="btn" onclick="openModal('b2')">Order Now</button>
+  <span class="txt" id="sticky-txt">2 Boxes<strong>Rs. 899 <span style="text-decoration:line-through; opacity:0.6; font-weight:400;">Rs. 998</span></strong></span>
+  <button class="btn btn-solid" onclick="openModal(selectedBundle)">Order Now</button>
 </div>
 
 <!-- ============ ORDER MODAL ============ -->
@@ -485,28 +572,28 @@
       <form id="order-form" novalidate>
         <div class="field" id="f-name">
           <label for="name">Full name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required>
+          <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
           <div class="field-error">Please enter your name.</div>
         </div>
         <div class="field" id="f-phone">
           <label for="phone">Phone / WhatsApp</label>
-          <input type="tel" id="phone" name="phone" placeholder="10-digit number" required pattern="[0-9+ ]{7,15}">
+          <input type="tel" id="phone" name="phone" placeholder="10-digit number" required pattern="[0-9+ ]{7,15}" autocomplete="tel" inputmode="tel">
           <div class="field-error">Please enter a valid phone number.</div>
         </div>
         <div class="field" id="f-address">
           <label for="address">Address</label>
-          <textarea id="address" name="address" rows="2" placeholder="House / street / locality" required></textarea>
+          <textarea id="address" name="address" rows="2" placeholder="House / street / locality" required autocomplete="street-address"></textarea>
           <div class="field-error">Please enter your delivery address.</div>
         </div>
         <div class="field-row">
           <div class="field" id="f-city">
             <label for="city">City</label>
-            <input type="text" id="city" name="city" placeholder="City" required>
+            <input type="text" id="city" name="city" placeholder="City" required autocomplete="address-level2">
             <div class="field-error">Required.</div>
           </div>
           <div class="field" id="f-province">
             <label for="province">Province</label>
-            <input type="text" id="province" name="province" placeholder="e.g. Bagmati" required>
+            <input type="text" id="province" name="province" placeholder="e.g. Bagmati" required autocomplete="address-level1">
             <div class="field-error">Please enter your province.</div>
           </div>
         </div>
@@ -532,13 +619,103 @@
 <script>
   /* ---------------- bundle data ---------------- */
   const BUNDLES = {
-    b1: { id:'b1', label:'1 Box',  boxes:1, strips:30, price:499,  compareAt:null, perBox:499 },
-    b2: { id:'b2', label:'2 Boxes',boxes:2, strips:60, price:899,  compareAt:998,  perBox:450 },
-    b3: { id:'b3', label:'3 Boxes',boxes:3, strips:90, price:1299, compareAt:1497, perBox:433 }
+    b1: { id:'b1', label:'1 Box',  boxes:1, strips:30, price:499,  compareAt:null, perBox:499, perNight:17, tag:null,          sub:'One month · good for a first try' },
+    b2: { id:'b2', label:'2 Boxes',boxes:2, strips:60, price:899,  compareAt:998,  perBox:450, perNight:15, tag:'Most Popular', sub:'Two months · enough to build the habit' },
+    b3: { id:'b3', label:'3 Boxes',boxes:3, strips:90, price:1299, compareAt:1497, perBox:433, perNight:14, tag:'Best Value',   sub:'Three months · lowest price per box' }
   };
-  const money = n => '₹' + n.toLocaleString('en-IN');
+  const money = n => 'Rs. ' + n.toLocaleString('en-IN');
 
   let selectedBundle = 'b2';
+
+  /* ---------------- product page: variant list + price ---------------- */
+  const variantListEl = document.getElementById('variant-list');
+  const priceNowEl = document.getElementById('price-now');
+  const priceWasEl = document.getElementById('price-was');
+  const priceSaveEl = document.getElementById('price-save');
+  const pricePerNightEl = document.getElementById('price-pernight');
+  const stickyTxtEl = document.getElementById('sticky-txt');
+
+  function renderVariantList(){
+    variantListEl.innerHTML = '';
+    Object.values(BUNDLES).forEach(b => {
+      const row = document.createElement('button');
+      row.type = 'button';
+      row.className = 'variant' + (b.id === selectedBundle ? ' active' : '');
+      row.setAttribute('role','radio');
+      row.setAttribute('aria-checked', b.id === selectedBundle ? 'true' : 'false');
+      row.innerHTML = `
+        <span class="variant-radio"></span>
+        <span class="variant-mid">
+          <span class="variant-name">${b.label}${b.tag ? `<span class="variant-tag">${b.tag}</span>` : ''}</span>
+          <span class="variant-sub">${b.sub}</span>
+        </span>
+        <span class="variant-right">
+          <span class="variant-price">${money(b.price)}</span><br>
+          ${b.compareAt ? `<span class="variant-compare">${money(b.compareAt)}</span>` : ''}
+        </span>
+      `;
+      row.addEventListener('click', () => { selectedBundle = b.id; renderVariantList(); renderPriceBlock(); });
+      variantListEl.appendChild(row);
+    });
+  }
+
+  function renderPriceBlock(){
+    const b = BUNDLES[selectedBundle];
+    priceNowEl.textContent = money(b.price);
+    if (b.compareAt) {
+      priceWasEl.textContent = money(b.compareAt);
+      priceWasEl.style.display = '';
+      priceSaveEl.textContent = `Save ${money(b.compareAt - b.price)}`;
+      priceSaveEl.style.display = '';
+    } else {
+      priceWasEl.style.display = 'none';
+      priceSaveEl.style.display = 'none';
+    }
+    pricePerNightEl.textContent = `≈ ${money(b.perNight)} per night · ${b.strips} strips · ${b.boxes === 1 ? 'one' : b.boxes === 2 ? 'two' : 'three'} month${b.boxes > 1 ? 's' : ''}`;
+    stickyTxtEl.innerHTML = `${b.label}<strong>${money(b.price)}${b.compareAt ? ` <span style="text-decoration:line-through; opacity:0.6; font-weight:400;">${money(b.compareAt)}</span>` : ''}</strong>`;
+  }
+
+  renderVariantList();
+  renderPriceBlock();
+
+  /* ---------------- gallery: thumbnails + arrows (Shopify-style) ---------------- */
+  const galleryMainImg = document.getElementById('gallery-main-img');
+  const galleryThumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
+  const galleryCounter = document.getElementById('gallery-counter');
+  const galleryPrevBtn = document.getElementById('gallery-prev');
+  const galleryNextBtn = document.getElementById('gallery-next');
+  let galleryIndex = 0;
+
+  function goToSlide(i){
+    galleryIndex = (i + galleryThumbs.length) % galleryThumbs.length;
+    galleryThumbs.forEach(t => t.classList.remove('active'));
+    galleryThumbs[galleryIndex].classList.add('active');
+    galleryThumbs[galleryIndex].scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+    galleryMainImg.src = galleryThumbs[galleryIndex].dataset.img;
+    galleryCounter.textContent = `${galleryIndex + 1} / ${galleryThumbs.length}`;
+  }
+
+  galleryThumbs.forEach((thumb, i) => thumb.addEventListener('click', () => goToSlide(i)));
+  galleryPrevBtn.addEventListener('click', () => goToSlide(galleryIndex - 1));
+  galleryNextBtn.addEventListener('click', () => goToSlide(galleryIndex + 1));
+
+  // swipe support on the main image (mobile)
+  let touchStartX = null;
+  const galleryMainEl = document.querySelector('.gallery-main');
+  galleryMainEl.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive:true });
+  galleryMainEl.addEventListener('touchend', (e) => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) goToSlide(galleryIndex + (dx < 0 ? 1 : -1));
+    touchStartX = null;
+  }, { passive:true });
+
+  // keyboard arrows when gallery is focused
+  galleryMainEl.setAttribute('tabindex', '0');
+  galleryMainEl.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goToSlide(galleryIndex - 1);
+    if (e.key === 'ArrowRight') goToSlide(galleryIndex + 1);
+  });
 
   /* ---------------- FAQ accordion ---------------- */
   document.querySelectorAll('.faq-item').forEach(item => {
@@ -572,7 +749,7 @@
       pill.type = 'button';
       pill.className = 'bundle-pill' + (b.id === selectedBundle ? ' active' : '');
       pill.innerHTML = `<span class="p-label">${b.label}</span><span class="p-price">${money(b.price)}</span>`;
-      pill.addEventListener('click', () => { selectedBundle = b.id; renderBundlePills(); renderSummary(); });
+      pill.addEventListener('click', () => { selectedBundle = b.id; renderBundlePills(); renderSummary(); renderVariantList(); renderPriceBlock(); });
       bundleSelectEl.appendChild(pill);
     });
   }
@@ -625,7 +802,11 @@
       validateField('f-city', city, () => city.value.trim().length > 1),
       validateField('f-province', province, () => province.value.trim().length > 1)
     ];
-    if (validations.includes(false)) return;
+    if (validations.includes(false)) {
+      const firstInvalid = document.querySelector('.field.invalid');
+      if (firstInvalid) firstInvalid.scrollIntoView({ behavior:'smooth', block:'center' });
+      return;
+    }
 
     const b = BUNDLES[selectedBundle];
     confirmList.innerHTML = `
@@ -654,7 +835,7 @@
 
   /* ---------------- confirm -> submit -> redirect ---------------- */
   // Paste your deployed Google Apps Script Web App URL below (see Code.gs).
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbymuQgVKLXb5xVQtzOL6YiotpUXLfpSbdvHXKyUlK-1WjJk5WtEBpWPyB_Mkq9p48w9/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxvSdGcG-JxsIKCfo8juRP6RVDLNSlQnQoDRvyo-m3VHVT8HrQbGTihPlS1XZYfiy3W/exec";
 
   confirmSubmitBtn.addEventListener('click', async () => {
     modalStatus.classList.remove('show', 'error');
@@ -668,9 +849,10 @@
 
     const b = BUNDLES[selectedBundle];
     const fd = new FormData(orderForm);
-    fd.append('bundle', b.label);
-    fd.append('boxes', b.boxes);
-    fd.append('strips', b.strips);
+    // Combine address + city + province into one field for the sheet.
+    const fullAddress = `${fd.get('address')}, ${fd.get('city')}, ${fd.get('province')}`;
+    fd.set('address', fullAddress);
+    fd.append('bundle', `${b.label} (${b.strips} strips)`);
     fd.append('price', b.price);
     fd.append('payment_method', 'Cash on Delivery');
     fd.append('source', 'landing_page');
@@ -685,11 +867,11 @@
       if (data.result === 'success') {
         const params = new URLSearchParams({
           orderId: data.orderId || '',
-          name: fd.get('name'),
-          phone: fd.get('phone'),
-          address: fd.get('address'),
-          city: fd.get('city'),
-          province: fd.get('province'),
+          name: orderForm.name.value.trim(),
+          phone: orderForm.phone.value.trim(),
+          address: orderForm.address.value.trim(),
+          city: orderForm.city.value.trim(),
+          province: orderForm.province.value.trim(),
           bundle: b.label,
           strips: b.strips,
           price: b.price,
