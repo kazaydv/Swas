@@ -654,13 +654,13 @@
 
   /* ---------------- confirm -> submit -> redirect ---------------- */
   // Paste your deployed Google Apps Script Web App URL below (see Code.gs).
-  const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxvkeDcFpQilfZUebLpZ23hOfpXbdwENNZFpdxVY4aZ8Ldh4yhOB5JU1BRVHQMe-XQt/exec";
 
   confirmSubmitBtn.addEventListener('click', async () => {
     modalStatus.classList.remove('show', 'error');
     modalStatus.textContent = '';
 
-    if (SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE')) {
+    if (SCRIPT_URL.includes('https://script.google.com/macros/s/AKfycbxvkeDcFpQilfZUebLpZ23hOfpXbdwENNZFpdxVY4aZ8Ldh4yhOB5JU1BRVHQMe-XQt/exec')) {
       modalStatus.textContent = "Order isn't connected yet — add your Apps Script URL in the script tag.";
       modalStatus.classList.add('show', 'error');
       return;
