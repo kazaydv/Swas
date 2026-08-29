@@ -781,7 +781,7 @@
     loader.style.display = 'block';
 
     const fd = new FormData(e.target);
-    fetch('https://script.google.com/macros/s/AKfycbwvQ_qyQEg4YPnKsZw1RSAvQmzx4PLKD24p1nTRrmMsGP6Pajd-M0170RUTDkw4lhWHww/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbxwi_eYy7YdkRXLWdL24x_Hzt33Et_0t2xABzdY8GscaFc0uxZh8I_xXGXbtM4Zo4DA8A/exec', {
       method: 'POST',
       body: fd,
     })
@@ -948,49 +948,49 @@
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/Along-with-my.mp4" playsinline preload="metadata"></video>
+              <video src="Images/Along-with-my.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/Introducing-you.mp4" playsinline preload="metadata"></video>
+              <video src="Images/Introducing-you.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/SWAS-mouth-patch-for-your.mp4" playsinline preload="metadata"></video>
+              <video src="Images/SWAS-mouth-patch-for-your.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/Everyone-has-that.mp4" playsinline preload="metadata"></video>
+              <video src="Images/Everyone-has-that.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/SWAS-mouth-patch-ultimate.mp4" playsinline preload="metadata"></video>
+              <video src="Images/SWAS-mouth-patch-ultimate.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/This-Mouth-Patch-has-changed-my-sleeping-schedule.mp4" playsinline preload="metadata"></video>
+              <video src="Images/This-Mouth-Patch-has-changed-my-sleeping-schedule.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/SwasMouthPatch-StopSnoring.mp4" playsinline preload="metadata"></video>
+              <video src="Images/SwasMouthPatch-StopSnoring.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
@@ -1010,6 +1010,23 @@
       const video = card.querySelector("video");
       video.loop = true;
       video.muted = true;
+
+      /* Surface load failures instead of leaving a silent, permanent black
+         box. Open the browser console (F12 → Console) and reload — any
+         video that can't load will log its exact URL and error code here,
+         which is the fastest way to spot a filename/case mismatch. */
+      video.addEventListener('error', () => {
+        const failedUrl = video.currentSrc || video.src;
+        console.error('SWAS story video failed to load:', failedUrl, video.error);
+        const wrap = card.querySelector('.swas-story-video-wrap');
+        if (wrap && !wrap.querySelector('.swas-video-fallback')) {
+          const msg = document.createElement('div');
+          msg.className = 'swas-video-fallback';
+          msg.style.cssText = 'color:#9aa4b2;font-size:0.8rem;padding:24px;text-align:center;';
+          msg.textContent = 'Video unavailable';
+          wrap.appendChild(msg);
+        }
+      });
     });
 
     /* Only play the video(s) currently visible enough on screen. Trying to
