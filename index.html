@@ -785,11 +785,19 @@
       method: 'POST',
       body: fd,
     })
-    .then(() => new Promise((res) => setTimeout(res, 1500)))
-    .then(() => (window.location.href = 'thankyou.html'))
+    .then((res) => res.json())
+    .then((data) => {
+      if (data && data.result === 'success') {
+        window.location.href = 'thankyou.html';
+      } else {
+        loader.style.display = 'none';
+        alert('Your order could not be saved (' + (data && data.error ? data.error : 'unknown error') + '). Please try again or message us on WhatsApp.');
+        console.error('Apps Script error:', data);
+      }
+    })
     .catch((err) => {
       loader.style.display = 'none';
-      alert('There was a problem — please try again.');
+      alert('There was a problem reaching the order sheet — please check your connection and try again.');
       console.error(err);
     });
   });
@@ -994,74 +1002,63 @@
 
   <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const cards2 = document.querySelectorAll(".swas-story-card");
-    const videos = document.querySelectorAll(".swas-story-card video");
+    const cards = document.querySelectorAll(".swas-story-card");
     const muteButtons = document.querySelectorAll(".swas-mute-toggle");
-    const isMobile = window.matchMedia("(max-width: 759px)").matches;
-    videos.forEach(v => v.loop = true);
+    let unmutedVideo = null; // whichever video the visitor has explicitly unmuted
 
-    let mobileShouldBeUnmuted = false;
-    let lastDesktopUnmutedVideo = null;
+    cards.forEach(card => {
+      const video = card.querySelector("video");
+      video.loop = true;
+      video.muted = true;
+    });
 
-    if (!isMobile) {
-      videos.forEach(v => { v.muted = true; v.play().catch(()=>{}); });
-    }
-    if (isMobile) {
-      videos.forEach((v, index) => { v.muted = true; if (index === 0) v.play().catch(()=>{}); });
-    }
-
-    if (isMobile) {
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting || entry.intersectionRatio < 0.65) return;
-            const card = entry.target;
-            const video = card.querySelector("video");
-            const btn = card.querySelector(".swas-mute-toggle");
-            videos.forEach(v => { if (v !== video) v.pause(); });
-            video.currentTime = 0;
-            if (mobileShouldBeUnmuted) { video.muted = false; btn.textContent = "🔊"; }
-            else { video.muted = true; btn.textContent = "🔇"; }
-            video.play().catch(()=>{});
-          });
-        },
-        { threshold: [0.65] }
-      );
-      cards2.forEach(card => observer.observe(card));
-    }
+    /* Only play the video(s) currently visible enough on screen. Trying to
+       autoplay every video in the strip at once is what was causing every
+       card after the first to render as a black box — browsers only decode
+       a handful of videos at the same time, so the rest silently never
+       start. Pausing off-screen videos and playing on-screen ones fixes it
+       and also saves bandwidth/battery. */
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const video = entry.target.querySelector("video");
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+            if (video === unmutedVideo) {
+              video.muted = true;
+              const btn = entry.target.querySelector(".swas-mute-toggle");
+              if (btn) btn.textContent = "🔇";
+              unmutedVideo = null;
+            }
+          }
+        });
+      },
+      { threshold: [0, 0.6, 1] }
+    );
+    cards.forEach(card => observer.observe(card));
 
     muteButtons.forEach(btn => {
-      btn.addEventListener("click", e => {
+      btn.addEventListener("click", () => {
         const card = btn.closest(".swas-story-card");
         const video = card.querySelector("video");
 
-        if (isMobile) {
-          video.muted = !video.muted;
-          btn.textContent = video.muted ? "🔇" : "🔊";
-          if (!video.muted) { mobileShouldBeUnmuted = true; video.currentTime = 0; }
-          else { mobileShouldBeUnmuted = false; }
-          video.play().catch(()=>{});
-          return;
-        }
-
         if (video.muted) {
-          video.currentTime = 0;
+          if (unmutedVideo && unmutedVideo !== video) {
+            unmutedVideo.muted = true;
+            const otherBtn = unmutedVideo.closest(".swas-story-card").querySelector(".swas-mute-toggle");
+            if (otherBtn) otherBtn.textContent = "🔇";
+          }
           video.muted = false;
           btn.textContent = "🔊";
-          video.play().catch(()=>{});
-          videos.forEach(v => {
-            if (v !== video) {
-              v.muted = true;
-              const otherBtn = v.closest(".swas-story-card").querySelector(".swas-mute-toggle");
-              otherBtn.textContent = "🔇";
-            }
-          });
-          lastDesktopUnmutedVideo = video;
+          unmutedVideo = video;
         } else {
           video.muted = true;
           btn.textContent = "🔇";
-          lastDesktopUnmutedVideo = null;
+          unmutedVideo = null;
         }
+        video.play().catch(() => {});
       });
     });
   });
