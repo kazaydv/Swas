@@ -83,6 +83,14 @@
   .hero-gallery .arrow.left { left: 0; }
   .hero-gallery .arrow.right { right: 0; }
 
+  .hero-thumbs { display: flex; gap: 10px; margin-top: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero-thumbs img {
+    width: 64px; height: 52px; object-fit: cover; border-radius: 8px; cursor: pointer;
+    opacity: 0.6; border: 2px solid transparent; transition: opacity .2s ease, border-color .2s ease;
+  }
+  .hero-thumbs img:hover { opacity: 1; }
+  .hero-thumbs img.active { opacity: 1; border-color: #e33d2e; }
+
   .hero-content { flex: 1 1 45%; min-width: 280px; }
   .hero-content h2 {
     font-size: 40px; font-weight: 700; margin: 0 0 10px; color: #3a454b; line-height: 1.3;
@@ -99,6 +107,30 @@
     animation: breathing 2.4s ease-in-out infinite;
   }
   .order-now:hover { filter: brightness(1.05); }
+
+  /* ====== STICKY CTA BAR ====== */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 9997;
+    background: #fff; box-shadow: 0 -4px 16px rgba(0,0,0,0.14);
+    padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    transform: translateY(100%); transition: transform 0.3s ease;
+  }
+  .sticky-cta.visible { transform: translateY(0); }
+  .sticky-cta__info { display: flex; flex-direction: column; line-height: 1.3; min-width: 0; }
+  .sticky-cta__info strong { font-size: 0.95rem; color: #222; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sticky-cta__price { font-size: 0.85rem; color: #e33d2e; font-weight: 700; }
+  .sticky-cta__btn {
+    background: linear-gradient(90deg, #e33d2e, #c02222); color: #fff; border: none; border-radius: 50px;
+    padding: 12px 30px; font-weight: 700; font-size: 0.95rem; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+    animation: breathing 2.4s ease-in-out infinite;
+  }
+  .sticky-cta__btn:hover { filter: brightness(1.05); }
+  @media (max-width: 480px) {
+    .sticky-cta { padding: 10px 14px; }
+    .sticky-cta__info strong { font-size: 0.82rem; }
+    .sticky-cta__price { font-size: 0.78rem; }
+    .sticky-cta__btn { padding: 10px 20px; font-size: 0.85rem; }
+  }
 
   /* ====== BENEFIT STRIP (moved out of hero copy) ====== */
   .benefit-strip {
@@ -186,6 +218,7 @@
     .hero-content h2 { font-size: 28px; }
     .hero-gallery .arrow.left, .hero-gallery .arrow.right { display: block; }
     .hero-gallery .arrow { top: 45%; font-size: 24px; padding: 4px 8px; }
+    .hero-thumbs img { width: 52px; height: 42px; }
     .pkg-card { padding: 12px; gap: 8px; }
     .pkg-image { width: 50px; height: 50px; }
     .pkg-card h3 { font-size: 1rem; margin-bottom: 3px; }
@@ -274,7 +307,7 @@
   }
   .swas-how-works-text__subcopy {
     max-width: 640px !important; margin: 0 auto 2.2rem auto !important; font-size: 1.02rem !important;
-    line-height: 1.8 !important; color: grey !important;
+    line-height: 1.8 !important; color: white !important;
   }
   .swas-how-works-text__cta {
     display: inline-block; margin-top: 26px !important; background: linear-gradient(90deg, #e33d2e, #c02222);
@@ -511,9 +544,10 @@
   .swas-isolated-container .social-links img { height: 40px; width: auto; }
   .swas-isolated-container .footer-divider { margin: 30px auto; max-width: 800px; border-color: rgba(255,255,255,0.2); border: none; border-top: 1px solid rgba(255,255,255,0.2); }
   .swas-isolated-container .footer-copyright { text-align: center; font-size: 14px; color: #ccc; }
-  .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 9999; background: #25d366; border-radius: 50%; padding: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.2s; }
+  .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 9999; background: #25d366; border-radius: 50%; padding: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.2s, bottom 0.3s ease; }
   .whatsapp-float img { width: 32px; height: 32px; display: block; }
   .whatsapp-float:hover { transform: scale(1.1); }
+  body.with-sticky-cta .whatsapp-float { bottom: 92px; }
 </style>
 </head>
 <body>
@@ -552,6 +586,7 @@
     <img id="hero-img" src="Images/Clinically-trusted-for-peaceful-sleep-10.png" alt="SWAS Mouth Patch">
     <div class="arrow left">&#10094;</div>
     <div class="arrow right">&#10095;</div>
+    <div class="hero-thumbs" id="hero-thumbs"></div>
   </div>
 
   <!-- RIGHT: HEADLINE, SUBHEADLINE, BUNDLES, CTA -->
@@ -633,6 +668,15 @@
   <span class="benefit-strip__item">✅ Improve focus & mental clarity</span>
 </section>
 
+<!-- STICKY CTA BAR — appears once the hero (with its own Order Now button) scrolls out of view -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta__info">
+    <strong>SWAS Mouth Patch</strong>
+    <span class="sticky-cta__price">From Rs 1,200/-</span>
+  </div>
+  <button class="sticky-cta__btn" id="stickyOrderBtn">Order Now</button>
+</div>
+
 <!-- ========== ORDER MODAL ========== -->
 <div class="modal" id="swas-modal">
   <div class="modal-content">
@@ -678,6 +722,7 @@
   (function () {
     const wrapper = document.getElementById('sm-carousel');
     const hero = wrapper.querySelector('#hero-img');
+    const thumbsWrap = document.getElementById('hero-thumbs');
 
     const images = [
       "Images/Clinically-trusted-for-peaceful-sleep-10.png",
@@ -691,17 +736,36 @@
 
     let index = 0;
 
+    // Build one clickable thumbnail per image, in the same order as the
+    // main carousel, so visitors can jump straight to any photo instead
+    // of only stepping through with the arrows or a swipe.
+    const thumbs = images.map((src, i) => {
+      const t = document.createElement('img');
+      t.src = src;
+      t.alt = 'View ' + (i + 1);
+      t.addEventListener('click', () => show(i));
+      thumbsWrap.appendChild(t);
+      return t;
+    });
+
+    function updateActiveThumb() {
+      thumbs.forEach((t, i) => t.classList.toggle('active', i === index));
+    }
+
     function show(i) {
       index = (i + images.length) % images.length;
       hero.src = images[index];
+      updateActiveThumb();
     }
+
+    show(0);
 
     wrapper.querySelector(".arrow.left").addEventListener("click", () => show(index - 1));
     wrapper.querySelector(".arrow.right").addEventListener("click", () => show(index + 1));
 
     let startX = 0, endX = 0;
-    wrapper.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-    wrapper.addEventListener('touchend', e => {
+    hero.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+    hero.addEventListener('touchend', e => {
       endX = e.changedTouches[0].clientX;
       const diff = endX - startX;
       if (Math.abs(diff) > 40) { if (diff < 0) show(index + 1); else show(index - 1); }
@@ -773,6 +837,31 @@
     if (current) current.click();
   });
 
+  /* ===== STICKY CTA BAR =====
+     Shows once the hero section (which already has its own Order Now
+     button) scrolls out of view, so visitors always have a quick way to
+     order without scrolling back up. Reuses the same "click the
+     currently-highlighted package" flow as the hero button. */
+  const stickyCta = document.getElementById('stickyCta');
+  const heroSectionEl = document.getElementById('hero-section');
+
+  const stickyObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        const show = !entry.isIntersecting;
+        stickyCta.classList.toggle('visible', show);
+        document.body.classList.toggle('with-sticky-cta', show);
+      });
+    },
+    { threshold: 0 }
+  );
+  stickyObserver.observe(heroSectionEl);
+
+  document.getElementById('stickyOrderBtn').addEventListener('click', () => {
+    const current = document.querySelector('#swas-package-wrapper .pkg-card.highlighted') || popularCard;
+    if (current) current.click();
+  });
+
   /* ===== FORM SUBMISSION =====
      Replace YOUR_NEW_APPS_SCRIPT_WEB_APP_URL below with the /exec URL you get after
      deploying the Code.gs script (see the Apps Script file) against your new Google Sheet. */
@@ -833,110 +922,6 @@
       </div>
     </section>
   </div>
-
-  <!-- HOW SWAS WORKS -->
-  <section id="swas-how-works-text" class="swas-how-works-text">
-    <div class="swas-how-works-text__inner">
-      <h2 class="swas-how-works-text__headline">
-        SWAS gently closes your mouth so your body can switch to natural nose breathing.
-      </h2>
-      <p class="swas-how-works-text__subcopy">
-        A soft, skin-friendly strip rests over your lips with a light seal &mdash; firm enough to
-        keep your mouth comfortably closed, gentle enough to open whenever you need.
-      </p>
-      <a href="#swas-package-wrapper" class="swas-how-works-text__cta">Order Now</a>
-    </div>
-  </section>
-
-  <!-- DON'T BE A MOUTH BREATHER -->
-  <section id="swas-no-mouth-breather" class="swas-no-mouth-breather">
-    <div class="swas-no-mouth-breather__inner">
-      <div class="swas-no-mouth-breather__content">
-        <h2 class="swas-no-mouth-breather__title">Don't be a mouth breather.</h2>
-        <p class="swas-no-mouth-breather__text">
-          Mouth breathing at night can leave you groggy, dry, and restless. SWAS gently encourages nose breathing,
-          so your body can oxygenate better and your sleep actually restores you.
-        </p>
-        <div class="swas-no-mouth-breather__tags">
-          <span class="swas-no-mouth-breather__tag">Less dry mouth</span>
-          <span class="swas-no-mouth-breather__tag">Quieter nights</span>
-          <span class="swas-no-mouth-breather__tag">Deeper rest</span>
-        </div>
-      </div>
-      <div class="swas-no-mouth-breather__visual">
-        <div class="swas-no-mouth-breather__glow"></div>
-        <div class="swas-no-mouth-breather__image-wrap">
-          <img src="Images/ChatGPT-Image-Nov-26-2025-03_38_49-PM.png" alt="Person sleeping comfortably with SWAS" class="swas-no-mouth-breather__image" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BENEFITS RING -->
-  <section id="swas-benefits-ring" class="swas-benefits-ring">
-    <div class="swas-benefits-ring__inner">
-      <h2 class="swas-benefits-ring__title">How SWAS Helps You Sleep Better</h2>
-      <p class="swas-benefits-ring__subtitle">A small patch, big impact on how rested you feel in the morning.</p>
-
-      <div class="swas-benefits-ring__layout">
-        <div class="swas-benefits-ring__details swas-benefits-ring__details--left">
-          <div class="swas-benefits-ring__column">
-            <article class="swas-benefits-ring__point"><h3 class="swas-benefits-ring__point-title">Promotes Nose Breathing</h3></article>
-            <article class="swas-benefits-ring__point"><h3 class="swas-benefits-ring__point-title">Reduces Snoring</h3></article>
-          </div>
-        </div>
-
-        <div class="swas-benefits-ring__center">
-          <div class="swas-benefits-ring__center-glow"></div>
-          <div class="swas-benefits-ring__image-wrap">
-            <img src="Images/SWAS-1000-x-400-px-1.png" alt="SWAS mouth patch" class="swas-benefits-ring__image" />
-          </div>
-        </div>
-
-        <div class="swas-benefits-ring__details swas-benefits-ring__details--right">
-          <div class="swas-benefits-ring__column">
-            <article class="swas-benefits-ring__point"><h3 class="swas-benefits-ring__point-title">Prevents Dry Mouth</h3></article>
-            <article class="swas-benefits-ring__point"><h3 class="swas-benefits-ring__point-title">Supports Deeper Rest</h3></article>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STEPS -->
-  <section id="swas-steps-v2" class="swas-steps-v2">
-    <div class="swas-steps-v2__inner">
-      <h2 class="swas-steps-v2__title">How To Use SWAS?</h2>
-      <p class="swas-steps-v2__subtitle">Just three simple steps before bed for calmer, deeper sleep.</p>
-
-      <div class="swas-steps-v2__scroller">
-        <div class="swas-steps-v2__row">
-
-          <article class="swas-step-card">
-            <div class="swas-step-card__badge"><span class="swas-step-card__badge-number">1</span></div>
-            <div class="swas-step-card__image-wrap"><img src="Images/4-3.png" alt="Clean your lips" class="swas-step-card__image" /></div>
-            <h3 class="swas-step-card__title">Clean &#038; Dry</h3>
-            <p class="swas-step-card__text">Wipe your lips and make sure they are dry.</p>
-          </article>
-
-          <article class="swas-step-card">
-            <div class="swas-step-card__badge"><span class="swas-step-card__badge-number">2</span></div>
-            <div class="swas-step-card__image-wrap"><img src="Images/2.png" alt="Apply the patch" class="swas-step-card__image" /></div>
-            <h3 class="swas-step-card__title">Apply Patch</h3>
-            <p class="swas-step-card__text">Remove protective backing and stick the patch over your lips gently.</p>
-          </article>
-
-          <article class="swas-step-card">
-            <div class="swas-step-card__badge"><span class="swas-step-card__badge-number">3</span></div>
-            <div class="swas-step-card__image-wrap"><img src="Images/3-3.png" alt="Peaceful sleep" class="swas-step-card__image" /></div>
-            <h3 class="swas-step-card__title">Sleep Better</h3>
-            <p class="swas-step-card__text">Breathe through your nose and enjoy peaceful sleep.</p>
-          </article>
-
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- VIDEO STORIES -->
   <section id="swas-stories-section">
@@ -1097,6 +1082,110 @@
     });
   });
   </script>
+
+  <!-- HOW SWAS WORKS -->
+  <section id="swas-how-works-text" class="swas-how-works-text">
+    <div class="swas-how-works-text__inner">
+      <h2 class="swas-how-works-text__headline">
+        SWAS gently closes your mouth so your body can switch to natural nose breathing.
+      </h2>
+      <p class="swas-how-works-text__subcopy">
+        A soft, skin-friendly strip rests over your lips with a light seal &mdash; firm enough to
+        keep your mouth comfortably closed, gentle enough to open whenever you need.
+      </p>
+      <a href="#swas-package-wrapper" class="swas-how-works-text__cta">Order Now</a>
+    </div>
+  </section>
+
+  <!-- DON'T BE A MOUTH BREATHER -->
+  <section id="swas-no-mouth-breather" class="swas-no-mouth-breather">
+    <div class="swas-no-mouth-breather__inner">
+      <div class="swas-no-mouth-breather__content">
+        <h2 class="swas-no-mouth-breather__title">Don't be a mouth breather.</h2>
+        <p class="swas-no-mouth-breather__text">
+          Mouth breathing at night can leave you groggy, dry, and restless. SWAS gently encourages nose breathing,
+          so your body can oxygenate better and your sleep actually restores you.
+        </p>
+        <div class="swas-no-mouth-breather__tags">
+          <span class="swas-no-mouth-breather__tag">Less dry mouth</span>
+          <span class="swas-no-mouth-breather__tag">Quieter nights</span>
+          <span class="swas-no-mouth-breather__tag">Deeper rest</span>
+        </div>
+      </div>
+      <div class="swas-no-mouth-breather__visual">
+        <div class="swas-no-mouth-breather__glow"></div>
+        <div class="swas-no-mouth-breather__image-wrap">
+          <img src="Images/ChatGPT-Image-Nov-26-2025-03_38_49-PM.png" alt="Person sleeping comfortably with SWAS" class="swas-no-mouth-breather__image" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS RING -->
+  <section id="swas-benefits-ring" class="swas-benefits-ring">
+    <div class="swas-benefits-ring__inner">
+      <h2 class="swas-benefits-ring__title">How SWAS Helps You Sleep Better</h2>
+      <p class="swas-benefits-ring__subtitle">A small patch, big impact on how rested you feel in the morning.</p>
+
+      <div class="swas-benefits-ring__layout">
+        <div class="swas-benefits-ring__details swas-benefits-ring__details--left">
+          <div class="swas-benefits-ring__column">
+            <article class="swas-benefits-ring__point"><h3 class="swas-benefits-ring__point-title">Promotes Nose Breathing</h3></article>
+            <article class="swas-benefits-ring__point"><h3 class="swas-benefits-ring__point-title">Reduces Snoring</h3></article>
+          </div>
+        </div>
+
+        <div class="swas-benefits-ring__center">
+          <div class="swas-benefits-ring__center-glow"></div>
+          <div class="swas-benefits-ring__image-wrap">
+            <img src="Images/SWAS-1000-x-400-px-1.png" alt="SWAS mouth patch" class="swas-benefits-ring__image" />
+          </div>
+        </div>
+
+        <div class="swas-benefits-ring__details swas-benefits-ring__details--right">
+          <div class="swas-benefits-ring__column">
+            <article class="swas-benefits-ring__point"><h3 class="swas-benefits-ring__point-title">Prevents Dry Mouth</h3></article>
+            <article class="swas-benefits-ring__point"><h3 class="swas-benefits-ring__point-title">Supports Deeper Rest</h3></article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section id="swas-steps-v2" class="swas-steps-v2">
+    <div class="swas-steps-v2__inner">
+      <h2 class="swas-steps-v2__title">How To Use SWAS?</h2>
+      <p class="swas-steps-v2__subtitle">Just three simple steps before bed for calmer, deeper sleep.</p>
+
+      <div class="swas-steps-v2__scroller">
+        <div class="swas-steps-v2__row">
+
+          <article class="swas-step-card">
+            <div class="swas-step-card__badge"><span class="swas-step-card__badge-number">1</span></div>
+            <div class="swas-step-card__image-wrap"><img src="Images/4-3.png" alt="Clean your lips" class="swas-step-card__image" /></div>
+            <h3 class="swas-step-card__title">Clean &#038; Dry</h3>
+            <p class="swas-step-card__text">Wipe your lips and make sure they are dry.</p>
+          </article>
+
+          <article class="swas-step-card">
+            <div class="swas-step-card__badge"><span class="swas-step-card__badge-number">2</span></div>
+            <div class="swas-step-card__image-wrap"><img src="Images/2.png" alt="Apply the patch" class="swas-step-card__image" /></div>
+            <h3 class="swas-step-card__title">Apply Patch</h3>
+            <p class="swas-step-card__text">Remove protective backing and stick the patch over your lips gently.</p>
+          </article>
+
+          <article class="swas-step-card">
+            <div class="swas-step-card__badge"><span class="swas-step-card__badge-number">3</span></div>
+            <div class="swas-step-card__image-wrap"><img src="Images/3-3.png" alt="Peaceful sleep" class="swas-step-card__image" /></div>
+            <h3 class="swas-step-card__title">Sleep Better</h3>
+            <p class="swas-step-card__text">Breathe through your nose and enjoy peaceful sleep.</p>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- TESTIMONIALS -->
   <section class="swas-testimonials">
