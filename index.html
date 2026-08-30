@@ -511,9 +511,9 @@
   .swas-isolated-container .social-links img { height: 40px; width: auto; }
   .swas-isolated-container .footer-divider { margin: 30px auto; max-width: 800px; border-color: rgba(255,255,255,0.2); border: none; border-top: 1px solid rgba(255,255,255,0.2); }
   .swas-isolated-container .footer-copyright { text-align: center; font-size: 14px; color: #ccc; }
-  .swas-isolated-container .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 9999; background: #25d366; border-radius: 50%; padding: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.2s; }
-  .swas-isolated-container .whatsapp-float img { width: 32px; height: 32px; display: block; }
-  .swas-isolated-container .whatsapp-float:hover { transform: scale(1.1); }
+  .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 9999; background: #25d366; border-radius: 50%; padding: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.2s; }
+  .whatsapp-float img { width: 32px; height: 32px; display: block; }
+  .whatsapp-float:hover { transform: scale(1.1); }
 </style>
 </head>
 <body>
@@ -948,49 +948,49 @@
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/1.mp4" playsinline preload="auto"></video>
+              <video src="Images/Along-with-my.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/2.mp4" playsinline preload="auto"></video>
+              <video src="Images/Introducing-you.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/3.mp4" playsinline preload="auto"></video>
+              <video src="Images/SWAS-mouth-patch-for-your.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/4.mp4" playsinline preload="auto"></video>
+              <video src="Images/Everyone-has-that.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/5.mp4" playsinline preload="auto"></video>
+              <video src="Images/SWAS-mouth-patch-ultimate.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/6.mp4" playsinline preload="auto"></video>
+              <video src="Images/This-Mouth-Patch-has-changed-my-sleeping-schedule.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/7.mp4" playsinline preload="auto"></video>
+              <video src="Images/SwasMouthPatch-StopSnoring.mp4" playsinline preload="auto"></video>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
@@ -1012,18 +1012,35 @@
       video.muted = true;
 
       /* Surface load failures instead of leaving a silent, permanent black
-         box. Open the browser console (F12 → Console) and reload — any
-         video that can't load will log its exact URL and error code here,
-         which is the fastest way to spot a filename/case mismatch. */
+         box. The message below shows the exact URL that was tried and why
+         it failed — no DevTools needed. If it says "file not found or
+         format not supported" and the URL looks right to you, the almost
+         certain cause is a capitalization mismatch: GitHub Pages is
+         case-sensitive, so "SWAS-mouth-patch-for-your.mp4" and
+         "swas-mouth-patch-for-your.mp4" are two different files to it even
+         though they look identical and both work fine when previewed
+         locally on Windows. Open the exact URL shown below in a new
+         browser tab — if it 404s, go to your GitHub repo's file listing
+         and match the filename letter-for-letter, including case. */
       video.addEventListener('error', () => {
         const failedUrl = video.currentSrc || video.src;
+        const reasons = {
+          1: 'loading was aborted',
+          2: 'network error while downloading',
+          3: 'file could not be decoded (unsupported format/codec)',
+          4: 'file not found, or format not supported'
+        };
+        const reason = video.error ? (reasons[video.error.code] || 'unknown error') : 'unknown error';
         console.error('SWAS story video failed to load:', failedUrl, video.error);
+
         const wrap = card.querySelector('.swas-story-video-wrap');
         if (wrap && !wrap.querySelector('.swas-video-fallback')) {
           const msg = document.createElement('div');
           msg.className = 'swas-video-fallback';
-          msg.style.cssText = 'color:#9aa4b2;font-size:0.8rem;padding:24px;text-align:center;';
-          msg.textContent = 'Video unavailable';
+          msg.style.cssText = 'color:#9aa4b2;font-size:0.75rem;padding:20px;text-align:center;line-height:1.6;word-break:break-all;';
+          msg.innerHTML =
+            '<strong style="display:block;color:#e2e8f0;font-size:0.85rem;margin-bottom:6px;">Video unavailable</strong>' +
+            reason + '<br><span style="opacity:.65;">' + failedUrl + '</span>';
           wrap.appendChild(msg);
         }
       });
@@ -1297,10 +1314,6 @@
     <p class="footer-copyright">© 2025 SWAS. All rights reserved. | Transform Your Sleep, Transform Your Life</p>
   </footer>
 
-  <a href="https://wa.me/9779765178678?text=Hi%20SWAS%2C%20I%20have%20a%20question" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
-
 </div>
 
 <script>
@@ -1312,28 +1325,51 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  function initMobileAccordion() {
-    if (window.innerWidth <= 768) {
-      const footerHeaders = document.querySelectorAll('.swas-isolated-container .footer-accordion-header');
-      const firstSection = document.querySelector('.swas-isolated-container .footer-section');
-      if (firstSection) firstSection.classList.add('active');
+/* Placed as a direct child of <body> (not inside .swas-isolated-container)
+   on purpose: that container has `contain: layout`, which makes it the
+   containing block for any position:fixed element inside it — so the
+   button was "fixed" to the bottom of that div instead of the actual
+   browser viewport, which is why it sat near the footer instead of
+   floating over the whole page. */
+document.body.insertAdjacentHTML('beforeend',
+  '<a href="https://wa.me/9779765178678?text=Hi%20SWAS%2C%20I%20have%20a%20question" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>'
+);
 
-      footerHeaders.forEach(header => {
-        header.addEventListener('click', function (e) {
-          e.preventDefault();
-          const section = this.parentElement;
-          const isActive = section.classList.contains('active');
-          document.querySelectorAll('.swas-isolated-container .footer-section').forEach(s => s.classList.remove('active'));
-          if (!isActive) section.classList.add('active');
-        });
-      });
+document.addEventListener("DOMContentLoaded", () => {
+  const footerSections = document.querySelectorAll('.swas-isolated-container .footer-section');
+  const footerHeaders = document.querySelectorAll('.swas-isolated-container .footer-accordion-header');
+
+  function resetMobileAccordion() {
+    footerSections.forEach(s => s.classList.remove('active'));
+    if (window.innerWidth <= 768 && footerSections[0]) {
+      footerSections[0].classList.add('active');
     }
   }
-  initMobileAccordion();
-  window.addEventListener('resize', function () {
-    document.querySelectorAll('.swas-isolated-container .footer-section').forEach(s => s.classList.remove('active'));
-    setTimeout(initMobileAccordion, 100);
+
+  // Click listeners are attached exactly once here — NOT inside the resize
+  // handler. Re-attaching them on every resize (as before) stacked up
+  // duplicate listeners, and since mobile browsers commonly fire a resize
+  // event shortly after page load (address bar collapsing, viewport
+  // settling), two listeners ended up firing per tap and cancelling each
+  // other's open/close, which is why sections other than the first
+  // appeared stuck closed.
+  footerHeaders.forEach(header => {
+    header.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (window.innerWidth > 768) return; // accordion behavior is mobile-only
+      const section = this.parentElement;
+      const isActive = section.classList.contains('active');
+      footerSections.forEach(s => s.classList.remove('active'));
+      if (!isActive) section.classList.add('active');
+    });
+  });
+
+  resetMobileAccordion();
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resetMobileAccordion, 150);
   });
 });
 </script>
