@@ -735,6 +735,9 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
         <select name="package" id="pkgSelect"></select>
       </label>
 
+      <!-- Filled automatically from detectSource() below — not shown to the visitor -->
+      <input type="hidden" name="source" id="leadSource" value="">
+
       <button class="submit-btn">Place Order</button>
     </form>
 
@@ -797,6 +800,47 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
       const diff = endX - startX;
       if (Math.abs(diff) > 40) { if (diff < 0) show(index + 1); else show(index - 1); }
     });
+  })();
+
+  /* ===== LEAD SOURCE DETECTION =====
+     Runs once on page load. Looks at the URL the visitor arrived on and
+     buckets it into exactly three labels, so every row in the order Sheet
+     reads cleanly: "Google Ads", "Facebook Ads", or "Direct".
+
+     Matches on:
+       - utm_source containing "google"/"adwords" or a Google Ads gclid
+         param (gclid is auto-appended by Google Ads, no setup needed)
+       - utm_source containing "facebook"/"fb"/"instagram"/"ig" or a Meta
+         fbclid param (fbclid isn't always reliable — some browsers strip
+         it — so setting utm_source=facebook in Ads Manager is the sturdier
+         signal; fbclid is just a fallback)
+       - anything else (or nothing) → "Direct"
+
+     Stored in sessionStorage rather than read fresh at submit time, since
+     a visitor may land on an ad, browse a bit, then submit later — this
+     keeps the *first-touch* source for the whole visit instead of losing
+     it if they navigate to a URL without the parameters. */
+  (function detectSource() {
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = (params.get('utm_source') || '').toLowerCase();
+    const gclid = params.get('gclid');
+    const fbclid = params.get('fbclid');
+
+    let source = null;
+    if (utmSource.includes('google') || utmSource.includes('adwords') || gclid) {
+      source = 'Google Ads';
+    } else if (
+      utmSource.includes('facebook') || utmSource.includes('fb') ||
+      utmSource.includes('instagram') || utmSource.includes('ig') || fbclid
+    ) {
+      source = 'Facebook Ads';
+    }
+
+    if (source) {
+      sessionStorage.setItem('swas_source', source);
+    } else if (!sessionStorage.getItem('swas_source')) {
+      sessionStorage.setItem('swas_source', 'Direct');
+    }
   })();
 
   /* ===== PACKAGE SELECTION + MODAL ===== */
@@ -892,30 +936,49 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
   /* ===== FORM SUBMISSION =====
      Replace YOUR_NEW_APPS_SCRIPT_WEB_APP_URL below with the /exec URL you get after
      deploying the Code.gs script (see the Apps Script file) against your new Google Sheet. */
+  /* ===== FORM SUBMISSION =====
+     Uses navigator.sendBeacon instead of fetch(). Apps Script's doPost
+     typically takes 1-3+ seconds to actually respond — that response time
+     is exactly what was making the form feel slow, since the previous
+     fetch()-based version waited for it (even with mode:'no-cors', fetch
+     still waits for the round trip to finish, it just can't read the
+     result). sendBeacon queues the POST to be delivered reliably in the
+     background without waiting for or even receiving a response, and —
+     unlike a normal fetch — it's built specifically to keep sending even
+     after the page navigates away. That lets the redirect below happen
+     immediately instead of sitting on the loading spinner. */
+  var SWAS_ORDER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzxqCYthT94g-0tTczxrA5ZaIvyZ3r7Ex8SYsUtFfwgwzgUlUFJibmB1MVqfgC4VVbT_w/exec';
+
   document.getElementById('swas-order-form').addEventListener('submit', (e) => {
     e.preventDefault();
     loader.style.display = 'block';
 
+    // Fill the hidden field right before submitting so the Sheet gets the
+    // source detected on page load (see detectSource() above).
+    document.getElementById('leadSource').value = sessionStorage.getItem('swas_source') || 'Direct';
+
     const fd = new FormData(e.target);
-    fetch('https://script.google.com/macros/s/AKfycbxwi_eYy7YdkRXLWdL24x_Hzt33Et_0t2xABzdY8GscaFc0uxZh8I_xXGXbtM4Zo4DA8A/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      body: fd,
-    })
-    .then(() => {
-      // mode: 'no-cors' means the browser gives us an "opaque" response —
-      // we can't read its status or body, only whether the request itself
-      // completed. Apps Script's redirect-based response often can't be
-      // read cross-origin even when the script ran fine and the row was
-      // already saved, so we no longer try to parse it as JSON here.
-      // If fetch resolves at all, the request reached Google's servers.
-      window.location.href = 'thankyou.html';
-    })
-    .catch((err) => {
-      loader.style.display = 'none';
-      alert('There was a problem reaching the order sheet — please check your connection and try again.');
-      console.error(err);
-    });
+
+    const queued = navigator.sendBeacon(SWAS_ORDER_ENDPOINT, fd);
+
+    if (!queued) {
+      // Very rare — means the browser rejected the request outright (e.g.
+      // payload too large for a beacon), not that Google's servers were
+      // unreachable. Fall back to a normal fetch so the order still has a
+      // chance to go through, without blocking the redirect on it.
+      fetch(SWAS_ORDER_ENDPOINT, { method: 'POST', mode: 'no-cors', body: fd })
+        .catch((err) => console.error('Fallback order submission failed:', err));
+    }
+
+    // Tell Meta this visitor became a lead, so Ads Manager can report
+    // cost-per-lead and optimize delivery toward people who convert.
+    // TODO (Google Ads): once you create a "Lead" conversion action in
+    // Google Ads (Tools & Settings > Conversions > New), it gives you a
+    // label like AW-18452846314/AbCdeFGHiJ — add the matching gtag call
+    // here too: gtag('event', 'conversion', {'send_to': 'AW-18452846314/YOUR_LABEL'});
+    fbq('track', 'Lead');
+
+    window.location.href = 'thankyou.html';
   });
 </script>
 
