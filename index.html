@@ -493,7 +493,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
   @media (max-width: 480px) { .swas-step-card { max-width: 240px !important; flex: 0 0 240px !important; } }
   @media (prefers-reduced-motion: reduce) { .swas-step-card__image { transition: none !important; } }
 
-  /* ----- VIDEO STORIES (tap to play, no autoplay) ----- */
+  /* ----- VIDEO STORIES (first-frame thumbnail, tap to play, no autoplay) ----- */
   #swas-stories-section {
     --swas-bg: #050814; --swas-card-bg: #0b1020;
     padding: 40px 14px 40px; display: flex; justify-content: center; text-align: center;
@@ -771,7 +771,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
     const images = [
       "Images/Clinically-trusted-for-peaceful-sleep-10.png",
       "Images/image.jpg",
-       "Images/5-2.png",
+      "Images/5-2.png",
       "Images/🛌.png"
     ];
 
@@ -992,7 +992,9 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
     </section>
   </div>
 
-  <!-- VIDEO STORIES — NO AUTOPLAY. Nothing downloads until a visitor taps ▶ -->
+  <!-- VIDEO STORIES — NO AUTOPLAY.
+       Each card shows the video's first frame as a thumbnail; the video only plays when ▶ is tapped.
+       Optional: add poster="Images/poster1.jpg" to any <video> to use your own image instead. -->
   <section id="swas-stories-section">
     <div class="swas-stories-inner">
       <header class="swas-stories-header"><h2>SWAS Video Stories</h2></header>
@@ -1000,7 +1002,6 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
       <div class="swas-track-wrapper">
         <div class="swas-stories-track">
 
-          <!-- Tip: add poster="Images/poster1.jpg" to each <video> for a nice thumbnail -->
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
               <video src="Images/1.mp4" playsinline preload="none" muted loop></video>
@@ -1064,18 +1065,44 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
 
   <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const storySection = document.getElementById("swas-stories-section");
     const storyCards = document.querySelectorAll(".swas-story-card");
+
+    /* Show the first frame of each video as its thumbnail, WITHOUT playing it.
+       "#t=0.1" tells the browser to display the frame at 0.1s, and
+       preload="metadata" downloads only the small amount needed for that.
+       If a video has a poster="..." image, that is used instead and this is skipped. */
+    function loadThumbnail(video) {
+      if (video.hasAttribute("poster") || video.dataset.thumbLoaded) return;
+      video.dataset.thumbLoaded = "1";
+      const base = (video.getAttribute("src") || "").split("#")[0];
+      video.preload = "metadata";
+      video.src = base + "#t=0.1";
+    }
+
+    // Only fetch thumbnails when the reels section is close to the screen,
+    // so they don't slow down the top of the page.
+    const thumbObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          storyCards.forEach(c => loadThumbnail(c.querySelector("video")));
+          obs.disconnect();
+        }
+      });
+    }, { rootMargin: "400px 0px" });
+    thumbObserver.observe(storySection);
 
     storyCards.forEach(card => {
       const video   = card.querySelector("video");
       const playBtn = card.querySelector(".swas-play-btn");
       const muteBtn = card.querySelector(".swas-mute-toggle");
 
-      video.preload = "none";
       video.loop = true;
 
-      // Tap ▶ to start (starts with sound, since the visitor asked for it)
+      // Tap ▶ to start (with sound, since the visitor asked for it)
       playBtn.addEventListener("click", () => {
+        loadThumbnail(video);
+        video.preload = "auto";
         video.muted = false;
         muteBtn.textContent = "🔊";
         video.play().catch(() => {});
@@ -1099,7 +1126,6 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
         muteBtn.textContent = video.muted ? "🔇" : "🔊";
       });
 
-      // If a file is missing, the exact URL is logged. On GitHub Pages filenames are case-sensitive.
       video.addEventListener("error", () => {
         console.error("SWAS story video failed to load:", video.currentSrc || video.src, video.error);
       });
