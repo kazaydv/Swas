@@ -7,32 +7,44 @@
 <meta name="description" content="SWAS Mouth Patch is a gentle, medical-grade adhesive strip that encourages nasal breathing for less snoring and deeper sleep. Free COD delivery across Nepal.">
 <link rel="icon" href="Images/Untitled-design-10.png">
 <link rel="apple-touch-icon" href="Images/Untitled-design-10.png">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18452846314"></script>
+
+<!-- Load the main hero image first -->
+<link rel="preload" as="image" href="Images/Clinically-trusted-for-peaceful-sleep-10.png" fetchpriority="high">
+
+<!-- ===== TRACKING (Google tag + Meta Pixel), loaded AFTER the page is ready =====
+     The stubs below queue every event immediately, so nothing is lost. The heavy
+     scripts only download after the first interaction, or 3 seconds after page load. -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'AW-18452846314');
-</script>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1076590971891627');
-fbq('track', 'PageView');
+
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window,document);
+  fbq('init', '1076590971891627');
+  fbq('track', 'PageView');
+
+  var trackingLoaded = false;
+  function loadTracking(){
+    if (trackingLoaded) return; trackingLoaded = true;
+    var g = document.createElement('script'); g.async = true;
+    g.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18452846314';
+    document.head.appendChild(g);
+    var f = document.createElement('script'); f.async = true;
+    f.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(f);
+  }
+  ['scroll','touchstart','mousemove','keydown','click'].forEach(function(ev){
+    window.addEventListener(ev, loadTracking, {once:true, passive:true});
+  });
+  window.addEventListener('load', function(){ setTimeout(loadTracking, 3000); });
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
+
 <style>
   /* ====== GLOBAL RESET & SHARED ====== */
   * , *::before, *::after { box-sizing: border-box; }
@@ -157,7 +169,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
     .sticky-cta__btn { padding: 10px 20px; font-size: 0.85rem; }
   }
 
-  /* ====== BENEFIT STRIP (moved out of hero copy) ====== */
+  /* ====== BENEFIT STRIP ====== */
   .benefit-strip {
     max-width: 1200px; margin: 10px auto 0; padding: 10px 20px 30px;
     display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
@@ -167,7 +179,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
     padding: 8px 16px; font-size: 0.85rem; color: #444; white-space: nowrap;
   }
 
-  /* ====== PACKAGE CARDS (used inside hero) ====== */
+  /* ====== PACKAGE CARDS ====== */
   #swas-package-wrapper { width: 100%; margin-top: 8px; }
   .pkg-grid { display: flex; flex-direction: column; gap: 15px; }
   .pkg-card {
@@ -270,7 +282,6 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
 
   /* ================================================================
      EVERYTHING BELOW LIVES INSIDE .swas-isolated-container
-     (kept as its own reset scope, same as the original build)
   ================================================================ */
   .swas-isolated-container {
     all: initial;
@@ -283,6 +294,14 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
   }
   .swas-isolated-container *, .swas-isolated-container *::before, .swas-isolated-container *::after {
     box-sizing: border-box; margin: 0; padding: 0;
+  }
+
+  /* ----- SPEED: skip rendering work for sections that are off-screen ----- */
+  #swas-stories-section, #swas-how-works-text, #swas-no-mouth-breather,
+  #swas-benefits-ring, #swas-steps-v2, .swas-testimonials, #swas-faq,
+  .swas-isolated-container .swas-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 700px;
   }
 
   /* ----- TRUST BADGES ----- */
@@ -474,7 +493,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
   @media (max-width: 480px) { .swas-step-card { max-width: 240px !important; flex: 0 0 240px !important; } }
   @media (prefers-reduced-motion: reduce) { .swas-step-card__image { transition: none !important; } }
 
-  /* ----- VIDEO STORIES ----- */
+  /* ----- VIDEO STORIES (tap to play, no autoplay) ----- */
   #swas-stories-section {
     --swas-bg: #050814; --swas-card-bg: #0b1020;
     padding: 40px 14px 40px; display: flex; justify-content: center; text-align: center;
@@ -487,10 +506,16 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
   .swas-stories-track { display: flex; gap: 14px; overflow-x: auto; padding: 10px 4px; margin-top: 14px; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
   .swas-stories-track::-webkit-scrollbar { display: none; }
   .swas-story-card { flex: 0 0 75vw; max-width: 350px; background: var(--swas-card-bg); border-radius: 20px; padding: 10px; border: 1px solid rgba(255,255,255,.15); box-shadow: 0 12px 30px rgba(0,0,0,0.5); box-sizing: border-box; position: relative; }
-  .swas-story-video-wrap { position: relative; border-radius: 16px; overflow: hidden; background: #000; }
+  .swas-story-video-wrap { position: relative; border-radius: 16px; overflow: hidden; background: #000; aspect-ratio: 9 / 16; }
   .swas-story-video-wrap video { width: 100%; max-height: 72vh; height: 100%; object-fit: contain; }
   .swas-story-controls { position: absolute; inset: 0; pointer-events: none; }
   .swas-mute-toggle { position: absolute; top: 8px; right: 8px; width: 32px; height: 32px; border-radius: 50%; background: rgba(0,0,0,0.7); color: #fff; font-size: 16px; border: none; display: flex; align-items: center; justify-content: center; pointer-events: auto; cursor: pointer; }
+  .swas-play-btn {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 64px; height: 64px; border-radius: 50%; border: none;
+    background: rgba(0,0,0,.65); color: #fff; font-size: 26px; cursor: pointer; z-index: 3;
+    display: flex; align-items: center; justify-content: center;
+  }
   @media (min-width: 760px) {
     .swas-stories-track { overflow-x: auto !important; padding-left: 5px; padding-right: 5px; gap: 16px; max-width: 100%; margin-left: auto; margin-right: auto; }
     .swas-story-card { flex: 0 0 260px; max-width: 260px; }
@@ -603,18 +628,18 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
   <p>The Natural Solution for Better Sleep &#038; Health</p>
 </div>
 
-<!-- ===================== HERO: GALLERY LEFT / HEADLINE + BUNDLES + CTA RIGHT ===================== -->
+<!-- ===================== HERO ===================== -->
 <section id="hero-section">
 
   <!-- LEFT: IMAGE GALLERY -->
   <div class="hero-gallery" id="sm-carousel">
-    <img id="hero-img" src="Images/Clinically-trusted-for-peaceful-sleep-10.png" alt="SWAS Mouth Patch">
+    <img id="hero-img" src="Images/Clinically-trusted-for-peaceful-sleep-10.png" alt="SWAS Mouth Patch" fetchpriority="high" decoding="async">
     <div class="arrow left">&#10094;</div>
     <div class="arrow right">&#10095;</div>
     <div class="hero-thumbs" id="hero-thumbs"></div>
   </div>
 
-  <!-- RIGHT: HEADLINE, SUBHEADLINE, BUNDLES, CTA -->
+  <!-- RIGHT: HEADLINE, BUNDLES, CTA -->
   <div class="hero-content">
     <h2>Stop Snoring,<br><span>Start Living Better!</span></h2>
     <p class="tagline">Transform Your Sleep in Just <strong>ONE Night</strong></p>
@@ -625,7 +650,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
         <!-- Starter -->
         <article class="pkg-card" data-name="Starter Pack (1 month supply)" data-price="1200">
           <div class="save-sticker">SAVE Rs 300 /-</div>
-          <img src="Images/Clinically-trusted-for-peaceful-sleep-3.png" alt="Starter Pack" class="pkg-image" />
+          <img src="Images/Clinically-trusted-for-peaceful-sleep-3.png" alt="Starter Pack" class="pkg-image" loading="lazy" decoding="async" />
           <div class="pkg-content">
             <div class="pkg-info">
               <h3>Starter Pack x1 box</h3>
@@ -644,7 +669,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
         <article class="pkg-card popular highlighted" data-name="Value Pack (2 months supply)" data-price="1900">
           <div class="badge">MOST POPULAR</div>
           <div class="save-sticker">SAVE Rs 1,100 /-</div>
-          <img src="Images/13.png" alt="Value Pack" class="pkg-image" />
+          <img src="Images/13.png" alt="Value Pack" class="pkg-image" loading="lazy" decoding="async" />
           <div class="pkg-content">
             <div class="pkg-info">
               <h3>Value Pack x2 Boxes</h3>
@@ -662,7 +687,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
         <!-- Complete -->
         <article class="pkg-card" data-name="Complete Pack (3 month supply)" data-price="2400">
           <div class="save-sticker">SAVE Rs 2100/-</div>
-          <img src="Images/SWAS-7-1.png" alt="Complete Pack" class="pkg-image" />
+          <img src="Images/SWAS-7-1.png" alt="Complete Pack" class="pkg-image" loading="lazy" decoding="async" />
           <div class="pkg-content">
             <div class="pkg-info">
               <h3>Complete Pack x3 Boxes</h3>
@@ -684,9 +709,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
   </div>
 </section>
 
-
-
-<!-- STICKY CTA BAR — appears once the hero (with its own Order Now button) scrolls out of view -->
+<!-- STICKY CTA BAR -->
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta__info">
     <strong>SWAS Mouth Patch</strong>
@@ -753,35 +776,37 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
       "Images/5-2.png",
       "Images/16.png",
       "Images/6-2.png",
-      
       "Images/🛌.png"
     ];
 
     let index = 0;
 
-    // Build one clickable thumbnail per image, in the same order as the
-    // main carousel, so visitors can jump straight to any photo instead
-    // of only stepping through with the arrows or a swipe.
-    const thumbs = images.map((src, i) => {
-      const t = document.createElement('img');
-      t.src = src;
-      t.alt = 'View ' + (i + 1);
-      t.addEventListener('click', () => show(i));
-      thumbsWrap.appendChild(t);
-      return t;
-    });
-
+    // Thumbnails are built only AFTER the page has finished loading,
+    // so they don't compete with the main hero image for bandwidth.
+    const thumbs = [];
     function updateActiveThumb() {
       thumbs.forEach((t, i) => t.classList.toggle('active', i === index));
     }
+    function buildThumbs() {
+      images.forEach((src, i) => {
+        const t = document.createElement('img');
+        t.src = src;
+        t.alt = 'View ' + (i + 1);
+        t.loading = 'lazy';
+        t.decoding = 'async';
+        t.addEventListener('click', () => show(i));
+        thumbsWrap.appendChild(t);
+        thumbs.push(t);
+      });
+      updateActiveThumb();
+    }
+    window.addEventListener('load', () => (window.requestIdleCallback || setTimeout)(buildThumbs));
 
     function show(i) {
       index = (i + images.length) % images.length;
       hero.src = images[index];
       updateActiveThumb();
     }
-
-    show(0);
 
     wrapper.querySelector(".arrow.left").addEventListener("click", () => show(index - 1));
     wrapper.querySelector(".arrow.right").addEventListener("click", () => show(index + 1));
@@ -796,23 +821,8 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
   })();
 
   /* ===== LEAD SOURCE DETECTION =====
-     Runs once on page load. Looks at the URL the visitor arrived on and
-     buckets it into exactly three labels, so every row in the order Sheet
-     reads cleanly: "Google Ads", "Facebook Ads", or "Direct".
-
-     Matches on:
-       - utm_source containing "google"/"adwords" or a Google Ads gclid
-         param (gclid is auto-appended by Google Ads, no setup needed)
-       - utm_source containing "facebook"/"fb"/"instagram"/"ig" or a Meta
-         fbclid param (fbclid isn't always reliable — some browsers strip
-         it — so setting utm_source=facebook in Ads Manager is the sturdier
-         signal; fbclid is just a fallback)
-       - anything else (or nothing) → "Direct"
-
-     Stored in sessionStorage rather than read fresh at submit time, since
-     a visitor may land on an ad, browse a bit, then submit later — this
-     keeps the *first-touch* source for the whole visit instead of losing
-     it if they navigate to a URL without the parameters. */
+     Buckets the visit into "Google Ads", "Facebook Ads" or "Direct" and keeps
+     the first-touch source in sessionStorage for the whole visit. */
   (function detectSource() {
     const params = new URLSearchParams(window.location.search);
     const utmSource = (params.get('utm_source') || '').toLowerCase();
@@ -895,17 +905,13 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
     if (matchedCard) highlightCard(matchedCard);
   });
 
-  /* Main hero "Order Now" button opens the modal with whichever package is currently highlighted */
+  /* Main hero "Order Now" button opens the modal with the highlighted package */
   document.getElementById('mainOrderBtn').addEventListener('click', () => {
     const current = document.querySelector('#swas-package-wrapper .pkg-card.highlighted') || popularCard;
     if (current) current.click();
   });
 
-  /* ===== STICKY CTA BAR =====
-     Shows once the hero section (which already has its own Order Now
-     button) scrolls out of view, so visitors always have a quick way to
-     order without scrolling back up. Reuses the same "click the
-     currently-highlighted package" flow as the hero button. */
+  /* ===== STICKY CTA BAR ===== */
   const stickyCta = document.getElementById('stickyCta');
   const heroSectionEl = document.getElementById('hero-section');
 
@@ -927,33 +933,19 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
   });
 
   /* ===== FORM SUBMISSION =====
-     fetch(..., { keepalive: true }) — NOT navigator.sendBeacon(). Apps
-     Script's /exec URL always responds with an HTTP redirect to a
-     script.googleusercontent.com URL, and that's where doPost() actually
-     runs and returns its result. Regular fetch() follows that redirect
-     automatically; sendBeacon() by spec does NOT follow redirects, so a
-     beacon sent here hits the redirect and stops — doPost() never runs,
-     and nothing reaches the Sheet, even though it looks instant because
-     nothing real was ever waited on.
-     keepalive:true gives fetch the one thing sendBeacon was actually
-     useful for — surviving the page navigating away right after this
-     call — while still being a real fetch that follows the redirect. We
-     don't await it before redirecting, so the page still doesn't sit on
-     Apps Script's 1-3+ second response time. */
+     fetch(..., { keepalive: true }) — NOT navigator.sendBeacon(), because Apps
+     Script's /exec URL redirects and sendBeacon doesn't follow redirects.
+     keepalive lets the request survive the page navigating away. */
   var SWAS_ORDER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzxqCYthT94g-0tTczxrA5ZaIvyZ3r7Ex8SYsUtFfwgwzgUlUFJibmB1MVqfgC4VVbT_w/exec';
 
   document.getElementById('swas-order-form').addEventListener('submit', (e) => {
     e.preventDefault();
     loader.style.display = 'block';
 
-    // Fill the hidden field right before submitting so the Sheet gets the
-    // source detected on page load (see detectSource() above).
     document.getElementById('leadSource').value = sessionStorage.getItem('swas_source') || 'Direct';
 
     const fd = new FormData(e.target);
 
-    // Fired and not awaited — the redirect below doesn't wait for this to
-    // finish. keepalive:true keeps it alive past the navigation instead.
     fetch(SWAS_ORDER_ENDPOINT, {
       method: 'POST',
       mode: 'no-cors',
@@ -961,15 +953,15 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
       body: fd,
     }).catch((err) => console.error('Order submission failed to send:', err));
 
-    // Tell Meta this visitor became a lead, so Ads Manager can report
-    // cost-per-lead and optimize delivery toward people who convert.
-    // TODO (Google Ads): once you create a "Lead" conversion action in
-    // Google Ads (Tools & Settings > Conversions > New), it gives you a
-    // label like AW-18452846314/AbCdeFGHiJ — add the matching gtag call
-    // here too: gtag('event', 'conversion', {'send_to': 'AW-18452846314/YOUR_LABEL'});
+    // Tell Meta this visitor became a lead.
+    // TODO (Google Ads): once you create a "Lead" conversion action, add:
+    // gtag('event', 'conversion', {'send_to': 'AW-18452846314/YOUR_LABEL'});
     fbq('track', 'Lead');
 
-    window.location.href = 'thankyou.html';
+    // Tracking scripts are loaded lazily now, so make sure they load, and give
+    // the pixel a brief moment to fire before leaving the page.
+    loadTracking();
+    setTimeout(() => { window.location.href = 'thankyou.html'; }, 400);
   });
 </script>
 
@@ -1004,7 +996,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
     </section>
   </div>
 
-  <!-- VIDEO STORIES -->
+  <!-- VIDEO STORIES — NO AUTOPLAY. Nothing downloads until a visitor taps ▶ -->
   <section id="swas-stories-section">
     <div class="swas-stories-inner">
       <header class="swas-stories-header"><h2>SWAS Video Stories</h2></header>
@@ -1012,51 +1004,59 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
       <div class="swas-track-wrapper">
         <div class="swas-stories-track">
 
+          <!-- Tip: add poster="Images/poster1.jpg" to each <video> for a nice thumbnail -->
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/1.mp4" playsinline preload="auto"></video>
+              <video src="Images/1.mp4" playsinline preload="none" muted loop></video>
+              <button class="swas-play-btn" aria-label="Play video">▶</button>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/2.mp4" playsinline preload="auto"></video>
+              <video src="Images/2.mp4" playsinline preload="none" muted loop></video>
+              <button class="swas-play-btn" aria-label="Play video">▶</button>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/3.mp4" playsinline preload="auto"></video>
+              <video src="Images/3.mp4" playsinline preload="none" muted loop></video>
+              <button class="swas-play-btn" aria-label="Play video">▶</button>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/4.mp4" playsinline preload="auto"></video>
+              <video src="Images/4.mp4" playsinline preload="none" muted loop></video>
+              <button class="swas-play-btn" aria-label="Play video">▶</button>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/5.mp4" playsinline preload="auto"></video>
+              <video src="Images/5.mp4" playsinline preload="none" muted loop></video>
+              <button class="swas-play-btn" aria-label="Play video">▶</button>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/6.mp4" playsinline preload="auto"></video>
+              <video src="Images/6.mp4" playsinline preload="none" muted loop></video>
+              <button class="swas-play-btn" aria-label="Play video">▶</button>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
 
           <article class="swas-story-card">
             <div class="swas-story-video-wrap">
-              <video src="Images/7.mp4" playsinline preload="auto"></video>
+              <video src="Images/7.mp4" playsinline preload="none" muted loop></video>
+              <button class="swas-play-btn" aria-label="Play video">▶</button>
               <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
             </div>
           </article>
@@ -1068,97 +1068,44 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
 
   <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".swas-story-card");
-    const muteButtons = document.querySelectorAll(".swas-mute-toggle");
-    let unmutedVideo = null; // whichever video the visitor has explicitly unmuted
+    const storyCards = document.querySelectorAll(".swas-story-card");
 
-    cards.forEach(card => {
-      const video = card.querySelector("video");
+    storyCards.forEach(card => {
+      const video   = card.querySelector("video");
+      const playBtn = card.querySelector(".swas-play-btn");
+      const muteBtn = card.querySelector(".swas-mute-toggle");
+
+      video.preload = "none";
       video.loop = true;
-      video.muted = true;
 
-      /* Surface load failures instead of leaving a silent, permanent black
-         box. The message below shows the exact URL that was tried and why
-         it failed — no DevTools needed. If it says "file not found or
-         format not supported" and the URL looks right to you, the almost
-         certain cause is a capitalization mismatch: GitHub Pages is
-         case-sensitive, so "SWAS-mouth-patch-for-your.mp4" and
-         "swas-mouth-patch-for-your.mp4" are two different files to it even
-         though they look identical and both work fine when previewed
-         locally on Windows. Open the exact URL shown below in a new
-         browser tab — if it 404s, go to your GitHub repo's file listing
-         and match the filename letter-for-letter, including case. */
-      video.addEventListener('error', () => {
-        const failedUrl = video.currentSrc || video.src;
-        const reasons = {
-          1: 'loading was aborted',
-          2: 'network error while downloading',
-          3: 'file could not be decoded (unsupported format/codec)',
-          4: 'file not found, or format not supported'
-        };
-        const reason = video.error ? (reasons[video.error.code] || 'unknown error') : 'unknown error';
-        console.error('SWAS story video failed to load:', failedUrl, video.error);
-
-        const wrap = card.querySelector('.swas-story-video-wrap');
-        if (wrap && !wrap.querySelector('.swas-video-fallback')) {
-          const msg = document.createElement('div');
-          msg.className = 'swas-video-fallback';
-          msg.style.cssText = 'color:#9aa4b2;font-size:0.75rem;padding:20px;text-align:center;line-height:1.6;word-break:break-all;';
-          msg.innerHTML =
-            '<strong style="display:block;color:#e2e8f0;font-size:0.85rem;margin-bottom:6px;">Video unavailable</strong>' +
-            reason + '<br><span style="opacity:.65;">' + failedUrl + '</span>';
-          wrap.appendChild(msg);
-        }
-      });
-    });
-
-    /* Only play the video(s) currently visible enough on screen. Trying to
-       autoplay every video in the strip at once is what was causing every
-       card after the first to render as a black box — browsers only decode
-       a handful of videos at the same time, so the rest silently never
-       start. Pausing off-screen videos and playing on-screen ones fixes it
-       and also saves bandwidth/battery. */
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          const video = entry.target.querySelector("video");
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
-            video.play().catch(() => {});
-          } else {
-            video.pause();
-            if (video === unmutedVideo) {
-              video.muted = true;
-              const btn = entry.target.querySelector(".swas-mute-toggle");
-              if (btn) btn.textContent = "🔇";
-              unmutedVideo = null;
-            }
-          }
-        });
-      },
-      { threshold: [0, 0.6, 1] }
-    );
-    cards.forEach(card => observer.observe(card));
-
-    muteButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const card = btn.closest(".swas-story-card");
-        const video = card.querySelector("video");
-
-        if (video.muted) {
-          if (unmutedVideo && unmutedVideo !== video) {
-            unmutedVideo.muted = true;
-            const otherBtn = unmutedVideo.closest(".swas-story-card").querySelector(".swas-mute-toggle");
-            if (otherBtn) otherBtn.textContent = "🔇";
-          }
-          video.muted = false;
-          btn.textContent = "🔊";
-          unmutedVideo = video;
-        } else {
-          video.muted = true;
-          btn.textContent = "🔇";
-          unmutedVideo = null;
-        }
+      // Tap ▶ to start (starts with sound, since the visitor asked for it)
+      playBtn.addEventListener("click", () => {
+        video.muted = false;
+        muteBtn.textContent = "🔊";
         video.play().catch(() => {});
+      });
+
+      // Tap the video to pause
+      video.addEventListener("click", () => { if (!video.paused) video.pause(); });
+
+      video.addEventListener("play", () => {
+        playBtn.style.display = "none";
+        // only one reel plays at a time
+        storyCards.forEach(c => {
+          const v = c.querySelector("video");
+          if (v !== video) v.pause();
+        });
+      });
+      video.addEventListener("pause", () => { playBtn.style.display = "flex"; });
+
+      muteBtn.addEventListener("click", () => {
+        video.muted = !video.muted;
+        muteBtn.textContent = video.muted ? "🔇" : "🔊";
+      });
+
+      // If a file is missing, the exact URL is logged. On GitHub Pages filenames are case-sensitive.
+      video.addEventListener("error", () => {
+        console.error("SWAS story video failed to load:", video.currentSrc || video.src, video.error);
       });
     });
   });
@@ -1196,7 +1143,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
       <div class="swas-no-mouth-breather__visual">
         <div class="swas-no-mouth-breather__glow"></div>
         <div class="swas-no-mouth-breather__image-wrap">
-          <img src="Images/4.jpg" alt="Person sleeping comfortably with SWAS" class="swas-no-mouth-breather__image" />
+          <img loading="lazy" decoding="async" src="Images/4.jpg" alt="Person sleeping comfortably with SWAS" class="swas-no-mouth-breather__image" />
         </div>
       </div>
     </div>
@@ -1219,7 +1166,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
         <div class="swas-benefits-ring__center">
           <div class="swas-benefits-ring__center-glow"></div>
           <div class="swas-benefits-ring__image-wrap">
-            <img src="Images/SWAS-1000-x-400-px-1.png" alt="SWAS mouth patch" class="swas-benefits-ring__image" />
+            <img loading="lazy" decoding="async" src="Images/SWAS-1000-x-400-px-1.png" alt="SWAS mouth patch" class="swas-benefits-ring__image" />
           </div>
         </div>
 
@@ -1244,21 +1191,21 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
 
           <article class="swas-step-card">
             <div class="swas-step-card__badge"><span class="swas-step-card__badge-number">1</span></div>
-            <div class="swas-step-card__image-wrap"><img src="Images/step1.jpg" alt="Clean your lips" class="swas-step-card__image" /></div>
+            <div class="swas-step-card__image-wrap"><img loading="lazy" decoding="async" src="Images/step1.jpg" alt="Clean your lips" class="swas-step-card__image" /></div>
             <h3 class="swas-step-card__title">Clean &#038; Dry</h3>
             <p class="swas-step-card__text">Wipe your lips and make sure they are dry.</p>
           </article>
 
           <article class="swas-step-card">
             <div class="swas-step-card__badge"><span class="swas-step-card__badge-number">2</span></div>
-            <div class="swas-step-card__image-wrap"><img src="Images/step2.jpg" alt="Apply the patch" class="swas-step-card__image" /></div>
+            <div class="swas-step-card__image-wrap"><img loading="lazy" decoding="async" src="Images/step2.jpg" alt="Apply the patch" class="swas-step-card__image" /></div>
             <h3 class="swas-step-card__title">Apply Patch</h3>
             <p class="swas-step-card__text">Remove protective backing and stick the patch over your lips gently.</p>
           </article>
 
           <article class="swas-step-card">
             <div class="swas-step-card__badge"><span class="swas-step-card__badge-number">3</span></div>
-            <div class="swas-step-card__image-wrap"><img src="Images/ste3.jpg" alt="Peaceful sleep" class="swas-step-card__image" /></div>
+            <div class="swas-step-card__image-wrap"><img loading="lazy" decoding="async" src="Images/ste3.jpg" alt="Peaceful sleep" class="swas-step-card__image" /></div>
             <h3 class="swas-step-card__title">Sleep Better</h3>
             <p class="swas-step-card__text">Breathe through your nose and enjoy peaceful sleep.</p>
           </article>
@@ -1275,42 +1222,42 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
       <div class="testimonial-track">
 
         <div class="testimonial-card">
-          <img class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_01_46-PM.png" alt="Customer">
+          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_01_46-PM.png" alt="Customer">
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p>"I&#8217;ve been using SWAS for 2 months now and my sleep quality has improved dramatically. I wake up feeling refreshed and no more snoring!"</p>
           <strong>– Sagar Thapa, Kathmandu</strong>
         </div>
 
         <div class="testimonial-card">
-          <img class="testimonial-img" src="Images/ChatGPT-Image-Nov-25-2025-06_51_11-PM.png" alt="Customer">
+          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-25-2025-06_51_11-PM.png" alt="Customer">
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p>"As someone who struggled with mouth breathing, SWAS has been a game-changer. My mornings feel clearer and I feel more energized!"</p>
           <strong>– Priyanka Shrestha, Pokhara</strong>
         </div>
 
         <div class="testimonial-card">
-          <img class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_14_55-PM.png" alt="Customer">
+          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_14_55-PM.png" alt="Customer">
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p>"Honestly didn't expect much at first, but after just a few nights, I could already tell the difference. SWAS really works!"</p>
           <strong>– Amit Bhandari, Biratnagar</strong>
         </div>
 
         <div class="testimonial-card">
-          <img class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_09_22-PM.png" alt="Customer">
+          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_09_22-PM.png" alt="Customer">
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p>"No more dry mouth and my snoring stopped. This is a small patch but a big solution. Thank you SWAS!"</p>
           <strong>– Binita Sharma, Butwal</strong>
         </div>
 
         <div class="testimonial-card">
-          <img class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_04_36-PM.png" alt="Customer">
+          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_04_36-PM.png" alt="Customer">
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p>"Perfect for my whole family. We sleep peacefully and it improved my child's breathing at night."</p>
           <strong>– Niraj Karki, Lalitpur</strong>
         </div>
 
         <div class="testimonial-card">
-          <img class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_19_22-PM.png" alt="Customer">
+          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_19_22-PM.png" alt="Customer">
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p>"Used it while traveling too — very helpful. Simple, effective and affordable. Definitely recommend."</p>
           <strong>– Rupa Khadka, Dharan</strong>
@@ -1318,14 +1265,14 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
 
         <!-- duplicates for the infinite scroll loop -->
         <div class="testimonial-card">
-          <img class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_01_46-PM.png" alt="Customer">
+          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_01_46-PM.png" alt="Customer">
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p>"I&#8217;ve been using SWAS for 2 months now and my sleep quality has improved dramatically. I wake up feeling refreshed and no more snoring!"</p>
           <strong>– Sagar Thapa, Kathmandu</strong>
         </div>
 
         <div class="testimonial-card">
-          <img class="testimonial-img" src="Images/ChatGPT-Image-Nov-25-2025-06_51_11-PM.png" alt="Customer">
+          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-25-2025-06_51_11-PM.png" alt="Customer">
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p>"As someone who struggled with mouth breathing, SWAS has been a game-changer. My mornings feel clearer and I feel more energized!"</p>
           <strong>– Priyanka Shrestha, Pokhara</strong>
@@ -1470,13 +1417,13 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
 
     <div class="social-links">
       <a href="https://www.facebook.com/profile.php?id=61578174712829" target="_blank" aria-label="Facebook">
-        <img src="Images/facebook-logo-facebook-icon-transparent-free-png.png" alt="Facebook">
+        <img loading="lazy" decoding="async" src="Images/facebook-logo-facebook-icon-transparent-free-png.png" alt="Facebook">
       </a>
       <a href="https://www.instagram.com/swasmouthpatch/" target="_blank" aria-label="Instagram">
-        <img src="Images/instagram-logo-instagram-social-media-icon-free-png.png" alt="Instagram">
+        <img loading="lazy" decoding="async" src="Images/instagram-logo-instagram-social-media-icon-free-png.png" alt="Instagram">
       </a>
       <a href="https://www.tiktok.com/@swas.mouth.patch" target="_blank" aria-label="TikTok">
-        <img src="Images/tiktok-logo-tikok-icon-transparent-tikok-app-logo-free-png.png" alt="TikTok">
+        <img loading="lazy" decoding="async" src="Images/tiktok-logo-tikok-icon-transparent-tikok-app-logo-free-png.png" alt="TikTok">
       </a>
     </div>
 
@@ -1495,14 +1442,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-/* Placed as a direct child of <body> (not inside .swas-isolated-container)
-   on purpose: that container has `contain: layout`, which makes it the
-   containing block for any position:fixed element inside it — so the
-   button was "fixed" to the bottom of that div instead of the actual
-   browser viewport, which is why it sat near the footer instead of
-   floating over the whole page. */
+/* WhatsApp button is a direct child of <body> (not inside the isolated container)
+   so position:fixed is relative to the real viewport. */
 document.body.insertAdjacentHTML('beforeend',
-  '<a href="https://wa.me/9779740265823?text=Hi%20SWAS" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>'
+  '<a href="https://wa.me/9779740265823?text=Hi%20SWAS" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>'
 );
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1516,13 +1459,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Click listeners are attached exactly once here — NOT inside the resize
-  // handler. Re-attaching them on every resize (as before) stacked up
-  // duplicate listeners, and since mobile browsers commonly fire a resize
-  // event shortly after page load (address bar collapsing, viewport
-  // settling), two listeners ended up firing per tap and cancelling each
-  // other's open/close, which is why sections other than the first
-  // appeared stuck closed.
+  // Click listeners are attached exactly once (not inside the resize handler).
   footerHeaders.forEach(header => {
     header.addEventListener('click', function (e) {
       e.preventDefault();
