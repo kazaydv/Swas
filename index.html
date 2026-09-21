@@ -3,15 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SWAS Mouth Patch — Stop Snoring, Sleep Better</title>
-<meta name="description" content="SWAS Mouth Patch is a gentle, medical-grade adhesive strip that encourages nasal breathing for less snoring and deeper sleep. Free COD delivery across Nepal.">
+<title>SWAS Mouth Patch — Patch Away The Snore</title>
+<meta name="description" content="SWAS Mouth Patch gently closes your lips at night so you breathe through your nose, not your mouth. Free COD across Nepal.">
 <link rel="icon" href="Images/Untitled-design-10.png">
 <link rel="apple-touch-icon" href="Images/Untitled-design-10.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Load the main hero image first -->
-<link rel="preload" as="image" href="Images/Clinically-trusted-for-peaceful-sleep-10.png" fetchpriority="high">
+<link rel="preload" as="image" href="Images/cut-hero.png" fetchpriority="high">
 
-<!-- ===== TRACKING (Google tag + Meta Pixel), loaded AFTER the page is ready =====
+<!-- ===== TRACKING (Google tag + Meta Pixel) — same IDs as the old LP, loaded AFTER the page is ready =====
      The stubs below queue every event immediately, so nothing is lost. The heavy
      scripts only download after the first interaction, or 3 seconds after page load. -->
 <script>
@@ -46,786 +49,920 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
 /></noscript>
 
 <style>
-  /* ====== GLOBAL RESET & SHARED ====== */
-  * , *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #333;
-  }
-  a { color: inherit; }
-  img { max-width: 100%; }
 
-  @keyframes breathing {
-    0%   { transform: scale(1);     box-shadow: 0 0 0 0 rgba(227, 61, 46, 0.5); }
-    50%  { transform: scale(1.04);  box-shadow: 0 0 20px 6px rgba(227, 61, 46, 0.3); }
-    100% { transform: scale(1);     box-shadow: 0 0 0 0 rgba(227, 61, 46, 0); }
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  @keyframes fadeIn { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
-
-  /* ====== PROMO BANNER ====== */
-  #promo-banner {
-    background-color: #e74c3c;
-    position: relative;
-    color: white;
-    top: 0; left: 0; width: 100%;
-    z-index: 9999;
-    text-align: center;
-    padding: 10px 20px;
-    font-weight: bold;
-    font-size: 16px;
-    box-sizing: border-box;
-    line-height: 1.4;
-    overflow: hidden;
-    white-space: normal;
+  :root{
+    --white:#FFFFFF;
+    --black:#0B0B0B;
+    --gray-line:#E4E4E4;
+    --gray-soft:#F7F7F7;
+    --gray-text:#6B6B6B;
+    --accent:#FF4438;
+    --accent-dark:#D6291F;
+    --accent-tint:#FFF0EE;
+    --radius-lg:16px;
+    --radius-md:10px;
+    --radius-sm:6px;
+    --maxw:1180px;
   }
 
-  /* ====== SITE HEADER ====== */
-  .site-header {
-    background: #f0f4f5;
-    margin-top: 0;
-    color: gray;
-    text-align: center;
-    padding: 10px 16px;
-    border-radius: 0 0 20px 20px;
-  }
-  .site-header a { display: inline-block; margin-bottom: 12px; }
-  .site-header img { height: 30px; border-radius: 8px; }
-  .site-header h1 { font-size: 26px; font-weight: 800; margin: 0; color: black; }
-  .site-header p { font-size: 16px; font-weight: 400; margin-top: 8px; color: red; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--white);color:var(--black);font-family:'Inter',sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+  h1,h2,h3{font-family:'Inter',sans-serif;font-weight:800;line-height:1.15;margin:0 0 .4em;letter-spacing:-0.01em;}
+  p{margin:0 0 1em;color:var(--gray-text);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  section{padding:64px 0;}
+  @media(max-width:720px){ section{padding:44px 0;} .wrap{padding:0 20px;} }
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:8px;display:block;}
 
-  /* ====== HERO SECTION ====== */
-  #hero-section {
-    max-width: 1200px;
-    margin: auto;
-    padding: 30px 20px 10px;
-    font-family: inherit;
-    color: #333;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 60px;
-    justify-content: center;
-    align-items: flex-start;
-  }
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:var(--white);padding:16px 30px;border-radius:100px;border:none;font-size:16px;font-weight:700;transition:background .15s ease;white-space:nowrap;}
+  .btn:hover{background:var(--accent-dark);}
+  .btn-outline{background:transparent;color:var(--black);border:1.5px solid var(--black);}
+  .btn-outline:hover{background:var(--black);color:var(--white);}
+  .btn-block{width:100%;}
+  .btn:focus-visible, a:focus-visible, summary:focus-visible{outline:2px solid var(--black);outline-offset:3px;}
+  .oval{display:inline-block;width:14px;height:8px;border-radius:100px;border:2.2px solid currentColor;flex:none;}
 
-  .hero-gallery { flex: 1 1 45%; min-width: 280px; position: relative; }
-  .hero-gallery #hero-img { width: 100%; border-radius: 16px; touch-action: pan-y; }
-  .hero-gallery .arrow {
-    position: absolute; top: 40%; font-size: 28px; color: #000;
-    background: transparent; padding: 6px 10px; cursor: pointer;
-    user-select: none; z-index: 10;
-  }
-  .hero-gallery .arrow.left { left: 0; }
-  .hero-gallery .arrow.right { right: 0; }
+  .announce{background:var(--accent-dark);color:var(--white);text-align:center;font-size:13px;font-weight:700;padding:9px 16px;}
 
-  .hero-thumbs { display: flex; gap: 10px; margin-top: 14px; justify-content: center; flex-wrap: wrap; }
-  .hero-thumbs img {
-    width: 64px; height: 52px; object-fit: cover; border-radius: 8px; cursor: pointer;
-    opacity: 0.6; border: 2px solid transparent; transition: opacity .2s ease, border-color .2s ease;
-  }
-  .hero-thumbs img:hover { opacity: 1; }
-  .hero-thumbs img.active { opacity: 1; border-color: #e33d2e; }
+  header.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--gray-line);}
+  .header-inner{max-width:var(--maxw);margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:18px;}
+  .logo .oval{width:24px;height:14px;border-width:4.5px;}
+  .main-nav{display:flex;gap:32px;font-size:14.5px;font-weight:600;}
+  .main-nav a{color:var(--gray-text);}
+  .main-nav a:hover{color:var(--black);}
+  @media(max-width:760px){ .main-nav{display:none;} }
+  .nav-toggle{display:none;background:none;border:none;padding:6px;color:var(--black);}
+  @media(max-width:760px){ .nav-toggle{display:flex;} }
+  .mobile-nav-panel{max-height:0;overflow:hidden;background:var(--white);border-bottom:1px solid var(--gray-line);transition:max-height .25s ease;}
+  .mobile-nav-panel.open{max-height:200px;}
+  .mobile-nav-panel a{display:block;padding:14px 20px;font-size:15px;font-weight:600;color:var(--black);border-top:1px solid var(--gray-line);}
+  .mobile-nav-panel a:first-child{border-top:none;}
 
-  .hero-content { flex: 1 1 45%; min-width: 280px; }
-  .hero-content h2 {
-    font-size: 40px; font-weight: 700; margin: 0 0 10px; color: #3a454b; line-height: 1.3;
-  }
-  .hero-content h2 span { color: #f44336; font-size: 32px; }
-  .hero-content p.tagline { font-size: 18px; font-weight: 600; margin: 10px 0 20px; }
+  /* ---------- PDP HERO ---------- */
+  .pdp{padding-top:40px;padding-bottom:48px;}
+  .pdp-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  @media(max-width:900px){ .pdp-grid{grid-template-columns:1fr;gap:28px;} }
+  .gallery-main{border:1px solid var(--gray-line);border-radius:var(--radius-lg);overflow:hidden;background:var(--gray-soft);aspect-ratio:4/3.4;display:flex;align-items:center;justify-content:center;}
+  .gallery-main img{width:100%;height:100%;object-fit:contain;}
+  .gallery-thumbs{display:flex;gap:10px;margin-top:12px;}
+  .thumb{width:60px;height:60px;border:1.5px solid var(--gray-line);border-radius:var(--radius-sm);overflow:hidden;background:var(--gray-soft);cursor:pointer;flex:none;}
+  .thumb.active{border-color:var(--black);}
+  .thumb img{width:100%;height:100%;object-fit:contain;}
 
-  .order-now {
-    background: linear-gradient(90deg, #e33d2e, #c02222);
-    padding: 16px; border: none; border-radius: 50px; color: #fff;
-    font-weight: 700; cursor: pointer; font-size: 1rem; width: 100%;
-    margin-top: 18px; transition: 0.25s;
-    box-shadow: 0 0 0 0 rgba(227, 61, 46, 0.4);
-    animation: breathing 2.4s ease-in-out infinite;
-  }
-  .order-now:hover { filter: brightness(1.05); }
+  .buy-box .trust-top{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--gray-text);margin-bottom:12px;}
+  .buy-box h1{font-size:29px;margin-bottom:2px;}
+  .buy-box .tagline{font-size:14.5px;color:var(--gray-text);font-weight:600;margin-bottom:14px;}
+  .buy-box .desc{font-size:15px;max-width:48ch;margin-bottom:18px;}
+  .price-line{display:flex;align-items:baseline;gap:12px;margin-bottom:2px;}
+  .price-now{font-size:27px;font-weight:800;color:var(--accent);}
+  .price-was{font-size:16px;color:var(--gray-text);text-decoration:line-through;}
+  .save-tag{font-size:13.5px;font-weight:700;margin-bottom:16px;color:var(--accent-dark);}
+  .pack-label{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:9px;}
+  .pack-row{display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
+  .pack-pill{border:1.5px solid var(--gray-line);border-radius:var(--radius-md);padding:12px 15px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:var(--white);}
+  .pack-pill:hover{border-color:#bbb;}
+  .pack-pill.active{border-color:var(--accent);background:var(--accent-tint);}
+  .pack-pill .pp-left{display:flex;flex-direction:column;}
+  .pack-pill .pp-name{font-weight:700;font-size:14.5px;}
+  .pack-pill .pp-qty{font-size:12.5px;color:var(--gray-text);}
+  .pack-pill .pp-right{display:flex;align-items:center;gap:9px;}
+  .pack-pill .pp-price{font-weight:700;font-size:14.5px;}
+  .pack-pill.active .pp-price{color:var(--accent);}
+  .pack-pill .pp-was{font-size:12.5px;color:var(--gray-text);text-decoration:line-through;}
+  .pack-badge{background:var(--accent);color:var(--white);font-size:10px;font-weight:700;letter-spacing:.03em;padding:3px 8px;border-radius:100px;margin-left:6px;}
+  .ship-line{font-size:12.5px;color:var(--gray-text);text-align:center;margin-top:9px;}
+  .trust-icons{display:flex;justify-content:space-between;gap:10px;margin:22px 0 0;padding:18px 0;border-top:1px solid var(--gray-line);border-bottom:1px solid var(--gray-line);}
+  .trust-icons .ti{display:flex;flex-direction:column;align-items:center;text-align:center;gap:7px;font-size:12px;font-weight:600;flex:1;}
+  .trust-icons .ti svg{color:var(--black);}
 
-  /* ====== STICKY CTA BAR ====== */
-  .sticky-cta {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 9997;
-    background: #fff; box-shadow: 0 -4px 16px rgba(0,0,0,0.14);
-    padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    transform: translateY(100%); transition: transform 0.3s ease;
-  }
-  .sticky-cta.visible { transform: translateY(0); }
-  .sticky-cta__info { display: flex; flex-direction: column; line-height: 1.3; min-width: 0; }
-  .sticky-cta__info strong { font-size: 0.95rem; color: #222; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .sticky-cta__price { font-size: 0.85rem; color: #e33d2e; font-weight: 700; }
-  .sticky-cta__btn {
-    background: linear-gradient(90deg, #e33d2e, #c02222); color: #fff; border: none; border-radius: 50px;
-    padding: 12px 30px; font-weight: 700; font-size: 0.95rem; cursor: pointer; white-space: nowrap; flex-shrink: 0;
-    animation: breathing 2.4s ease-in-out infinite;
-  }
-  .sticky-cta__btn:hover { filter: brightness(1.05); }
-  @media (max-width: 480px) {
-    .sticky-cta { padding: 10px 14px; }
-    .sticky-cta__info strong { font-size: 0.82rem; }
-    .sticky-cta__price { font-size: 0.78rem; }
-    .sticky-cta__btn { padding: 10px 20px; font-size: 0.85rem; }
-  }
+  /* ---------- Accordion under buy box ---------- */
+  .details-acc{margin-top:4px;}
+  .acc-item{border-bottom:1px solid var(--gray-line);}
+  .acc-item summary{list-style:none;cursor:pointer;padding:16px 2px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .acc-item summary::-webkit-details-marker{display:none;}
+  .acc-item summary::after{content:'+';font-size:19px;color:var(--gray-text);transition:transform .2s ease;}
+  .acc-item[open] summary::after{transform:rotate(45deg);}
+  .acc-body{padding:0 2px 18px;font-size:14px;}
+  .acc-body ul{margin:0;padding-left:18px;}
+  .acc-body li{margin-bottom:7px;color:var(--black);}
+  .acc-body p{margin:0 0 8px;font-size:14px;}
+  .acc-body p:last-child{margin-bottom:0;}
 
-  /* ====== BENEFIT STRIP ====== */
-  .benefit-strip {
-    max-width: 1200px; margin: 10px auto 0; padding: 10px 20px 30px;
-    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-  }
-  .benefit-strip__item {
-    background: #f8f9fa; border: 1px solid #e6e9f2; border-radius: 999px;
-    padding: 8px 16px; font-size: 0.85rem; color: #444; white-space: nowrap;
-  }
+  /* ---------- Snoring + Before/After ---------- */
+  .snore-sec{background:var(--gray-soft);border-top:1px solid var(--gray-line);border-bottom:1px solid var(--gray-line);}
+  .snore-head{text-align:center;max-width:640px;margin:0 auto 40px;}
+  .snore-head h2{font-size:clamp(26px,3.4vw,36px);}
+  .snore-head p{font-size:16px;}
+  .ba-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:center;max-width:920px;margin:0 auto;}
+  @media(max-width:760px){ .ba-grid{grid-template-columns:1fr;} .ba-arrow{transform:rotate(90deg);margin:0 auto;} }
+  .ba-col{border-radius:var(--radius-lg);padding:26px 24px;}
+  .ba-col-img{aspect-ratio:16/10;width:100%;margin-bottom:16px;}
+  .ba-before{background:var(--white);border:1px solid var(--gray-line);}
+  .ba-before h3{color:var(--gray-text);font-size:15px;margin-bottom:14px;}
+  .ba-before ul{list-style:none;padding:0;margin:0;}
+  .ba-before li{color:var(--gray-text);font-size:14px;padding:7px 0;border-bottom:1px solid var(--gray-line);}
+  .ba-before li:last-child{border-bottom:none;}
+  .ba-after{background:var(--black);}
+  .ba-after h3{color:var(--white);font-size:15px;margin-bottom:14px;}
+  .ba-after ul{list-style:none;padding:0;margin:0;}
+  .ba-after li{display:flex;gap:9px;align-items:center;color:var(--white);font-weight:600;font-size:14px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.12);}
+  .ba-after li:last-child{border-bottom:none;}
+  .ba-after li svg{color:var(--accent);flex:none;}
+  .ba-arrow{font-size:24px;color:var(--gray-text);}
 
-  /* ====== PACKAGE CARDS ====== */
-  #swas-package-wrapper { width: 100%; margin-top: 8px; }
-  .pkg-grid { display: flex; flex-direction: column; gap: 15px; }
-  .pkg-card {
-    background: #fff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    padding: 16px; position: relative; display: flex; align-items: center; gap: 12px;
-    opacity: 1; transition: box-shadow .3s, transform .3s, border .3s; cursor: pointer;
-    border: 2px solid transparent; width: 100%; overflow: hidden;
+  /* ---------- Image placeholder (shared) ---------- */
+  .img-placeholder{
+    background:var(--gray-soft);border:1.5px dashed #C9C4B8;border-radius:var(--radius-md);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    color:var(--gray-text);font-size:12.5px;font-weight:600;text-align:center;padding:16px;
   }
-  .pkg-card.highlighted { border: 2px solid #e33d2e; box-shadow: 0 0 12px rgba(227,61,46,0.3); transform: scale(1.02); z-index: 10; }
-  .badge {
-    position: absolute; top: -8px; right: 0px; background: #e33d2e; color: #fff;
-    font-size: .7rem; font-weight: 600; padding: 5px 12px; border-radius: 5px;
-    pointer-events: none; user-select: none; z-index: 100;
-  }
-  .pkg-image { width: 60px; height: 60px; object-fit: contain; border-radius: 10px; flex-shrink: 0; }
-  .pkg-content { flex: 1; display: flex; align-items: center; gap: 12px; text-align: left; }
-  .pkg-info { flex: 1; }
-  .pkg-card h3 { font-size: 1.1rem; font-weight: 600; color: #37424a; margin-bottom: 4px; }
-  .pkg-qty { font-size: 0.9rem; font-weight: 500; color: #666; margin-bottom: 6px; }
-  .pkg-features { font-size: 0.8rem; color: #666; display: flex; flex-wrap: wrap; gap: 8px; }
-  .feature-item { display: flex; align-items: center; gap: 3px; }
-  .feature-item::before { content: "✓"; color: #20a45a; font-weight: 700; font-size: 0.8rem; }
-  .price-section { text-align: center; min-width: 100px; flex-shrink: 0; padding: 8px; background: #f8f9fa; border-radius: 8px; }
-  .price-section del { color: black; font-size: 1rem; display: block; font-weight: bold; }
-  .price-section .now { display: block; color: #e33d2e; font-size: 1.2rem; font-weight: 700; margin: 2px 0; }
-  .price-section small { font-size: .7rem; color: #8a979e; }
-  .choose-btn {
-    background: linear-gradient(90deg, #e33d2e, #c02222); padding: 10px 16px; border: none;
-    border-radius: 20px; color: #fff; font-weight: 600; cursor: pointer; font-size: .8rem;
-    transition: .25s; white-space: nowrap; min-width: 90px;
-  }
-  .choose-btn:hover { transform: translateY(-2px); }
-  .save-sticker {
-    position: absolute; top: 20px; left: -30px; background: #20a45a; color: #fff;
-    font-size: 0.65rem; font-weight: 700; padding: 4px 25px; transform: rotate(-45deg);
-    transform-origin: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 15;
-    text-align: left; pointer-events: none; user-select: none; white-space: nowrap; line-height: 1;
-  }
+  .img-placeholder svg{color:#B8B2A4;}
 
-  /* ====== MODAL ====== */
-  .modal {
-    display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,.55);
-    align-items: center; justify-content: center; padding: 20px;
-  }
-  .modal-content {
-    background: #fff; border-radius: 16px; width: 100%; max-width: 500px; padding: 40px 32px;
-    position: relative; box-shadow: 0 4px 16px rgba(0,0,0,0.08); animation: fadeIn .3s ease;
-    max-height: 90vh; overflow-y: auto;
-  }
-  .close { position: absolute; top: 16px; right: 20px; font-size: 1.6rem; cursor: pointer; color: #aaa; }
-  .modal-content h3 { text-align: center; font-size: 1.5rem; margin-bottom: 30px; color: #333; }
-  .modal-content label { display: block; font-size: 0.95rem; margin-bottom: 20px; color: #555; }
-  .modal-content input, .modal-content textarea, .modal-content select {
-    width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #ccd1d6;
-    font-size: 1rem; margin-top: 6px; box-sizing: border-box;
-  }
-  .submit-btn {
-    margin-top: 14px; width: 100%; padding: 16px; border: none; border-radius: 50px;
-    background: linear-gradient(90deg, #e33d2e, #c02222); color: #fff; font-weight: 700;
-    font-size: 1rem; cursor: pointer;
-  }
-  .submit-btn:hover { transform: translateY(-2px); }
-  .loader {
-    border: 6px solid #f3f3f3; border-top: 6px solid #e33d2e; border-radius: 50%;
-    width: 60px; height: 60px; animation: spin 1s linear infinite; margin: 36px auto 12px; display: none;
-  }
+  /* ---------- Side effects of snoring ---------- */
+  .effects-img-sec{border-top:1px solid var(--gray-line);}
+  .effects-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  @media(max-width:860px){ .effects-img-grid{grid-template-columns:1fr;text-align:center;} .effects-img-list{text-align:left;max-width:420px;margin:0 auto;} }
+  .effects-img-media .img-placeholder{aspect-ratio:4/3.2;width:100%;}
+  .effects-img-copy h2{font-size:clamp(26px,3.2vw,34px);}
+  .effects-img-list{list-style:none;padding:0;margin:16px 0 0;}
+  .effects-img-list li{display:flex;gap:10px;align-items:flex-start;font-size:15px;font-weight:600;padding:9px 0;border-bottom:1px solid var(--gray-line);}
+  .effects-img-list li:last-child{border-bottom:none;}
+  .effects-img-list li svg{flex:none;margin-top:3px;color:var(--accent);}
 
-  /* ====== HERO RESPONSIVE ====== */
-  @media (max-width: 768px) {
-    #hero-section { flex-direction: column; padding: 24px 16px 10px; gap: 24px; text-align: left; }
-    .hero-content { order: 2; width: 100%; }
-    .hero-gallery { order: 1; width: 100%; }
-    .hero-content h2 { font-size: 28px; }
-    .hero-gallery .arrow.left, .hero-gallery .arrow.right { display: block; }
-    .hero-gallery .arrow { top: 45%; font-size: 24px; padding: 4px 8px; }
-    .hero-thumbs img { width: 52px; height: 42px; }
-    .pkg-card { padding: 12px; gap: 8px; }
-    .pkg-image { width: 50px; height: 50px; }
-    .pkg-card h3 { font-size: 1rem; margin-bottom: 3px; }
-    .pkg-qty { font-size: 0.85rem; margin-bottom: 4px; }
-    .pkg-features { font-size: 0.75rem; gap: 6px; }
-    .price-section { min-width: 90px; padding: 6px; }
-    .price-section .now { font-size: 1.1rem; }
-    .choose-btn { padding: 10px 12px; font-size: 0.75rem; min-width: 80px; }
-    .badge { font-size: 0.65rem; padding: 3px 8px; right: 0px; top: -5px; }
-    .save-sticker { top: 18px; left: -30px; font-size: 0.6rem; padding: 3px 22px; }
-  }
-  @media (max-width: 480px) {
-    .pkg-grid { gap: 12px; }
-    .pkg-card { padding: 10px; }
-    .pkg-image { width: 45px; height: 45px; }
-    .pkg-card h3 { font-size: 0.95rem; }
-    .pkg-qty { font-size: 0.8rem; }
-    .pkg-features { font-size: 0.7rem; }
-    .price-section { min-width: 85px; padding: 4px; }
-    .price-section .now { font-size: 1rem; }
-    .choose-btn { padding: 6px 10px; font-size: 0.8rem; min-width: 70px; }
-    .save-sticker { top: 15px; left: -25px; font-size: 0.55rem; padding: 2px 20px; }
-  }
+  /* ---------- How to Use ---------- */
+  .howuse-sec{border-top:1px solid var(--gray-line);}
+  .howuse-head{text-align:center;margin-bottom:36px;}
+  .howuse-head h2{font-size:clamp(26px,3.2vw,34px);}
+  .howuse-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:760px){ .howuse-grid{grid-template-columns:1fr;max-width:340px;margin:0 auto;} }
+  .howuse-card .img-placeholder{aspect-ratio:1/1;width:100%;margin-bottom:16px;}
+  .howuse-card{text-align:center;}
+  .howuse-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--black);color:var(--white);font-size:12.5px;font-weight:700;margin-bottom:8px;}
+  .howuse-card h3{font-size:16px;margin-bottom:4px;}
+  .howuse-card p{font-size:14px;margin:0;}
 
-  /* ================================================================
-     EVERYTHING BELOW LIVES INSIDE .swas-isolated-container
-  ================================================================ */
-  .swas-isolated-container {
-    all: initial;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    isolation: isolate;
-    contain: layout style;
-    display: block;
+  /* ---------- Chain reaction (educational) ---------- */
+  .chain-sec{background:var(--gray-soft);border-top:1px solid var(--gray-line);border-bottom:1px solid var(--gray-line);}
+  .chain-head{text-align:center;max-width:680px;margin:0 auto 40px;}
+  .chain-head h2{font-size:clamp(24px,3.2vw,32px);}
+  .chain-head p{font-size:15.5px;}
+  .chain-steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:start;max-width:920px;margin:0 auto 40px;}
+  @media(max-width:760px){ .chain-steps{grid-template-columns:1fr;} .chain-arrow{transform:rotate(90deg);margin:4px auto;} }
+  .chain-step{text-align:center;}
+  .chain-img{aspect-ratio:1/1;width:100%;margin-bottom:12px;}
+  .chain-step h3{font-size:16px;margin-bottom:4px;}
+  .chain-step p{font-size:13.5px;margin:0;}
+  .chain-arrow{font-size:20px;color:var(--gray-text);align-self:center;}
+  .chain-stat{
+    background:var(--black);color:var(--white);border-radius:var(--radius-lg);
+    padding:26px 30px;display:flex;align-items:center;gap:20px;max-width:720px;margin:0 auto 20px;
   }
-  .swas-isolated-container *, .swas-isolated-container *::before, .swas-isolated-container *::after {
-    box-sizing: border-box; margin: 0; padding: 0;
-  }
+  @media(max-width:600px){ .chain-stat{flex-direction:column;text-align:center;gap:8px;} }
+  .chain-stat-num{font-size:34px;font-weight:800;color:var(--accent);flex:none;white-space:nowrap;}
+  .chain-stat-text{font-size:14.5px;color:#D8D4C8;}
+  .chain-risks{max-width:640px;margin:0 auto 20px;text-align:center;}
+  .chain-risks p{font-size:15px;color:var(--black);margin:0;}
+  .chain-note{max-width:640px;margin:0 auto;text-align:center;border-top:1px solid var(--gray-line);padding-top:20px;}
+  .chain-note p{font-size:13.5px;margin:0;}
 
-  /* ----- SPEED: skip rendering work for sections that are off-screen ----- */
-  #swas-stories-section, #swas-how-works-text, #swas-no-mouth-breather,
-  #swas-benefits-ring, #swas-steps-v2, .swas-testimonials, #swas-faq,
-  .swas-isolated-container .swas-footer {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 700px;
-  }
+  /* ---------- Comparison ---------- */
+  .compare-sec{border-top:1px solid var(--gray-line);}
+  .compare-head{text-align:center;max-width:560px;margin:0 auto 36px;}
+  .compare-head h2{font-size:clamp(26px,3.2vw,34px);}
+  table.compare-table{width:100%;border-collapse:collapse;font-size:15px;max-width:820px;margin:0 auto;}
+  .compare-table th, .compare-table td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--gray-line);}
+  .compare-table th{font-weight:700;font-size:14.5px;}
+  .compare-table th:not(:first-child), .compare-table td:not(:first-child){text-align:center;}
+  .compare-table thead th.brand{color:var(--accent-dark);}
+  .compare-table thead th.other{color:var(--gray-text);}
+  .compare-col-img{width:64px;height:64px;margin:0 auto 10px;padding:8px;}
+  @media(max-width:640px){ .compare-col-img{width:44px;height:44px;margin-bottom:6px;padding:5px;} }
+  .compare-table td.brand-cell{font-weight:700;color:var(--accent-dark);}
+  .compare-table td.other-cell{color:var(--gray-text);}
+  @media(max-width:640px){ table.compare-table{font-size:12.5px;} .compare-table th, .compare-table td{padding:10px 6px;} }
 
-  /* ----- TRUST BADGES ----- */
-  .swas-isolated-container .trust-badges-wrapper { font-family: 'Inter', sans-serif; padding: 2rem 0.5rem; overflow-x: hidden; margin: 0; }
-  .swas-isolated-container .trust-section { max-width: 1200px; margin: 0 auto; padding: 2rem 0; background: transparent; }
-  .swas-isolated-container .badges-grid { display: flex; justify-content: space-between; gap: 0.5rem; flex-wrap: nowrap; overflow-x: hidden; }
-  .swas-isolated-container .badge-card {
-    background: white; border-radius: 16px; padding: 1rem 0.75rem; display: flex; flex-direction: column;
-    align-items: center; gap: 0.5rem; flex: 0 0 calc((100% / 3) - 0.67rem); max-width: calc((100% / 3) - 0.67rem);
-    border: 2px solid rgba(226,232,240,0.5); box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;
-    opacity: 0; transform: translateY(30px); animation: swas-fadeInUp 0.6s ease forwards;
-  }
-  .swas-isolated-container .icon-container {
-    width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
-    transition: transform 0.3s ease; flex-shrink: 0; margin-bottom: 0.5rem;
-  }
-  .swas-isolated-container .badge-card:hover .icon-container { transform: scale(1.1); }
-  .swas-isolated-container .cash-icon, .swas-isolated-container .guarantee-icon, .swas-isolated-container .safety-icon {
-    background: linear-gradient(135deg, #10b981, #059669);
-  }
-  .swas-isolated-container .icon { width: 20px; height: 20px; fill: white; }
-  .swas-isolated-container .badge-title { font-size: 0.9rem; font-weight: 600; color: #1e293b; line-height: 1.4; margin: 0; }
-  .swas-isolated-container .highlight { font-weight: 600; color: #059669; }
-  .swas-isolated-container .highlight.blue, .swas-isolated-container .highlight.purple { color: #059669; }
-  @keyframes swas-fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  .swas-isolated-container .badge-card:nth-child(1) { animation-delay: 0.1s; }
-  .swas-isolated-container .badge-card:nth-child(2) { animation-delay: 0.2s; }
-  .swas-isolated-container .badge-card:nth-child(3) { animation-delay: 0.3s; }
-  @media (min-width: 769px) {
-    .swas-isolated-container .badge-card { flex: 1; max-width: 350px; padding: 1.5rem 2rem; flex-direction: row; text-align: left; }
-    .swas-isolated-container .icon-container { width: 50px; height: 50px; margin-bottom: 0; }
-    .swas-isolated-container .icon { width: 24px; height: 24px; }
-    .swas-isolated-container .badge-title { font-size: 1rem; }
-  }
+  /* ---------- Reviews + Video reels ---------- */
+  .reviews-sec{background:var(--gray-soft);border-top:1px solid var(--gray-line);border-bottom:1px solid var(--gray-line);}
+  .reviews-head{text-align:center;margin-bottom:36px;}
+  .reviews-head h2{font-size:clamp(26px,3.2vw,34px);}
 
-  /* ----- HOW SWAS WORKS (text) ----- */
-  #swas-how-works-text {
-    padding: 4rem 1.5rem !important; background: black !important;
-    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
-    color: white !important; text-align: center !important; margin: 0 auto !important;
-    overflow: visible !important; box-sizing: border-box !important;
-  }
-  .swas-how-works-text__inner { max-width: 900px !important; margin: 0 auto !important; }
-  .swas-how-works-text__headline {
-    font-size: clamp(1.9rem, 2.2vw + 1.2rem, 2.5rem) !important; font-weight: 800 !important;
-    margin: 0 0 1.1rem 0 !important; line-height: 1.3 !important;
-  }
-  .swas-how-works-text__subcopy {
-    max-width: 640px !important; margin: 0 auto 2.2rem auto !important; font-size: 1.02rem !important;
-    line-height: 1.8 !important; color: white !important;
-  }
-  .swas-how-works-text__cta {
-    display: inline-block; margin-top: 26px !important; background: linear-gradient(90deg, #e33d2e, #c02222);
-    padding: 12px 100px !important; width: 90%; border-radius: 50px; color: #fff; font-weight: 700;
-    font-size: 1rem; animation: breathing 2.4s ease-in-out infinite; text-align: center; text-decoration: none;
-    box-shadow: 0 6px 18px rgba(226, 60, 44, 0.25);
-  }
-  .swas-how-works-text__cta:hover { filter: brightness(1.05); }
-  @media (max-width: 768px) {
-    #swas-how-works-text { padding: 3.2rem 1.25rem !important; }
-    .swas-how-works-text__cta { width: 100% !important; }
-  }
+  /* Reels: first-frame thumbnail, tap to play, no autoplay (same behaviour as the old LP) */
+  .reels-track{display:flex;gap:16px;overflow-x:auto;padding:6px 4px 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;}
+  .reels-track::-webkit-scrollbar{display:none;}
+  @media(min-width:1000px){ .reels-track{justify-content:flex-start;} }
+  .reel-card{flex:0 0 240px;background:var(--black);border-radius:var(--radius-lg);padding:8px;box-shadow:0 10px 24px -12px rgba(0,0,0,0.45);}
+  @media(max-width:759px){ .reel-card{flex:0 0 72vw;max-width:290px;} }
+  .reel-frame{position:relative;border-radius:12px;overflow:hidden;background:#000;aspect-ratio:9/16;}
+  .reel-frame video{width:100%;height:100%;object-fit:cover;display:block;}
+  .reel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;border:none;background:rgba(0,0,0,.65);color:var(--white);font-size:24px;display:flex;align-items:center;justify-content:center;z-index:3;}
+  .reel-play:hover{background:rgba(0,0,0,.8);}
+  .reel-controls{position:absolute;inset:0;pointer-events:none;}
+  .reel-mute{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,0.7);color:var(--white);font-size:15px;border:none;display:flex;align-items:center;justify-content:center;pointer-events:auto;}
 
-  /* ----- DON'T BE A MOUTH BREATHER ----- */
-  #swas-no-mouth-breather {
-    padding: 4.2rem 1.5rem !important; background: white !important;
-    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
-    color: #0f172a !important; margin: 0 auto !important; overflow: visible !important; box-sizing: border-box !important;
-  }
-  .swas-no-mouth-breather__inner {
-    max-width: 1120px !important; margin: 0 auto !important; display: grid !important;
-    grid-template-columns: minmax(0, 1.2fr) minmax(260px, 1fr) !important; gap: 2.5rem !important; align-items: center !important;
-  }
-  .swas-no-mouth-breather__content { text-align: left !important; }
-  .swas-no-mouth-breather__title { font-size: clamp(2rem, 2.4vw + 1.2rem, 2.7rem) !important; font-weight: 800 !important; margin: 0 0 0.75rem 0 !important; }
-  .swas-no-mouth-breather__text { font-size: 1.02rem !important; line-height: 1.8 !important; color: #475569 !important; margin: 0 0 1.6rem 0 !important; max-width: 520px !important; }
-  .swas-no-mouth-breather__tags { display: flex !important; flex-wrap: wrap !important; gap: 0.5rem !important; }
-  .swas-no-mouth-breather__tag {
-    padding: 0.35rem 0.85rem !important; border-radius: 999px !important; font-size: 0.8rem !important;
-    background: rgba(255,255,255,0.9) !important; border: 1px solid rgba(203,213,225,0.9) !important;
-    color: #475569 !important; white-space: nowrap !important;
-  }
-  .swas-no-mouth-breather__visual { position: relative !important; display: flex !important; justify-content: center !important; align-items: center !important; }
-  .swas-no-mouth-breather__glow {
-    position: absolute !important; width: 260px !important; height: 260px !important; border-radius: 999px !important;
-    background: radial-gradient(circle, rgba(191,219,254,0.95), transparent 60%) !important; opacity: 0.9 !important;
-  }
-  .swas-no-mouth-breather__image-wrap {
-    position: relative !important; width: 90% !important; height: 100% !important; border-radius: 1.8rem !important;
-    overflow: hidden !important; background: #020617 !important; box-shadow: 0 26px 60px rgba(15,23,42,0.22) !important;
-    border: 1px solid rgba(148,163,184,0.4) !important;
-  }
-  .swas-no-mouth-breather__image { width: 100% !important; height: 100% !important; object-fit: contain !important; display: block !important; }
-  @media (max-width: 900px) {
-    #swas-no-mouth-breather { padding: 3.4rem 1.25rem !important; }
-    .swas-no-mouth-breather__inner { grid-template-columns: 1fr !important; gap: 2rem !important; text-align: center !important; }
-    .swas-no-mouth-breather__content { order: 0 !important; text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
-    .swas-no-mouth-breather__visual { order: 1 !important; display: flex !important; justify-content: center !important; align-items: center !important; width: 100% !important; }
-    .swas-no-mouth-breather__image-wrap { margin-left: auto !important; margin-right: auto !important; }
-  }
-  @media (max-width: 480px) {
-    .swas-no-mouth-breather__image-wrap { width: 90% !important; height: auto !important; margin-left: auto !important; margin-right: auto !important; }
-    .swas-no-mouth-breather__glow { width: 220px !important; height: 220px !important; }
-    .swas-no-mouth-breather__tags { gap: 0.4rem !important; text-align: center; justify-content: center; }
-    .swas-no-mouth-breather__tag { font-size: 0.78rem !important; }
-  }
+  .review-card{background:var(--white);border:1px solid var(--gray-line);border-radius:var(--radius-md);padding:18px;}
+  .review-card .rc-stars{color:var(--accent);display:flex;gap:2px;margin-bottom:10px;}
+  .review-card .rc-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .review-card .rc-photo{width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--gray-soft);flex:none;}
+  .review-card .rc-photo-fallback{width:38px;height:38px;border-radius:50%;background:var(--gray-soft);display:flex;align-items:center;justify-content:center;color:var(--gray-text);flex:none;}
+  .review-card .rc-name-wrap{display:flex;flex-direction:column;}
+  .review-card .rc-name{font-weight:700;font-size:14px;}
+  .review-card .rc-verified{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:600;color:var(--accent-dark);}
+  .review-card .rc-text{font-size:13.5px;color:var(--black);margin:0;}
+  .reviews-grid-full{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px;}
+  @media(max-width:900px){ .reviews-grid-full{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:560px){ .reviews-grid-full{grid-template-columns:1fr;} }
 
-  /* ----- BENEFITS RING ----- */
-  #swas-benefits-ring { padding: 4rem 1.5rem !important; background: white !important; font-family: "Segoe UI", sans-serif !important; color: #0f172a !important; text-align: center !important; }
-  .swas-benefits-ring__inner { max-width: 1120px !important; margin: 0 auto !important; }
-  .swas-benefits-ring__title { font-size: clamp(2rem, 2.3vw + 1rem, 2.6rem) !important; font-weight: 800 !important; margin-bottom: 0.5rem !important; }
-  .swas-benefits-ring__subtitle { max-width: 540px !important; margin: 0 auto 2.5rem auto !important; font-size: 1.05rem !important; color: #475569 !important; line-height: 1.7 !important; }
-  .swas-benefits-ring__layout { display: grid !important; grid-template-columns: 1fr auto 1fr !important; gap: 2rem !important; align-items: center !important; }
-  .swas-benefits-ring__column { display: flex !important; flex-direction: column !important; gap: 1.4rem !important; }
-  .swas-benefits-ring__point { background: #ffffff !important; border-radius: 1rem !important; padding: 1.2rem !important; border: 1px solid rgba(203,213,225,0.9) !important; box-shadow: 0 14px 36px rgba(15,23,42,0.08) !important; text-align: left !important; }
-  .swas-benefits-ring__point-title { font-size: 1rem !important; font-weight: 700 !important; margin: 0 !important; }
-  .swas-benefits-ring__center { position: relative !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; }
-  .swas-benefits-ring__center-glow { position: absolute !important; width: 230px !important; height: 230px !important; border-radius: 999px !important; background: radial-gradient(circle, rgba(191,219,254,0.9), transparent 60%) !important; opacity: 0.9 !important; }
-  .swas-benefits-ring__image-wrap {
-    position: relative !important; width: 190px !important; height: 190px !important; border-radius: 999px !important;
-    background: #ffffff !important; border: 1px solid rgba(203,213,225,0.9) !important; box-shadow: 0 22px 50px rgba(15,23,42,0.16) !important;
-    overflow: hidden !important; display: flex !important; align-items: center !important; justify-content: center !important;
-  }
-  .swas-benefits-ring__image { width: 100% !important; height: 100% !important; object-fit: contain !important; display: block !important; }
-  @media (max-width: 900px) {
-    .swas-benefits-ring__layout { display: flex !important; flex-direction: column !important; gap: 1.4rem !important; align-items: center !important; }
-    .swas-benefits-ring__details--left { order: 0 !important; width: 100% !important; }
-    .swas-benefits-ring__center { order: 1 !important; }
-    .swas-benefits-ring__details--right { order: 2 !important; width: 100% !important; }
-    .swas-benefits-ring__column { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 1rem !important; text-align: center !important; }
-    .swas-benefits-ring__point { text-align: center !important; position: relative !important; }
-    .swas-benefits-ring__details--left .swas-benefits-ring__point::after {
-      content: "" !important; position: absolute !important; left: 50% !important; bottom: -16px !important;
-      width: 2px !important; height: 16px !important; background: rgba(148,163,184,0.7) !important; transform: translateX(-50%) !important;
-    }
-    .swas-benefits-ring__details--right .swas-benefits-ring__point::after {
-      content: "" !important; position: absolute !important; left: 50% !important; top: -16px !important;
-      width: 2px !important; height: 16px !important; background: rgba(148,163,184,0.7) !important; transform: translateX(-50%) !important;
-    }
-  }
-  @media (max-width: 480px) {
-    .swas-benefits-ring__image-wrap { width: 160px !important; height: 160px !important; }
-    .swas-benefits-ring__center-glow { width: 200px !important; height: 200px !important; }
-  }
+  /* ---------- FAQ ---------- */
+  .faq-head{text-align:center;margin-bottom:34px;}
+  .faq-head h2{font-size:clamp(26px,3.2vw,34px);}
+  .faq-list{max-width:720px;margin:0 auto;}
+  details.faq-item{border-bottom:1px solid var(--gray-line);padding:18px 4px;}
+  details.faq-item summary{list-style:none;cursor:pointer;font-weight:700;font-size:15.5px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  details.faq-item summary::-webkit-details-marker{display:none;}
+  details.faq-item summary::after{content:'+';font-size:19px;color:var(--gray-text);transition:transform .2s ease;}
+  details.faq-item[open] summary::after{transform:rotate(45deg);}
+  details.faq-item .faq-a{padding-top:10px;font-size:14.5px;max-width:65ch;}
 
-  /* ----- STEPS ----- */
-  #swas-steps-v2 {
-    --swas-steps-v2-card-bg: #ffffff; --swas-steps-v2-text-main: #0f172a; --swas-steps-v2-text-muted: #4b5563;
-    --swas-steps-v2-border: #e5e7eb; --swas-steps-v2-shadow: 0 18px 40px rgba(15,23,42,0.12);
-    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
-    color: var(--swas-steps-v2-text-main) !important; padding: 4rem 1.5rem !important; background: white !important;
-    margin: 0 auto !important; overflow: visible !important; box-sizing: border-box !important;
-  }
-  .swas-steps-v2__inner { max-width: 1120px !important; margin: 0 auto !important; text-align: center !important; }
-  .swas-steps-v2__title { font-size: clamp(1.9rem, 2.1vw + 1.4rem, 2.5rem) !important; font-weight: 800 !important; letter-spacing: 0.01em !important; margin: 0 0 0.5rem 0 !important; }
-  .swas-steps-v2__subtitle { max-width: 520px !important; margin: 0 auto 2.4rem auto !important; font-size: 0.98rem !important; color: var(--swas-steps-v2-text-muted) !important; }
-  .swas-steps-v2__scroller { width: 100% !important; overflow-x: hidden !important; overflow-y: hidden !important; box-sizing: border-box !important; }
-  .swas-steps-v2__row { display: flex !important; justify-content: center !important; align-items: stretch !important; gap: 2rem !important; flex-wrap: wrap !important; margin: 0 auto !important; padding: 0 !important; box-sizing: border-box !important; }
-  .swas-step-card { position: relative !important; max-width: 300px !important; flex: 0 0 300px !important; box-sizing: border-box !important; }
-  .swas-step-card__badge {
-    position: absolute !important; top: 12px !important; left: 16px !important; width: 28px !important; height: 28px !important;
-    border-radius: 999px !important; background: radial-gradient(circle at 25% 0, #fecaca, #ef4444) !important;
-    display: flex !important; align-items: center !important; justify-content: center !important;
-    box-shadow: 0 10px 22px rgba(220,38,38,0.35) !important; z-index: 2 !important;
-  }
-  .swas-step-card__badge-number { font-size: 0.82rem !important; font-weight: 800 !important; color: #fef2f2 !important; line-height: 1 !important; }
-  .swas-step-card__image-wrap { border-radius: 1.1rem 1.1rem 0.9rem 0.9rem !important; overflow: hidden !important; border: 1px solid rgba(226,232,240,0.9) !important; background: #020617 !important; box-shadow: var(--swas-steps-v2-shadow) !important; box-sizing: border-box !important; }
-  .swas-step-card__image { display: block !important; width: 100% !important; height: auto !important; transition: transform 0.35s ease !important; }
-  .swas-step-card__title {
-    margin: 0.8rem 0 0.25rem 0 !important; padding: 0.9rem 1rem 0.3rem 1rem !important; font-size: 1.05rem !important; font-weight: 700 !important;
-    text-align: left !important; background: var(--swas-steps-v2-card-bg) !important; box-shadow: 0 12px 30px rgba(15,23,42,0.10) !important;
-    border-left: 1px solid var(--swas-steps-v2-border) !important; border-right: 1px solid var(--swas-steps-v2-border) !important;
-    border-top: none !important; box-sizing: border-box !important;
-  }
-  .swas-step-card__text {
-    margin: 0 !important; padding: 0 1rem 0.9rem 1rem !important; font-size: 0.96rem !important; line-height: 1.7 !important;
-    color: var(--swas-steps-v2-text-muted) !important; text-align: left !important; background: var(--swas-steps-v2-card-bg) !important;
-    box-shadow: 0 12px 30px rgba(15,23,42,0.10) !important; border-left: 1px solid var(--swas-steps-v2-border) !important;
-    border-right: 1px solid var(--swas-steps-v2-border) !important; border-bottom: 1px solid var(--swas-steps-v2-border) !important;
-    border-radius: 0 0 1.1rem 1.1rem !important; box-sizing: border-box !important;
-  }
-  .swas-step-card:hover .swas-step-card__image, .swas-step-card:focus-within .swas-step-card__image { transform: scale(1.03) !important; }
-  @media (max-width: 900px) {
-    #swas-steps-v2 { padding: 3.2rem 1.25rem !important; }
-    .swas-steps-v2__scroller { overflow-x: auto !important; overflow-y: hidden !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 0.6rem !important; }
-    .swas-steps-v2__row { flex-wrap: nowrap !important; justify-content: flex-start !important; min-width: max-content !important; }
-    .swas-step-card { max-width: 260px !important; flex: 0 0 260px !important; }
-  }
-  @media (max-width: 480px) { .swas-step-card { max-width: 240px !important; flex: 0 0 240px !important; } }
-  @media (prefers-reduced-motion: reduce) { .swas-step-card__image { transition: none !important; } }
+  /* ---------- Final CTA ---------- */
+  .final-cta{text-align:center;}
+  .final-cta h2{font-size:clamp(26px,3.4vw,34px);max-width:18ch;margin:0 auto .3em;}
+  .final-cta p{max-width:44ch;margin:0 auto 22px;}
 
-  /* ----- VIDEO STORIES (first-frame thumbnail, tap to play, no autoplay) ----- */
-  #swas-stories-section {
-    --swas-bg: #050814; --swas-card-bg: #0b1020;
-    padding: 40px 14px 40px; display: flex; justify-content: center; text-align: center;
-    background: radial-gradient(circle at top, #1a2138, var(--swas-bg)); color: #fff; width: 100%; font-family: system-ui, sans-serif;
-  }
-  .swas-stories-inner { max-width: 1160px; margin: auto; width: 100%; }
-  .swas-stories-header { text-align: center; margin-bottom: 26px; }
-  .swas-stories-header h2 { margin-bottom: 20px; font-size: 1.7rem; letter-spacing: -0.3px; }
-  .swas-track-wrapper { width: 100%; display: flex; justify-content: center; }
-  .swas-stories-track { display: flex; gap: 14px; overflow-x: auto; padding: 10px 4px; margin-top: 14px; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
-  .swas-stories-track::-webkit-scrollbar { display: none; }
-  .swas-story-card { flex: 0 0 75vw; max-width: 350px; background: var(--swas-card-bg); border-radius: 20px; padding: 10px; border: 1px solid rgba(255,255,255,.15); box-shadow: 0 12px 30px rgba(0,0,0,0.5); box-sizing: border-box; position: relative; }
-  .swas-story-video-wrap { position: relative; border-radius: 16px; overflow: hidden; background: #000; aspect-ratio: 9 / 16; }
-  .swas-story-video-wrap video { width: 100%; max-height: 72vh; height: 100%; object-fit: contain; }
-  .swas-story-controls { position: absolute; inset: 0; pointer-events: none; }
-  .swas-mute-toggle { position: absolute; top: 8px; right: 8px; width: 32px; height: 32px; border-radius: 50%; background: rgba(0,0,0,0.7); color: #fff; font-size: 16px; border: none; display: flex; align-items: center; justify-content: center; pointer-events: auto; cursor: pointer; }
-  .swas-play-btn {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 64px; height: 64px; border-radius: 50%; border: none;
-    background: rgba(0,0,0,.65); color: #fff; font-size: 26px; cursor: pointer; z-index: 3;
-    display: flex; align-items: center; justify-content: center;
-  }
-  @media (min-width: 760px) {
-    .swas-stories-track { overflow-x: auto !important; padding-left: 5px; padding-right: 5px; gap: 16px; max-width: 100%; margin-left: auto; margin-right: auto; }
-    .swas-story-card { flex: 0 0 260px; max-width: 260px; }
-  }
-  @media (max-width: 759px) {
-    #swas-stories-section { padding: 30px 10px 40px; text-align: left; display: block; }
-    .swas-track-wrapper { justify-content: flex-start; }
-    .swas-stories-track { padding-left: 6px; padding-right: 10px; gap: 12px; max-width: 100%; }
-    .swas-story-card { flex: 0 0 82vw; max-width: 82vw; }
-    .swas-story-video-wrap video { max-height: 68vh; object-fit: cover; }
-  }
+  /* ---------- Footer ---------- */
+  footer.site-footer{padding:40px 0 26px;font-size:14px;color:var(--gray-text);border-top:1px solid var(--gray-line);}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;margin-bottom:24px;}
+  .footer-col h4{font-size:13px;font-weight:700;color:var(--black);margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em;}
+  .footer-col a, .footer-col p{display:block;margin-bottom:7px;color:var(--gray-text);}
+  .footer-col a:hover{color:var(--black);}
+  .footer-bottom{border-top:1px solid var(--gray-line);padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;}
+  @media(max-width:640px){ .footer-grid{flex-direction:column;} .footer-bottom{flex-direction:column-reverse;text-align:center;} }
 
-  /* ----- TESTIMONIALS ----- */
-  .swas-testimonials { background: #f9fbff; padding: 3rem 1rem !important; font-family: "Segoe UI", sans-serif; text-align: center; overflow: hidden; }
-  .swas-testimonials h2 { font-size: 1.9rem; font-weight: 700; margin-bottom: 2.5rem; color: #222; }
-  .testimonial-banner { width: 100%; overflow: hidden; position: relative; }
-  .testimonial-track { display: flex; gap: 26px; width: max-content; animation: testimonialScroll 55s linear infinite; }
-  @keyframes testimonialScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-  .testimonial-card { background: #ffffff; border-radius: 18px; min-width: 300px; max-width: 300px; padding: 2rem 1.5rem; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 6px 16px rgba(0,0,0,0.06); border: 1px solid #e6e9f2; }
-  .testimonial-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-bottom: 14px; }
-  .stars { color: #ffc107; margin-bottom: 14px; font-size: 1.25rem; letter-spacing: 2px; }
-  .testimonial-card p { font-style: italic; color: #444; font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.45; }
-  .testimonial-card strong { color: #1555d6; font-size: 0.95rem; }
-  .japjap-btn {
-    display: inline-block; margin-top: 30px !important; background: linear-gradient(90deg, #e33d2e, #c02222);
-    padding: 12px 100px !important; width: 50%; border-radius: 50px; color: #fff; font-weight: 700; font-size: 1rem;
-    animation: breathing 2.4s ease-in-out infinite; text-align: center; text-decoration: none; box-shadow: 0 6px 18px rgba(226,60,44,0.25);
-  }
-  .japjap-btn:hover { filter: brightness(1.05); }
-  @media (max-width: 600px) { .japjap-btn { width: 100% !important; display: block !important; box-sizing: border-box !important; text-align: center !important; } }
-  @media (max-width: 768px) { .testimonial-track { animation-duration: 80s; } }
+  /* ---------- Order modal ---------- */
+  .modal-overlay{position:fixed;inset:0;background:rgba(11,11,11,0.6);display:none;align-items:center;justify-content:center;z-index:100;padding:20px;}
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--white);border-radius:var(--radius-lg);padding:30px;max-width:420px;width:100%;position:relative;max-height:92vh;overflow-y:auto;}
+  .modal h3{font-size:21px;margin-bottom:4px;}
+  .modal .modal-sub{font-size:13.5px;color:var(--gray-text);margin-bottom:18px;}
+  .modal-close{position:absolute;top:15px;right:17px;font-size:22px;background:none;border:none;color:var(--gray-text);line-height:1;}
+  .field{margin-bottom:13px;}
+  .field label{display:block;font-size:12.5px;font-weight:700;margin-bottom:5px;}
+  .field input, .field select, .field textarea{width:100%;padding:11px 13px;border:1.5px solid var(--gray-line);border-radius:var(--radius-sm);font-family:inherit;font-size:15px;background:var(--white);color:var(--black);}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none;border-color:var(--black);}
+  .modal .btn{width:100%;margin-top:4px;}
+  .modal-guarantee{margin-top:12px;font-size:11.5px;color:var(--gray-text);text-align:center;}
+  .loader{border:5px solid #f3f3f3;border-top:5px solid var(--accent);border-radius:50%;width:44px;height:44px;animation:spin 1s linear infinite;margin:20px auto 4px;display:none;}
+  @keyframes spin{to{transform:rotate(360deg);}}
 
-  /* ----- FAQ ----- */
-  #swas-faq { padding: 5rem 1.5rem !important; font-family: "Segoe UI", sans-serif !important; }
-  #swas-faq .faq-container { max-width: 800px; margin: auto; }
-  #swas-faq h2 { text-align: center; margin-bottom: 3rem; font-size: 2.2rem; font-weight: 700; }
-  #swas-faq .faq-list { display: flex; flex-direction: column; gap: 1rem; }
-  #swas-faq .faq-item { background: #fff; border-radius: 14px; border: 1px solid #e3e8f5; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.04); }
-  #swas-faq .faq-question { background: transparent; border: none; padding: 1.4rem 1.6rem; font-size: 1.05rem; width: 100%; cursor: pointer; display: flex !important; justify-content: space-between !important; align-items: center !important; text-align: left !important; }
-  #swas-faq .faq-question span { text-align: left !important; flex: 1 !important; display: block !important; }
-  #swas-faq .faq-question::after { content: "+"; font-size: 1.6rem; color: #6b7280; flex-shrink: 0 !important; }
-  #swas-faq .faq-item.active .faq-question::after { content: "−"; color: #e33d2e; }
-  #swas-faq .faq-answer { max-height: 0; overflow: hidden; padding: 0 1.6rem; transition: max-height .35s ease, padding .25s ease; }
-  #swas-faq .faq-item.active .faq-answer { max-height: 320px; padding: 0.9rem 1.6rem 1.3rem; }
-  #swas-faq .faq-answer p { color: #4b5563; font-size: 0.98rem; line-height: 1.7; margin: 0; }
-  .show-more-btn { width: 100%; text-align: center; padding: 20px !important; font-size: 1rem; background: #f4f4f8; border-radius: 12px; border: 1px solid #d9ddea; cursor: pointer; font-weight: 600; }
-  .show-more-btn:hover { background: #ececf5; }
-  @media (max-width: 600px) { #swas-faq { padding: 3rem 1rem; } #swas-faq h2 { font-size: 1.9rem; margin-bottom: 2.5rem; } }
-
-  /* ----- FOOTER + WHATSAPP ----- */
-  .swas-isolated-container .swas-footer { background-color: #3f4a4a; color: white; padding: 40px 20px; font-family: 'Inter', sans-serif; }
-  .swas-isolated-container .footer-content { max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; text-align: center; }
-  .swas-isolated-container .footer-section { min-width: 250px; }
-  .swas-isolated-container .desktop-header { margin-bottom: 12px; color: white; font-size: 22px; font-weight: 600; }
-  .swas-isolated-container .footer-accordion-header { display: none; }
-  .swas-isolated-container .footer-section p { margin: 6px 0; font-size: 14px; }
-  .swas-isolated-container .footer-accordion-content { display: block; max-height: none; overflow: visible; padding: 0; }
-  @media (max-width: 768px) {
-    .swas-isolated-container .footer-content { gap: 0; flex-direction: column; }
-    .swas-isolated-container .footer-section { min-width: 100%; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .swas-isolated-container .footer-section:last-child { border-bottom: none; }
-    .swas-isolated-container .desktop-header { display: none; }
-    .swas-isolated-container .footer-accordion-header {
-      display: flex; justify-content: space-between; align-items: center; margin-bottom: 0; color: white; font-size: 18px;
-      font-weight: 600; padding: 15px 0; cursor: pointer; transition: all 0.3s ease; user-select: none; background: none;
-      border: none; width: 100%; text-align: left;
-    }
-    .swas-isolated-container .footer-accordion-header:hover { color: #10b981; }
-    .swas-isolated-container .accordion-icon { font-size: 20px; font-weight: bold; transition: transform 0.3s ease; color: #10b981; }
-    .swas-isolated-container .footer-accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0; }
-    .swas-isolated-container .footer-section.active .footer-accordion-content { max-height: 200px; padding-bottom: 15px; }
-    .swas-isolated-container .footer-section.active .accordion-icon { transform: rotate(45deg); }
+  /* ---------- Sticky cart bar ---------- */
+  .sticky-bar{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;
+    background:var(--white);border-top:1px solid var(--gray-line);
+    box-shadow:0 -6px 20px -10px rgba(0,0,0,0.15);
+    transform:translateY(100%);transition:transform .25s ease;
+    padding-bottom:env(safe-area-inset-bottom);
   }
-  .swas-isolated-container .social-links { display: flex; justify-content: center; gap: 20px; padding: 20px; }
-  .swas-isolated-container .social-links a { background: transparent; border-radius: 10px; padding: 10px; display: inline-block; }
-  .swas-isolated-container .social-links img { height: 40px; width: auto; }
-  .swas-isolated-container .footer-divider { margin: 30px auto; max-width: 800px; border-color: rgba(255,255,255,0.2); border: none; border-top: 1px solid rgba(255,255,255,0.2); }
-  .swas-isolated-container .footer-copyright { text-align: center; font-size: 14px; color: #ccc; }
-  .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 9999; background: #25d366; border-radius: 50%; padding: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.2s, bottom 0.3s ease; }
-  .whatsapp-float img { width: 32px; height: 32px; display: block; }
-  .whatsapp-float:hover { transform: scale(1.1); }
-  body.with-sticky-cta .whatsapp-float { bottom: 92px; }
+  .sticky-bar.show{transform:translateY(0);}
+  .sticky-bar-inner{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:14px;}
+  .sticky-thumb{width:42px;height:42px;border-radius:var(--radius-sm);object-fit:contain;background:var(--gray-soft);flex:none;border:1px solid var(--gray-line);}
+  .sticky-info{display:flex;flex-direction:column;flex:1;min-width:0;}
+  .sticky-name{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .sticky-price{font-size:14px;font-weight:800;color:var(--accent);}
+  .sticky-bar .btn{padding:12px 22px;font-size:14.5px;flex:none;}
+
+  /* ---------- WhatsApp float ---------- */
+  .whatsapp-fab{
+    position:fixed;right:16px;bottom:88px;z-index:70;
+    width:52px;height:52px;border-radius:50%;background:#25D366;color:var(--white);
+    display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.25);
+    transition:transform .15s ease;
+  }
+  .whatsapp-fab:hover{transform:scale(1.06);}
+  @media(max-width:760px){ .whatsapp-fab{bottom:78px;right:14px;width:48px;height:48px;} }
+
+  /* ---------- Review summary ---------- */
+  .review-summary{display:none;align-items:center;justify-content:center;gap:10px;margin-top:34px;font-size:14.5px;font-weight:700;}
+  .review-summary.show{display:flex;}
+  .review-summary .rs-stars{color:var(--accent);letter-spacing:1px;}
+  .review-summary .rs-text{color:var(--gray-text);font-weight:600;}
+  body.has-sticky-bar{padding-bottom:74px;}
+
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{transition:none !important;animation:none !important;} }
+
 </style>
 </head>
 <body>
 
-<!-- ===================== PROMO BANNER ===================== -->
-<div id="promo-banner">
-  🔥Festival Offer:<span style="color:#fff;"> 35% OFF ( Don&#8217;t Miss Out!)</span>
-</div>
-<script>
-  const banner = document.getElementById("promo-banner");
-  const bannerMessages = [
-    '🔥Offer: <span style="color: #fff;">35% OFF ( Don\'t Miss Out!) </span>',
-    '<strong style="color:white;">✅Free Delivery All Over Nepal</strong><span></span>'
-  ];
-  let bannerIndex = 0;
-  setInterval(() => {
-    bannerIndex = (bannerIndex + 1) % bannerMessages.length;
-    banner.innerHTML = bannerMessages[bannerIndex];
-  }, 3000);
-</script>
+  <div class="announce" id="promoBanner">Festival Offer — 35% Off + Free COD Across Nepal</div>
 
-<!-- ===================== SITE HEADER ===================== -->
-<div class="site-header">
-  <a href="index.html">
-    <img src="Images/SWAS-1000-x-400-px.png" alt="SWAS Logo">
-  </a>
-  <h1>SWAS MOUTH PATCH</h1>
-  <p>The Natural Solution for Better Sleep &#038; Health</p>
-</div>
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="logo"><span class="oval"></span> SWAS</div>
+      <nav class="main-nav">
+        <a href="#details">Details</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button class="btn" onclick="openOrder()">Order Now</button>
+    </div>
+    <div class="mobile-nav-panel" id="mobileNavPanel">
+      <a href="#details" onclick="closeNav()">Details</a>
+      <a href="#reviews" onclick="closeNav()">Reviews</a>
+      <a href="#faq" onclick="closeNav()">FAQ</a>
+    </div>
+  </header>
 
-<!-- ===================== HERO ===================== -->
-<section id="hero-section">
+  <!-- PDP HERO -->
+  <section class="pdp">
+    <div class="wrap pdp-grid">
 
-  <!-- LEFT: IMAGE GALLERY -->
-  <div class="hero-gallery" id="sm-carousel">
-    <img id="hero-img" src="Images/Clinically-trusted-for-peaceful-sleep-10.png" alt="SWAS Mouth Patch" fetchpriority="high" decoding="async">
-    <div class="arrow left">&#10094;</div>
-    <div class="arrow right">&#10095;</div>
-    <div class="hero-thumbs" id="hero-thumbs"></div>
-  </div>
+      <div class="gallery">
+        <div class="gallery-main">
+          <img id="mainImage" src="Images/cut-hero.png" alt="SWAS Mouth Patch box with three oval patches" fetchpriority="high" decoding="async">
+        </div>
+        <div class="gallery-thumbs">
+          <div class="thumb active" onclick="setMain(this,'Images/cut-hero.png')"><img src="Images/cut-hero.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="thumb" onclick="setMain(this,'Images/cut-shape.png')"><img src="Images/cut-shape.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="thumb" onclick="setMain(this,'Images/cut-flatlay.png')"><img src="Images/cut-flatlay.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="thumb" onclick="setMain(this,'Images/cut-swoosh.png')"><img src="Images/cut-swoosh.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="thumb" onclick="setMain(this,'Images/cut-box.png')"><img src="Images/cut-box.png" alt="" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
 
-  <!-- RIGHT: HEADLINE, BUNDLES, CTA -->
-  <div class="hero-content">
-    <h2>Stop Snoring,<br><span>Start Living Better!</span></h2>
-    <p class="tagline">Transform Your Sleep in Just <strong>ONE Night</strong></p>
+      <div class="buy-box">
+        <div class="trust-top"><span class="oval"></span> Free COD across Nepal · 30-Night Guarantee</div>
+        <h1>SWAS Mouth Patch</h1>
+        <div class="tagline">Patch Away The Snore</div>
+        <p class="desc">A soft oval patch that closes your lips at night — so you breathe through your nose, not your mouth. 30 patches. One month of quieter nights.</p>
 
-    <div id="swas-package-wrapper">
-      <div class="pkg-grid">
+        <div class="price-line">
+          <span class="price-now" id="ppNow">Rs 1,900</span>
+          <span class="price-was" id="ppWas">Rs 3,000</span>
+        </div>
+        <p class="save-tag" id="ppSave">Save Rs 1,100</p>
 
-        <!-- Starter -->
-        <article class="pkg-card" data-name="Starter Pack (1 month supply)" data-price="1200">
-          <div class="save-sticker">SAVE Rs 300 /-</div>
-          <img src="Images/Clinically-trusted-for-peaceful-sleep-3.png" alt="Starter Pack" class="pkg-image" loading="lazy" decoding="async" />
-          <div class="pkg-content">
-            <div class="pkg-info">
-              <h3>Starter Pack x1 box</h3>
-              <div class="pkg-qty">30 patches</div>
-              <div class="pkg-features"><span class="feature-item">1 Month Supply</span></div>
-            </div>
-            <div class="price-section">
-              <del>Rs 1,500/-</del>
-              <span class="now">Rs 1,200/-</span>
-            </div>
-            <button class="choose-btn">ORDER</button>
+        <!-- PACKS: data-name + data-price are what get sent to the sheet (same format as the old LP) -->
+        <div class="pack-label">Choose your pack</div>
+        <div class="pack-row" id="packRow">
+          <div class="pack-pill" data-name="Starter Pack (1 month supply)" data-price="1200" data-was="1500" data-save="300" onclick="selectPack(this)">
+            <div class="pp-left"><span class="pp-name">Starter Pack</span><span class="pp-qty">1 box · 30 patches</span></div>
+            <div class="pp-right"><span class="pp-price">Rs 1,200</span><span class="pp-was">Rs 1,500</span></div>
           </div>
-        </article>
-
-        <!-- Value (Popular) -->
-        <article class="pkg-card popular highlighted" data-name="Value Pack (2 months supply)" data-price="1900">
-          <div class="badge">MOST POPULAR</div>
-          <div class="save-sticker">SAVE Rs 1,100 /-</div>
-          <img src="Images/13.png" alt="Value Pack" class="pkg-image" loading="lazy" decoding="async" />
-          <div class="pkg-content">
-            <div class="pkg-info">
-              <h3>Value Pack x2 Boxes</h3>
-              <div class="pkg-qty">60 patches</div>
-              <div class="pkg-features"><span class="feature-item">2 Month Supply</span></div>
-            </div>
-            <div class="price-section">
-              <del>Rs 3,000/-</del>
-              <span class="now">Rs 1,900/-</span>
-            </div>
-            <button class="choose-btn">ORDER</button>
+          <div class="pack-pill popular active" data-name="Value Pack (2 months supply)" data-price="1900" data-was="3000" data-save="1100" onclick="selectPack(this)">
+            <div class="pp-left"><span class="pp-name">Value Pack <span class="pack-badge">Most Popular</span></span><span class="pp-qty">2 boxes · 60 patches</span></div>
+            <div class="pp-right"><span class="pp-price">Rs 1,900</span><span class="pp-was">Rs 3,000</span></div>
           </div>
-        </article>
-
-        <!-- Complete -->
-        <article class="pkg-card" data-name="Complete Pack (3 month supply)" data-price="2400">
-          <div class="save-sticker">SAVE Rs 2100/-</div>
-          <img src="Images/SWAS-7-1.png" alt="Complete Pack" class="pkg-image" loading="lazy" decoding="async" />
-          <div class="pkg-content">
-            <div class="pkg-info">
-              <h3>Complete Pack x3 Boxes</h3>
-              <div class="pkg-qty">90 patches</div>
-              <div class="pkg-features"><span class="feature-item">3 Month Supply</span></div>
-            </div>
-            <div class="price-section">
-              <del>Rs 4,500/-</del>
-              <span class="now">Rs 2,400/-</span>
-            </div>
-            <button class="choose-btn">ORDER</button>
+          <div class="pack-pill" data-name="Complete Pack (3 month supply)" data-price="2400" data-was="4500" data-save="2100" onclick="selectPack(this)">
+            <div class="pp-left"><span class="pp-name">Complete Pack</span><span class="pp-qty">3 boxes · 90 patches</span></div>
+            <div class="pp-right"><span class="pp-price">Rs 2,400</span><span class="pp-was">Rs 4,500</span></div>
           </div>
-        </article>
+        </div>
+
+        <button class="btn btn-block" onclick="openOrder()">Order Now</button>
+        <p class="ship-line">Free Cash on Delivery · Ships in 2–3 Days</p>
+
+        <div class="trust-icons">
+          <div class="ti"><svg width="24" height="24" viewBox="0 0 26 26" fill="none"><path d="M13 3c-3 4-7 9-7 13a7 7 0 0014 0c0-4-4-9-7-13z" stroke="currentColor" stroke-width="1.5"/></svg>Skin Friendly</div>
+          <div class="ti"><svg width="24" height="24" viewBox="0 0 26 26" fill="none"><rect x="8" y="4" width="10" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/></svg>Easy to Apply</div>
+          <div class="ti"><svg width="24" height="24" viewBox="0 0 26 26" fill="none"><path d="M4 13l3.5 3.5L22 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Free COD</div>
+        </div>
+
+        <div class="details-acc" id="details">
+          <details class="acc-item" open>
+            <summary>Benefits</summary>
+            <div class="acc-body">
+              <ul>
+                <li>Less snoring</li>
+                <li>No more dry mouth</li>
+                <li>Deeper, uninterrupted sleep</li>
+                <li>Gentle, skin-friendly adhesive</li>
+                <li>Works with light stubble</li>
+              </ul>
+            </div>
+          </details>
+          <details class="acc-item">
+            <summary>How It Works</summary>
+            <div class="acc-body">
+              <ul>
+                <li>Clean and dry your lips</li>
+                <li>Apply the patch over closed lips</li>
+                <li>Peel off gently in the morning</li>
+              </ul>
+            </div>
+          </details>
+          <details class="acc-item">
+            <summary>Why Breathe Through Your Nose</summary>
+            <div class="acc-body">
+              <ul>
+                <li>Filters and humidifies the air you breathe</li>
+                <li>Supports better oxygen flow</li>
+                <li>Calms your nervous system for deeper rest</li>
+                <li>The way your body is built to breathe at night</li>
+              </ul>
+            </div>
+          </details>
+          <details class="acc-item">
+            <summary>A Habit, Not a Fix</summary>
+            <div class="acc-body">
+              <p>One patch. Every night. That's it.</p>
+              <p>SWAS isn't a cure — it's a simple habit that trains your body toward better breathing, night after night.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SNORING + BEFORE/AFTER -->
+  <section class="snore-sec">
+    <div class="wrap">
+      <div class="snore-head">
+        <span class="eyebrow">The Real Problem</span>
+        <h2>Snoring starts with an open mouth.</h2>
+        <p>One of the most common sleep complaints in Nepal — and the person snoring is usually the last to know.</p>
+      </div>
+      <div class="ba-grid">
+        <div class="ba-col ba-before">
+          <!-- Swap for a real photo: <img class="ba-col-img" src="Images/before.jpg" alt="Before SWAS"> -->
+          <div class="img-placeholder ba-col-img">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/><path d="M21 16l-5.5-5.5L9 17" stroke="currentColor" stroke-width="1.5"/></svg>
+            Add "Before" photo
+          </div>
+          <h3>Before SWAS</h3>
+          <ul>
+            <li>Mouth falls open during sleep</li>
+            <li>Loud, disruptive snoring</li>
+            <li>Dry, sticky mouth by morning</li>
+            <li>Restless, low-quality sleep</li>
+          </ul>
+        </div>
+        <div class="ba-arrow">→</div>
+        <div class="ba-col ba-after">
+          <!-- Swap for a real photo: <img class="ba-col-img" src="Images/after.jpg" alt="After SWAS"> -->
+          <div class="img-placeholder ba-col-img">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/><path d="M21 16l-5.5-5.5L9 17" stroke="currentColor" stroke-width="1.5"/></svg>
+            Add "After" photo
+          </div>
+          <h3>After SWAS</h3>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Lips gently held closed</li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Quieter, calmer nights</li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Hydrated mouth, fresh morning</li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Deeper, more consistent sleep</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIDE EFFECTS OF SNORING -->
+  <section class="effects-img-sec">
+    <div class="wrap effects-img-grid">
+      <div class="effects-img-media">
+        <!-- Swap for a real photo: <img src="Images/snoring-effects.jpg" alt=""> -->
+        <div class="img-placeholder">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/><path d="M21 16l-5.5-5.5L9 17" stroke="currentColor" stroke-width="1.5"/></svg>
+          Add photo
+        </div>
+      </div>
+      <div class="effects-img-copy">
+        <span class="eyebrow">Beyond The Noise</span>
+        <h2>What Snoring Actually Costs You</h2>
+        <ul class="effects-img-list">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Fragmented, lower-quality sleep</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Dry mouth and sore throat by morning</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Daytime grogginess and low energy</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Disturbed sleep for your partner or family</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAIN REACTION (EDUCATIONAL) -->
+  <section class="chain-sec">
+    <div class="wrap">
+      <div class="chain-head">
+        <span class="eyebrow">The Connection</span>
+        <h2>Mouth Breathing Can Lead to Snoring. Snoring Can Lead to Sleep Apnea.</h2>
+        <p>It's a chain reaction most people never notice — until it's serious.</p>
+      </div>
+      <div class="chain-steps">
+        <div class="chain-step">
+          <!-- Swap for a real illustration: <img class="chain-img" src="Images/chain-1.jpg" alt="Mouth breather"> -->
+          <div class="img-placeholder chain-img">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/><path d="M21 16l-5.5-5.5L9 17" stroke="currentColor" stroke-width="1.5"/></svg>
+            Add image
+          </div>
+          <h3>Mouth Breather</h3>
+          <p>Breathing through the mouth instead of the nose, often during sleep.</p>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step">
+          <!-- Swap for a real illustration: <img class="chain-img" src="Images/chain-2.jpg" alt="Snoring"> -->
+          <div class="img-placeholder chain-img">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/><path d="M21 16l-5.5-5.5L9 17" stroke="currentColor" stroke-width="1.5"/></svg>
+            Add image
+          </div>
+          <h3>Snoring</h3>
+          <p>A relaxed, narrowed airway vibrates as air passes through — that's the sound.</p>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step">
+          <!-- Swap for a real illustration: <img class="chain-img" src="Images/chain-3.jpg" alt="Sleep apnea"> -->
+          <div class="img-placeholder chain-img">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/><path d="M21 16l-5.5-5.5L9 17" stroke="currentColor" stroke-width="1.5"/></svg>
+            Add image
+          </div>
+          <h3>Sleep Apnea</h3>
+          <p>The airway can narrow enough to briefly block airflow entirely, night after night.</p>
+        </div>
+      </div>
+
+      <div class="chain-stat">
+        <span class="chain-stat-num">~1 Billion</span>
+        <span class="chain-stat-text">adults worldwide are estimated to live with obstructive sleep apnea — most of them undiagnosed. (Benjafield et al., <em>Lancet Respiratory Medicine</em>, 2019)</span>
+      </div>
+      <div class="chain-risks">
+        <p>Left unmanaged long-term, it's a recognized risk factor for <strong>high blood pressure, heart disease, and type 2 diabetes.</strong></p>
+      </div>
+      <div class="chain-note">
+        <p>SWAS isn't a treatment for sleep apnea — that needs a doctor and, often, a sleep study. But building the nightly habit of nasal breathing is one small way to work with your body instead of against it. If you notice gasping, choking, or long pauses in breathing at night, that's worth a real conversation with a doctor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO USE -->
+  <section class="howuse-sec">
+    <div class="wrap">
+      <div class="howuse-head">
+        <span class="eyebrow">Simple By Design</span>
+        <h2>How to Use</h2>
+      </div>
+      <div class="howuse-grid">
+        <div class="howuse-card">
+          <!-- Swap for a real photo: <img src="Images/step1.jpg" alt="Clean and dry lips"> -->
+          <div class="img-placeholder">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/><path d="M21 16l-5.5-5.5L9 17" stroke="currentColor" stroke-width="1.5"/></svg>
+            Add Step 1 photo
+          </div>
+          <div class="howuse-num">1</div>
+          <h3>Clean &amp; Dry</h3>
+          <p>Wipe your lips clean and make sure they're dry before bed.</p>
+        </div>
+        <div class="howuse-card">
+          <!-- Swap for a real photo: <img src="Images/step2.jpg" alt="Apply the patch"> -->
+          <div class="img-placeholder">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/><path d="M21 16l-5.5-5.5L9 17" stroke="currentColor" stroke-width="1.5"/></svg>
+            Add Step 2 photo
+          </div>
+          <div class="howuse-num">2</div>
+          <h3>Apply Gently</h3>
+          <p>Peel the backing and press the patch over closed lips.</p>
+        </div>
+        <div class="howuse-card">
+          <!-- Swap for a real photo: <img src="Images/ste3.jpg" alt="Peel off in the morning"> -->
+          <div class="img-placeholder">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/><path d="M21 16l-5.5-5.5L9 17" stroke="currentColor" stroke-width="1.5"/></svg>
+            Add Step 3 photo
+          </div>
+          <div class="howuse-num">3</div>
+          <h3>Peel Off</h3>
+          <p>Remove gently in the morning. No residue, no fuss.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="compare-sec">
+    <div class="wrap">
+      <div class="compare-head">
+        <span class="eyebrow">Why The Hole Matters</span>
+        <h2>Patch With a Hole vs. Without</h2>
+        <p>Most tape seals your mouth shut completely. SWAS doesn't.</p>
+      </div>
+      <table class="compare-table">
+        <thead><tr>
+          <th></th>
+          <th class="brand">
+            <!-- Swap for a real photo: <img class="compare-col-img" src="Images/cut-shape.png" alt="SWAS"> -->
+            <div class="img-placeholder compare-col-img"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/><path d="M21 16l-5.5-5.5L9 17" stroke="currentColor" stroke-width="1.5"/></svg></div>
+            SWAS
+          </th>
+          <th class="other">
+            <!-- Swap for a real photo: <img class="compare-col-img" src="Images/ordinary-tape.jpg" alt="Ordinary tape"> -->
+            <div class="img-placeholder compare-col-img"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/><path d="M21 16l-5.5-5.5L9 17" stroke="currentColor" stroke-width="1.5"/></svg></div>
+            Ordinary Tape
+          </th>
+        </tr></thead>
+        <tbody>
+          <tr><td>Design</td><td class="brand-cell">Soft oval, open center</td><td class="other-cell">Flat strip, fully sealed</td></tr>
+          <tr><td>Airflow</td><td class="brand-cell">Small natural opening</td><td class="other-cell">No gap at all</td></tr>
+          <tr><td>Feel</td><td class="brand-cell">Gentle, less restrictive</td><td class="other-cell">Can feel tight, sealed shut</td></tr>
+          <tr><td>Talk or Cough</td><td class="brand-cell">Slightly possible, open center</td><td class="other-cell">Not possible, fully sealed</td></tr>
+          <tr><td>Removal</td><td class="brand-cell">Peels off clean, no residue</td><td class="other-cell">Can pull skin, sticky residue</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- REVIEWS + REELS (reels = same 7 videos as the running LP: Images/1.mp4 … Images/7.mp4) -->
+  <section class="reviews-sec" id="reviews">
+    <div class="wrap">
+      <div class="reviews-head">
+        <span class="eyebrow">Real Customers</span>
+        <h2>SWAS Video Stories</h2>
+      </div>
+
+      <div class="reels-track" id="reelsTrack">
+        <article class="reel-card"><div class="reel-frame">
+          <video src="Images/1.mp4" playsinline preload="none" muted loop></video>
+          <button class="reel-play" aria-label="Play video">▶</button>
+          <div class="reel-controls"><button class="reel-mute" aria-label="Mute or unmute">🔇</button></div>
+        </div></article>
+
+        <article class="reel-card"><div class="reel-frame">
+          <video src="Images/2.mp4" playsinline preload="none" muted loop></video>
+          <button class="reel-play" aria-label="Play video">▶</button>
+          <div class="reel-controls"><button class="reel-mute" aria-label="Mute or unmute">🔇</button></div>
+        </div></article>
+
+        <article class="reel-card"><div class="reel-frame">
+          <video src="Images/3.mp4" playsinline preload="none" muted loop></video>
+          <button class="reel-play" aria-label="Play video">▶</button>
+          <div class="reel-controls"><button class="reel-mute" aria-label="Mute or unmute">🔇</button></div>
+        </div></article>
+
+        <article class="reel-card"><div class="reel-frame">
+          <video src="Images/4.mp4" playsinline preload="none" muted loop></video>
+          <button class="reel-play" aria-label="Play video">▶</button>
+          <div class="reel-controls"><button class="reel-mute" aria-label="Mute or unmute">🔇</button></div>
+        </div></article>
+
+        <article class="reel-card"><div class="reel-frame">
+          <video src="Images/5.mp4" playsinline preload="none" muted loop></video>
+          <button class="reel-play" aria-label="Play video">▶</button>
+          <div class="reel-controls"><button class="reel-mute" aria-label="Mute or unmute">🔇</button></div>
+        </div></article>
+
+        <article class="reel-card"><div class="reel-frame">
+          <video src="Images/6.mp4" playsinline preload="none" muted loop></video>
+          <button class="reel-play" aria-label="Play video">▶</button>
+          <div class="reel-controls"><button class="reel-mute" aria-label="Mute or unmute">🔇</button></div>
+        </div></article>
+
+        <article class="reel-card"><div class="reel-frame">
+          <video src="Images/7.mp4" playsinline preload="none" muted loop></video>
+          <button class="reel-play" aria-label="Play video">▶</button>
+          <div class="reel-controls"><button class="reel-mute" aria-label="Mute or unmute">🔇</button></div>
+        </div></article>
+      </div>
+
+      <!-- ================================================================
+           WRITTEN REVIEWS — hand-edit these cards with real reviews.
+           Cards still saying "Customer Name" are automatically hidden on
+           page load, and the star average only counts filled-in cards.
+           Copy a card block to add more.
+           ================================================================ -->
+      <div class="review-summary" id="reviewSummary"></div>
+      <div class="reviews-grid-full">
+
+        <div class="review-card">
+          <div class="rc-top">
+            <div class="rc-photo-fallback"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+            <div class="rc-name-wrap">
+              <span class="rc-name">Customer Name</span>
+              <span class="rc-verified"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified</span>
+            </div>
+          </div>
+          <div class="rc-stars">★★★★★</div>
+          <p class="rc-text">Write this customer's review here.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="rc-top">
+            <div class="rc-photo-fallback"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+            <div class="rc-name-wrap">
+              <span class="rc-name">Customer Name</span>
+              <span class="rc-verified"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified</span>
+            </div>
+          </div>
+          <div class="rc-stars">★★★★★</div>
+          <p class="rc-text">Write this customer's review here.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="rc-top">
+            <div class="rc-photo-fallback"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+            <div class="rc-name-wrap">
+              <span class="rc-name">Customer Name</span>
+              <span class="rc-verified"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified</span>
+            </div>
+          </div>
+          <div class="rc-stars">★★★★★</div>
+          <p class="rc-text">Write this customer's review here.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="rc-top">
+            <div class="rc-photo-fallback"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+            <div class="rc-name-wrap">
+              <span class="rc-name">Customer Name</span>
+              <span class="rc-verified"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified</span>
+            </div>
+          </div>
+          <div class="rc-stars">★★★★★</div>
+          <p class="rc-text">Write this customer's review here.</p>
+        </div>
 
       </div>
     </div>
+  </section>
 
-    <button class="order-now" id="mainOrderBtn">Order Now</button>
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="faq-head"><h2>Questions, Answered</h2></div>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>What is the SWAS Mouth Patch?</summary>
+          <div class="faq-a">A gentle oval patch worn over the lips during sleep. It encourages nasal breathing, which can reduce snoring, dry mouth, and disrupted sleep.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Will I feel suffocated?</summary>
+          <div class="faq-a">No. The open center keeps it gentle instead of fully sealed — it guides nasal breathing without a trapped feeling.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Is it safe for sensitive skin?</summary>
+          <div class="faq-a">Yes — hypoallergenic, latex-free adhesive suited to most skin types.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Does it work with a beard?</summary>
+          <div class="faq-a">Yes, as long as the skin above and below the lips isn't covered by thick facial hair.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can children use it?</summary>
+          <div class="faq-a">Children above 5, with parental supervision.</div>
+        </details>
+        <details class="faq-item">
+          <summary>When will I notice a difference?</summary>
+          <div class="faq-a">Many notice less dry mouth from night one. Deeper sleep improvements build over 1–2 weeks.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How does the 30-night guarantee work with Cash on Delivery?</summary>
+          <div class="faq-a">Since you pay on delivery, there's no online charge to reverse. If SWAS isn't working for you within 30 nights, message us on WhatsApp and we'll sort out a replacement or refund directly with you.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What if my order arrives damaged or wrong?</summary>
+          <div class="faq-a">Message us on WhatsApp with a photo and we'll replace it — no extra cost to you.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>Tonight's a good night to start.</h2>
+      <p>Free COD across Nepal. 30-night money-back guarantee.</p>
+      <button class="btn" onclick="openOrder()">Order Now — From Rs 1,200</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="margin-bottom:12px;"><span class="oval"></span> SWAS</div>
+          <p style="max-width:26ch;">Patch away the snore. Made for calmer, deeper nights.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="tel:+9779740265823">+977 9740265823</a>
+          <a href="mailto:patchswas@gmail.com">patchswas@gmail.com</a>
+          <p>24-hour customer support</p>
+        </div>
+        <div class="footer-col">
+          <h4>Follow</h4>
+          <a href="https://www.facebook.com/profile.php?id=61578174712829" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/swasmouthpatch/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@swas.mouth.patch" target="_blank" rel="noopener">TikTok</a>
+        </div>
+        <div class="footer-col">
+          <h4>Our Promise</h4>
+          <p>30-day money-back guarantee</p>
+          <p>Skin-safe, hypoallergenic adhesive</p>
+          <p>Free Cash on Delivery in Nepal</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SWAS. All rights reserved.</span>
+        <span>Transform your sleep, transform your life.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY CART BAR -->
+  <div class="sticky-bar" id="stickyBar">
+    <div class="sticky-bar-inner">
+      <img class="sticky-thumb" src="Images/cut-box.png" alt="">
+      <div class="sticky-info">
+        <span class="sticky-name">SWAS Mouth Patch</span>
+        <span class="sticky-price" id="stickyPrice">Rs 1,900</span>
+      </div>
+      <button class="btn" onclick="openOrder()">Order Now</button>
+    </div>
   </div>
-</section>
 
-<!-- STICKY CTA BAR -->
-<div class="sticky-cta" id="stickyCta">
-  <div class="sticky-cta__info">
-    <strong>SWAS Mouth Patch</strong>
-    <span class="sticky-cta__price">From Rs 1,200/-</span>
+  <!-- WHATSAPP -->
+  <a class="whatsapp-fab" href="https://wa.me/9779740265823?text=Hi%20SWAS" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 004.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C22 6.45 17.5 2 12.04 2zm0 18.1h-.01a8.2 8.2 0 01-4.18-1.14l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 012.41 5.83c0 4.55-3.7 8.2-8.25 8.2zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+  </a>
+
+  <!-- ORDER MODAL — field names (name, phone, address, package, source) match the old LP / Google Sheet -->
+  <div class="modal-overlay" id="orderModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeOrder()" aria-label="Close">&times;</button>
+      <h3>Complete Your Order</h3>
+      <p class="modal-sub" id="modalPackLine"></p>
+      <form id="swas-order-form">
+        <div class="field">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="name" required placeholder="Eg: Suman Gurung">
+        </div>
+        <div class="field">
+          <label for="phone">Phone Number (10-digit Nepali)</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            pattern="9[78][0-9]{8}"
+            maxlength="10"
+            required
+            placeholder="98xxxxxxxx"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            title="Enter a valid 10-digit Nepali number starting with 97 or 98">
+        </div>
+        <div class="field">
+          <label for="address">Delivery Address</label>
+          <textarea id="address" name="address" required rows="3" placeholder="Street, City, District"></textarea>
+        </div>
+        <div class="field">
+          <label for="pkgSelect">Package</label>
+          <select id="pkgSelect" name="package"></select>
+        </div>
+
+        <!-- Filled automatically from detectSource() — not shown to the visitor -->
+        <input type="hidden" name="source" id="leadSource" value="">
+
+        <button type="submit" class="btn btn-block">Place Order</button>
+      </form>
+      <div class="loader" id="loader"></div>
+      <p class="modal-guarantee">Cash on Delivery · 30-Day Risk-Free Guarantee</p>
+    </div>
   </div>
-  <button class="sticky-cta__btn" id="stickyOrderBtn">Order Now</button>
-</div>
-
-<!-- ========== ORDER MODAL ========== -->
-<div class="modal" id="swas-modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3>Complete Your Order</h3>
-
-    <form id="swas-order-form">
-      <label>Full Name
-        <input name="name" required placeholder="Eg: Suman Gurung" />
-      </label>
-
-      <label>Phone Number (10-digit Nepali)
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          pattern="9[78][0-9]{8}"
-          maxlength="10"
-          required
-          placeholder="98xxxxxxxx"
-          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-          title="Enter a valid 10-digit Nepali number starting with 97 or 98"
-        />
-      </label>
-
-      <label>Delivery Address
-        <textarea name="address" required rows="3" placeholder="Street, City, District"></textarea>
-      </label>
-
-      <label>Package
-        <select name="package" id="pkgSelect"></select>
-      </label>
-
-      <!-- Filled automatically from detectSource() below — not shown to the visitor -->
-      <input type="hidden" name="source" id="leadSource" value="">
-
-      <button class="submit-btn">Place Order</button>
-    </form>
-
-    <div class="loader" id="loader"></div>
-  </div>
-</div>
 
 <script>
-  /* ===== HERO CAROUSEL ===== */
-  (function () {
-    const wrapper = document.getElementById('sm-carousel');
-    const hero = wrapper.querySelector('#hero-img');
-    const thumbsWrap = document.getElementById('hero-thumbs');
-
-    const images = [
-      "Images/Clinically-trusted-for-peaceful-sleep-10.png",
-      "Images/image.jpg",
-      "Images/5-2.png",
-      "Images/🛌.png"
+  /* ===== PROMO BANNER (rotating, same messages as old LP) ===== */
+  (function(){
+    var banner = document.getElementById('promoBanner');
+    var msgs = [
+      'Festival Offer — 35% Off + Free COD Across Nepal',
+      '✅ Free Delivery All Over Nepal'
     ];
-
-    let index = 0;
-
-    // Thumbnails are built only AFTER the page has finished loading,
-    // so they don't compete with the main hero image for bandwidth.
-    const thumbs = [];
-    function updateActiveThumb() {
-      thumbs.forEach((t, i) => t.classList.toggle('active', i === index));
-    }
-    function buildThumbs() {
-      images.forEach((src, i) => {
-        const t = document.createElement('img');
-        t.src = src;
-        t.alt = 'View ' + (i + 1);
-        t.loading = 'lazy';
-        t.decoding = 'async';
-        t.addEventListener('click', () => show(i));
-        thumbsWrap.appendChild(t);
-        thumbs.push(t);
-      });
-      updateActiveThumb();
-    }
-    window.addEventListener('load', () => (window.requestIdleCallback || setTimeout)(buildThumbs));
-
-    function show(i) {
-      index = (i + images.length) % images.length;
-      hero.src = images[index];
-      updateActiveThumb();
-    }
-
-    wrapper.querySelector(".arrow.left").addEventListener("click", () => show(index - 1));
-    wrapper.querySelector(".arrow.right").addEventListener("click", () => show(index + 1));
-
-    let startX = 0, endX = 0;
-    hero.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-    hero.addEventListener('touchend', e => {
-      endX = e.changedTouches[0].clientX;
-      const diff = endX - startX;
-      if (Math.abs(diff) > 40) { if (diff < 0) show(index + 1); else show(index - 1); }
-    });
+    var i = 0;
+    setInterval(function(){ i = (i + 1) % msgs.length; banner.textContent = msgs[i]; }, 3000);
   })();
 
-  /* ===== LEAD SOURCE DETECTION =====
+  /* ===== NAV + GALLERY ===== */
+  function toggleNav(){ document.getElementById('mobileNavPanel').classList.toggle('open'); }
+  function closeNav(){ document.getElementById('mobileNavPanel').classList.remove('open'); }
+
+  function setMain(el, src){
+    document.getElementById('mainImage').src = src;
+    document.querySelectorAll('.thumb').forEach(function(t){ t.classList.remove('active'); });
+    el.classList.add('active');
+  }
+
+  /* ===== LEAD SOURCE DETECTION (unchanged from old LP) =====
      Buckets the visit into "Google Ads", "Facebook Ads" or "Direct" and keeps
      the first-touch source in sessionStorage for the whole visit. */
   (function detectSource() {
-    const params = new URLSearchParams(window.location.search);
-    const utmSource = (params.get('utm_source') || '').toLowerCase();
-    const gclid = params.get('gclid');
-    const fbclid = params.get('fbclid');
+    var params = new URLSearchParams(window.location.search);
+    var utmSource = (params.get('utm_source') || '').toLowerCase();
+    var gclid = params.get('gclid');
+    var fbclid = params.get('fbclid');
 
-    let source = null;
+    var source = null;
     if (utmSource.includes('google') || utmSource.includes('adwords') || gclid) {
       source = 'Google Ads';
     } else if (
@@ -835,672 +972,203 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
       source = 'Facebook Ads';
     }
 
-    if (source) {
-      sessionStorage.setItem('swas_source', source);
-    } else if (!sessionStorage.getItem('swas_source')) {
-      sessionStorage.setItem('swas_source', 'Direct');
-    }
+    try {
+      if (source) {
+        sessionStorage.setItem('swas_source', source);
+      } else if (!sessionStorage.getItem('swas_source')) {
+        sessionStorage.setItem('swas_source', 'Direct');
+      }
+    } catch (e) {}
   })();
 
-  /* ===== PACKAGE SELECTION + MODAL ===== */
-  const modal = document.getElementById('swas-modal');
-  const pkgSelect = document.getElementById('pkgSelect');
-  const loader = document.getElementById('loader');
-  const cards = [...document.querySelectorAll('#swas-package-wrapper .pkg-card')];
-  const popularCard = cards.find(c => c.classList.contains('popular'));
+  /* ===== PACKAGES + ORDER MODAL =====
+     Single source of truth = the .pack-pill elements (data-name / data-price).
+     Dropdown option value format is identical to the old LP:
+     "Starter Pack (1 month supply) – Rs 1200"                                  */
+  var packs = Array.prototype.slice.call(document.querySelectorAll('#packRow .pack-pill'));
+  var popularPack = packs.filter(function(p){ return p.classList.contains('popular'); })[0] || packs[0];
+  var pkgSelect = document.getElementById('pkgSelect');
+  var modal = document.getElementById('orderModal');
+  var loader = document.getElementById('loader');
 
-  function setDefaultHighlight() {
-    cards.forEach(c => c.classList.remove('highlighted'));
-    if (popularCard) popularCard.classList.add('highlighted');
-  }
+  function fmt(n){ return 'Rs ' + Number(n).toLocaleString('en-US'); }
+  function combined(p){ return p.dataset.name + ' – Rs ' + p.dataset.price; }
 
-  function highlightCard(selectedCard) {
-    cards.forEach(c => c.classList.remove('highlighted'));
-    selectedCard.classList.add('highlighted');
-  }
-
-  cards.forEach(card => {
-    const combinedValue = `${card.dataset.name} – Rs ${card.dataset.price}`;
-    const opt = document.createElement('option');
-    opt.value = combinedValue;
-    opt.textContent = combinedValue;
+  packs.forEach(function(p){
+    var opt = document.createElement('option');
+    opt.value = combined(p);
+    opt.textContent = combined(p);
     pkgSelect.appendChild(opt);
+  });
 
-    card.addEventListener('click', () => {
-      pkgSelect.value = combinedValue;
-      modal.style.display = 'flex';
-      highlightCard(card);
-    });
+  function selectPack(el){
+    packs.forEach(function(p){ p.classList.remove('active'); });
+    el.classList.add('active');
+    document.getElementById('ppNow').textContent = fmt(el.dataset.price);
+    document.getElementById('ppWas').textContent = fmt(el.dataset.was);
+    document.getElementById('ppSave').textContent = 'Save ' + fmt(el.dataset.save);
+    document.getElementById('stickyPrice').textContent = fmt(el.dataset.price);
+  }
 
-    const btn = card.querySelector('.choose-btn');
-    if (btn) {
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        pkgSelect.value = combinedValue;
-        modal.style.display = 'flex';
-        highlightCard(card);
-      });
+  function activePack(){
+    return packs.filter(function(p){ return p.classList.contains('active'); })[0] || popularPack;
+  }
+
+  function openOrder(){
+    var pack = activePack();
+    pkgSelect.value = combined(pack);
+    document.getElementById('modalPackLine').textContent = pack.dataset.name + ' — ' + fmt(pack.dataset.price);
+    modal.classList.add('open');
+  }
+  function closeOrder(){ modal.classList.remove('open'); }
+  modal.addEventListener('click', function(e){ if (e.target === modal) closeOrder(); });
+
+  pkgSelect.addEventListener('change', function(){
+    var match = packs.filter(function(p){ return combined(p) === pkgSelect.value; })[0];
+    if (match) {
+      selectPack(match);
+      document.getElementById('modalPackLine').textContent = match.dataset.name + ' — ' + fmt(match.dataset.price);
     }
   });
 
-  document.querySelector('.close').onclick = () => {
-    modal.style.display = 'none';
-    setDefaultHighlight();
-  };
-
-  window.addEventListener('click', e => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-      setDefaultHighlight();
-    }
-  });
-
-  pkgSelect.addEventListener('change', () => {
-    const selected = pkgSelect.value;
-    const matchedCard = cards.find(card => `${card.dataset.name} – Rs ${card.dataset.price}` === selected);
-    if (matchedCard) highlightCard(matchedCard);
-  });
-
-  /* Main hero "Order Now" button opens the modal with the highlighted package */
-  document.getElementById('mainOrderBtn').addEventListener('click', () => {
-    const current = document.querySelector('#swas-package-wrapper .pkg-card.highlighted') || popularCard;
-    if (current) current.click();
-  });
-
-  /* ===== STICKY CTA BAR ===== */
-  const stickyCta = document.getElementById('stickyCta');
-  const heroSectionEl = document.getElementById('hero-section');
-
-  const stickyObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        const show = !entry.isIntersecting;
-        stickyCta.classList.toggle('visible', show);
-        document.body.classList.toggle('with-sticky-cta', show);
-      });
-    },
-    { threshold: 0 }
-  );
-  stickyObserver.observe(heroSectionEl);
-
-  document.getElementById('stickyOrderBtn').addEventListener('click', () => {
-    const current = document.querySelector('#swas-package-wrapper .pkg-card.highlighted') || popularCard;
-    if (current) current.click();
-  });
-
-  /* ===== FORM SUBMISSION =====
+  /* ===== FORM SUBMISSION (same backend as old LP) =====
      fetch(..., { keepalive: true }) — NOT navigator.sendBeacon(), because Apps
      Script's /exec URL redirects and sendBeacon doesn't follow redirects.
      keepalive lets the request survive the page navigating away. */
   var SWAS_ORDER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzxqCYthT94g-0tTczxrA5ZaIvyZ3r7Ex8SYsUtFfwgwzgUlUFJibmB1MVqfgC4VVbT_w/exec';
 
-  document.getElementById('swas-order-form').addEventListener('submit', (e) => {
+  document.getElementById('swas-order-form').addEventListener('submit', function(e){
     e.preventDefault();
     loader.style.display = 'block';
 
-    document.getElementById('leadSource').value = sessionStorage.getItem('swas_source') || 'Direct';
+    var src = 'Direct';
+    try { src = sessionStorage.getItem('swas_source') || 'Direct'; } catch (err) {}
+    document.getElementById('leadSource').value = src;
 
-    const fd = new FormData(e.target);
+    var fd = new FormData(e.target);
 
     fetch(SWAS_ORDER_ENDPOINT, {
       method: 'POST',
       mode: 'no-cors',
       keepalive: true,
-      body: fd,
-    }).catch((err) => console.error('Order submission failed to send:', err));
+      body: fd
+    }).catch(function(err){ console.error('Order submission failed to send:', err); });
 
     // Tell Meta this visitor became a lead.
     // TODO (Google Ads): once you create a "Lead" conversion action, add:
     // gtag('event', 'conversion', {'send_to': 'AW-18452846314/YOUR_LABEL'});
     fbq('track', 'Lead');
 
-    // Tracking scripts are loaded lazily now, so make sure they load, and give
-    // the pixel a brief moment to fire before leaving the page.
+    // Tracking scripts load lazily, so make sure they load, and give the pixel
+    // a brief moment to fire before leaving the page.
     loadTracking();
-    setTimeout(() => { window.location.href = 'thankyou.html'; }, 400);
+    setTimeout(function(){ window.location.href = 'thankyou.html'; }, 400);
   });
-</script>
 
-<!-- ============================================================
-     ISOLATED CONTENT (trust badges through footer)
-============================================================ -->
-<div class="swas-isolated-container">
+  /* ===== STICKY CART BAR — shows once the main Order button scrolls out of view ===== */
+  var heroOrderBtn = document.querySelector('.buy-box .btn-block');
+  if (heroOrderBtn && 'IntersectionObserver' in window) {
+    var stickyObserver = new IntersectionObserver(function(entries){
+      var showBar = !entries[0].isIntersecting;
+      document.getElementById('stickyBar').classList.toggle('show', showBar);
+      document.body.classList.toggle('has-sticky-bar', showBar);
+    }, { threshold: 0 });
+    stickyObserver.observe(heroOrderBtn);
+  }
 
-  <!-- TRUST BADGES -->
-  <div class="trust-badges-wrapper">
-    <section class="trust-section">
-      <div class="badges-grid">
-        <div class="badge-card">
-          <div class="icon-container cash-icon">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-          </div>
-          <h3 class="badge-title"><span class="highlight">100% Free</span><br />Cash on Delivery</h3>
-        </div>
-        <div class="badge-card">
-          <div class="icon-container guarantee-icon">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.4C15.4,11.8 16,12.4 16,13.3V16.7C16,17.4 15.4,18 14.7,18H9.2C8.6,18 8,17.4 8,16.8V13.2C8,12.3 8.4,11.7 9,11.3V10C9,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.2,9 10.2,10V11.3H13.8V10C13.8,9 12.8,8.2 12,8.2Z"/></svg>
-          </div>
-          <h3 class="badge-title"><span class="highlight blue">30-Day</span><br />Risk-Free Guarantee</h3>
-        </div>
-        <div class="badge-card">
-          <div class="icon-container safety-icon">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M21,11C21,16.55 17.16,21.74 12,23C6.84,21.74 3,16.55 3,11V5L12,1L21,5V11M12,6A3,3 0 0,0 9,9A3,3 0 0,0 12,12A3,3 0 0,0 15,9A3,3 0 0,0 12,6M17,18H7V16.5C7,14.56 10.22,13.5 12,13.5C13.78,13.5 17,14.56 17,16.5V18Z"/></svg>
-          </div>
-          <h3 class="badge-title"><span class="highlight purple">Medical Grade</span><br />Safety Approved</h3>
-        </div>
-      </div>
-    </section>
-  </div>
+  /* ===== REELS — first-frame thumbnail, tap ▶ to play, no autoplay (same logic as old LP) ===== */
+  (function(){
+    var section = document.getElementById('reviews');
+    var cards = document.querySelectorAll('.reel-card');
 
-  <!-- VIDEO STORIES — NO AUTOPLAY.
-       Each card shows the video's first frame as a thumbnail; the video only plays when ▶ is tapped.
-       Optional: add poster="Images/poster1.jpg" to any <video> to use your own image instead. -->
-  <section id="swas-stories-section">
-    <div class="swas-stories-inner">
-      <header class="swas-stories-header"><h2>SWAS Video Stories</h2></header>
-
-      <div class="swas-track-wrapper">
-        <div class="swas-stories-track">
-
-          <article class="swas-story-card">
-            <div class="swas-story-video-wrap">
-              <video src="Images/1.mp4" playsinline preload="none" muted loop></video>
-              <button class="swas-play-btn" aria-label="Play video">▶</button>
-              <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
-            </div>
-          </article>
-
-          <article class="swas-story-card">
-            <div class="swas-story-video-wrap">
-              <video src="Images/2.mp4" playsinline preload="none" muted loop></video>
-              <button class="swas-play-btn" aria-label="Play video">▶</button>
-              <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
-            </div>
-          </article>
-
-          <article class="swas-story-card">
-            <div class="swas-story-video-wrap">
-              <video src="Images/3.mp4" playsinline preload="none" muted loop></video>
-              <button class="swas-play-btn" aria-label="Play video">▶</button>
-              <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
-            </div>
-          </article>
-
-          <article class="swas-story-card">
-            <div class="swas-story-video-wrap">
-              <video src="Images/4.mp4" playsinline preload="none" muted loop></video>
-              <button class="swas-play-btn" aria-label="Play video">▶</button>
-              <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
-            </div>
-          </article>
-
-          <article class="swas-story-card">
-            <div class="swas-story-video-wrap">
-              <video src="Images/5.mp4" playsinline preload="none" muted loop></video>
-              <button class="swas-play-btn" aria-label="Play video">▶</button>
-              <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
-            </div>
-          </article>
-
-          <article class="swas-story-card">
-            <div class="swas-story-video-wrap">
-              <video src="Images/6.mp4" playsinline preload="none" muted loop></video>
-              <button class="swas-play-btn" aria-label="Play video">▶</button>
-              <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
-            </div>
-          </article>
-
-          <article class="swas-story-card">
-            <div class="swas-story-video-wrap">
-              <video src="Images/7.mp4" playsinline preload="none" muted loop></video>
-              <button class="swas-play-btn" aria-label="Play video">▶</button>
-              <div class="swas-story-controls"><button class="swas-mute-toggle">🔇</button></div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const storySection = document.getElementById("swas-stories-section");
-    const storyCards = document.querySelectorAll(".swas-story-card");
-
-    /* Show the first frame of each video as its thumbnail, WITHOUT playing it.
-       "#t=0.1" tells the browser to display the frame at 0.1s, and
-       preload="metadata" downloads only the small amount needed for that.
-       If a video has a poster="..." image, that is used instead and this is skipped. */
-    function loadThumbnail(video) {
-      if (video.hasAttribute("poster") || video.dataset.thumbLoaded) return;
-      video.dataset.thumbLoaded = "1";
-      const base = (video.getAttribute("src") || "").split("#")[0];
-      video.preload = "metadata";
-      video.src = base + "#t=0.1";
+    // Show the first frame as a thumbnail WITHOUT playing ("#t=0.1" + preload=metadata).
+    function loadThumbnail(video){
+      if (video.hasAttribute('poster') || video.dataset.thumbLoaded) return;
+      video.dataset.thumbLoaded = '1';
+      var base = (video.getAttribute('src') || '').split('#')[0];
+      video.preload = 'metadata';
+      video.src = base + '#t=0.1';
     }
 
-    // Only fetch thumbnails when the reels section is close to the screen,
-    // so they don't slow down the top of the page.
-    const thumbObserver = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          storyCards.forEach(c => loadThumbnail(c.querySelector("video")));
-          obs.disconnect();
-        }
-      });
-    }, { rootMargin: "400px 0px" });
-    thumbObserver.observe(storySection);
+    // Only fetch thumbnails when the reels section is near the screen.
+    if ('IntersectionObserver' in window) {
+      var thumbObserver = new IntersectionObserver(function(entries, obs){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            cards.forEach(function(c){ loadThumbnail(c.querySelector('video')); });
+            obs.disconnect();
+          }
+        });
+      }, { rootMargin: '400px 0px' });
+      thumbObserver.observe(section);
+    } else {
+      cards.forEach(function(c){ loadThumbnail(c.querySelector('video')); });
+    }
 
-    storyCards.forEach(card => {
-      const video   = card.querySelector("video");
-      const playBtn = card.querySelector(".swas-play-btn");
-      const muteBtn = card.querySelector(".swas-mute-toggle");
-
+    cards.forEach(function(card){
+      var video = card.querySelector('video');
+      var playBtn = card.querySelector('.reel-play');
+      var muteBtn = card.querySelector('.reel-mute');
       video.loop = true;
 
       // Tap ▶ to start (with sound, since the visitor asked for it)
-      playBtn.addEventListener("click", () => {
+      playBtn.addEventListener('click', function(){
         loadThumbnail(video);
-        video.preload = "auto";
+        video.preload = 'auto';
         video.muted = false;
-        muteBtn.textContent = "🔊";
-        video.play().catch(() => {});
+        muteBtn.textContent = '🔊';
+        var p = video.play(); if (p && p.catch) p.catch(function(){});
       });
 
       // Tap the video to pause
-      video.addEventListener("click", () => { if (!video.paused) video.pause(); });
+      video.addEventListener('click', function(){ if (!video.paused) video.pause(); });
 
-      video.addEventListener("play", () => {
-        playBtn.style.display = "none";
+      video.addEventListener('play', function(){
+        playBtn.style.display = 'none';
         // only one reel plays at a time
-        storyCards.forEach(c => {
-          const v = c.querySelector("video");
+        cards.forEach(function(c){
+          var v = c.querySelector('video');
           if (v !== video) v.pause();
         });
       });
-      video.addEventListener("pause", () => { playBtn.style.display = "flex"; });
+      video.addEventListener('pause', function(){ playBtn.style.display = 'flex'; });
 
-      muteBtn.addEventListener("click", () => {
+      muteBtn.addEventListener('click', function(){
         video.muted = !video.muted;
-        muteBtn.textContent = video.muted ? "🔇" : "🔊";
+        muteBtn.textContent = video.muted ? '🔇' : '🔊';
       });
 
-      video.addEventListener("error", () => {
-        console.error("SWAS story video failed to load:", video.currentSrc || video.src, video.error);
+      video.addEventListener('error', function(){
+        console.error('SWAS story video failed to load:', video.currentSrc || video.src, video.error);
       });
     });
-  });
-  </script>
+  })();
 
-  <!-- HOW SWAS WORKS -->
-  <section id="swas-how-works-text" class="swas-how-works-text">
-    <div class="swas-how-works-text__inner">
-      <h2 class="swas-how-works-text__headline">
-        SWAS gently closes your mouth so your body can switch to natural nose breathing.
-      </h2>
-      <p class="swas-how-works-text__subcopy">
-        A soft, skin-friendly strip rests over your lips with a light seal &mdash; firm enough to
-        keep your mouth comfortably closed, gentle enough to open whenever you need.
-      </p>
-      <a href="#swas-package-wrapper" class="swas-how-works-text__cta">Order Now</a>
-    </div>
-  </section>
-
-  <!-- DON'T BE A MOUTH BREATHER -->
-  <section id="swas-no-mouth-breather" class="swas-no-mouth-breather">
-    <div class="swas-no-mouth-breather__inner">
-      <div class="swas-no-mouth-breather__content">
-        <h2 class="swas-no-mouth-breather__title">Don't be a mouth breather.</h2>
-        <p class="swas-no-mouth-breather__text">
-          Mouth breathing at night can leave you groggy, dry, and restless. SWAS gently encourages nose breathing,
-          so your body can oxygenate better and your sleep actually restores you.
-        </p>
-        <div class="swas-no-mouth-breather__tags">
-          <span class="swas-no-mouth-breather__tag">Less dry mouth</span>
-          <span class="swas-no-mouth-breather__tag">Quieter nights</span>
-          <span class="swas-no-mouth-breather__tag">Deeper rest</span>
-        </div>
-      </div>
-      <div class="swas-no-mouth-breather__visual">
-        <div class="swas-no-mouth-breather__glow"></div>
-        <div class="swas-no-mouth-breather__image-wrap">
-          <img loading="lazy" decoding="async" src="Images/4.jpg" alt="Person sleeping comfortably with SWAS" class="swas-no-mouth-breather__image" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BENEFITS RING -->
-  <section id="swas-benefits-ring" class="swas-benefits-ring">
-    <div class="swas-benefits-ring__inner">
-      <h2 class="swas-benefits-ring__title">How SWAS Helps You Sleep Better</h2>
-      <p class="swas-benefits-ring__subtitle">A small patch, big impact on how rested you feel in the morning.</p>
-
-      <div class="swas-benefits-ring__layout">
-        <div class="swas-benefits-ring__details swas-benefits-ring__details--left">
-          <div class="swas-benefits-ring__column">
-            <article class="swas-benefits-ring__point"><h3 class="swas-benefits-ring__point-title">Boost oxygen flow by 40%</h3></article>
-            <article class="swas-benefits-ring__point"><h3 class="swas-benefits-ring__point-title">Reduce dry mouth & bad breath</h3></article>
-          </div>
-        </div>
-
-        <div class="swas-benefits-ring__center">
-          <div class="swas-benefits-ring__center-glow"></div>
-          <div class="swas-benefits-ring__image-wrap">
-            <img loading="lazy" decoding="async" src="Images/SWAS-1000-x-400-px-1.png" alt="SWAS mouth patch" class="swas-benefits-ring__image" />
-          </div>
-        </div>
-
-        <div class="swas-benefits-ring__details swas-benefits-ring__details--right">
-          <div class="swas-benefits-ring__column">
-            <article class="swas-benefits-ring__point"><h3 class="swas-benefits-ring__point-title">Wake up refreshed and energized</h3></article>
-            <article class="swas-benefits-ring__point"><h3 class="swas-benefits-ring__point-title">Stop snoring naturally</h3></article>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STEPS -->
-  <section id="swas-steps-v2" class="swas-steps-v2">
-    <div class="swas-steps-v2__inner">
-      <h2 class="swas-steps-v2__title">How To Use SWAS?</h2>
-      <p class="swas-steps-v2__subtitle">Just three simple steps before bed for calmer, deeper sleep.</p>
-
-      <div class="swas-steps-v2__scroller">
-        <div class="swas-steps-v2__row">
-
-          <article class="swas-step-card">
-            <div class="swas-step-card__badge"><span class="swas-step-card__badge-number">1</span></div>
-            <div class="swas-step-card__image-wrap"><img loading="lazy" decoding="async" src="Images/step1.jpg" alt="Clean your lips" class="swas-step-card__image" /></div>
-            <h3 class="swas-step-card__title">Clean &#038; Dry</h3>
-            <p class="swas-step-card__text">Wipe your lips and make sure they are dry.</p>
-          </article>
-
-          <article class="swas-step-card">
-            <div class="swas-step-card__badge"><span class="swas-step-card__badge-number">2</span></div>
-            <div class="swas-step-card__image-wrap"><img loading="lazy" decoding="async" src="Images/step2.jpg" alt="Apply the patch" class="swas-step-card__image" /></div>
-            <h3 class="swas-step-card__title">Apply Patch</h3>
-            <p class="swas-step-card__text">Remove protective backing and stick the patch over your lips gently.</p>
-          </article>
-
-          <article class="swas-step-card">
-            <div class="swas-step-card__badge"><span class="swas-step-card__badge-number">3</span></div>
-            <div class="swas-step-card__image-wrap"><img loading="lazy" decoding="async" src="Images/ste3.jpg" alt="Peaceful sleep" class="swas-step-card__image" /></div>
-            <h3 class="swas-step-card__title">Sleep Better</h3>
-            <p class="swas-step-card__text">Breathe through your nose and enjoy peaceful sleep.</p>
-          </article>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="swas-testimonials">
-    <h2>What Our Customers Are Saying</h2>
-    <div class="testimonial-banner">
-      <div class="testimonial-track">
-
-        <div class="testimonial-card">
-          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_01_46-PM.png" alt="Customer">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"I&#8217;ve been using SWAS for 2 months now and my sleep quality has improved dramatically. I wake up feeling refreshed and no more snoring!"</p>
-          <strong>– Sagar Thapa, Kathmandu</strong>
-        </div>
-
-        <div class="testimonial-card">
-          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-25-2025-06_51_11-PM.png" alt="Customer">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"As someone who struggled with mouth breathing, SWAS has been a game-changer. My mornings feel clearer and I feel more energized!"</p>
-          <strong>– Priyanka Shrestha, Pokhara</strong>
-        </div>
-
-        <div class="testimonial-card">
-          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_14_55-PM.png" alt="Customer">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"Honestly didn't expect much at first, but after just a few nights, I could already tell the difference. SWAS really works!"</p>
-          <strong>– Amit Bhandari, Biratnagar</strong>
-        </div>
-
-        <div class="testimonial-card">
-          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_09_22-PM.png" alt="Customer">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"No more dry mouth and my snoring stopped. This is a small patch but a big solution. Thank you SWAS!"</p>
-          <strong>– Binita Sharma, Butwal</strong>
-        </div>
-
-        <div class="testimonial-card">
-          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_04_36-PM.png" alt="Customer">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"Perfect for my whole family. We sleep peacefully and it improved my child's breathing at night."</p>
-          <strong>– Niraj Karki, Lalitpur</strong>
-        </div>
-
-        <div class="testimonial-card">
-          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_19_22-PM.png" alt="Customer">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"Used it while traveling too — very helpful. Simple, effective and affordable. Definitely recommend."</p>
-          <strong>– Rupa Khadka, Dharan</strong>
-        </div>
-
-        <!-- duplicates for the infinite scroll loop -->
-        <div class="testimonial-card">
-          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-26-2025-12_01_46-PM.png" alt="Customer">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"I&#8217;ve been using SWAS for 2 months now and my sleep quality has improved dramatically. I wake up feeling refreshed and no more snoring!"</p>
-          <strong>– Sagar Thapa, Kathmandu</strong>
-        </div>
-
-        <div class="testimonial-card">
-          <img loading="lazy" decoding="async" class="testimonial-img" src="Images/ChatGPT-Image-Nov-25-2025-06_51_11-PM.png" alt="Customer">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"As someone who struggled with mouth breathing, SWAS has been a game-changer. My mornings feel clearer and I feel more energized!"</p>
-          <strong>– Priyanka Shrestha, Pokhara</strong>
-        </div>
-
-      </div>
-    </div>
-
-    <a href="#swas-package-wrapper" class="japjap-btn">Order Now</a>
-  </section>
-
-  <!-- FAQ -->
-  <section id="swas-faq">
-    <div class="faq-container">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-list">
-
-        <div class="faq-item active always-visible">
-          <button class="faq-question"><span>What is the SWAS Mouth Patch and how does it work?</span></button>
-          <div class="faq-answer">
-            <p>The SWAS Mouth Patch is a gentle adhesive strip designed to encourage nasal breathing during sleep.
-            It keeps the lips softly closed, reducing snoring, dry mouth, and improving oxygen flow and sleep quality.</p>
-          </div>
-        </div>
-
-        <button id="showMoreFaqBtn" class="show-more-btn">Show More FAQs +</button>
-
-        <div id="more-faqs" style="display:none;">
-
-          <div class="faq-item">
-            <button class="faq-question"><span>Is it safe to use every night?</span></button>
-            <div class="faq-answer"><p>Yes. SWAS is made with skin-friendly, hypoallergenic medical-grade adhesive and is safe for nightly use.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question"><span>Will I feel uncomfortable or suffocated?</span></button>
-            <div class="faq-answer"><p>No. The patch gently seals the center of your lips while still allowing you to open your mouth if needed. It simply encourages nasal breathing.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question"><span>Can it help reduce snoring?</span></button>
-            <div class="faq-answer"><p>Yes. Mouth breathing is a major cause of snoring. By supporting nasal breathing, SWAS can help reduce snoring related to open-mouth sleep.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question"><span>Is it suitable for people with sensitive skin?</span></button>
-            <div class="faq-answer"><p>Absolutely. SWAS uses a soft, hypoallergenic, latex-free adhesive designed to be gentle for most skin types.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question"><span>Can children use SWAS?</span></button>
-            <div class="faq-answer"><p>Children above 5 years can use SWAS under close parental supervision.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question"><span>How long does one patch last?</span></button>
-            <div class="faq-answer"><p>Each patch is designed for a single night's use for hygiene and best performance.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question"><span>Can the SWAS Mouth Patch be used with a beard or mustache?</span></button>
-            <div class="faq-answer">
-              <p>Yes, but only if the facial hair doesn't cover the area where the patch sticks.<br><br>
-              ✔ Works if: beard/mustache is trimmed and the upper-lip skin is exposed.<br>
-              ✘ Not ideal if: a thick mustache covers the lips.<br><br>
-              <strong>Tip:</strong> Place the patch slightly lower or trim the center mustache for a better seal.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question"><span>Does it hurt while removing?</span></button>
-            <div class="faq-answer"><p>No. The adhesive is strong enough to stay on throughout the night but removes gently without pain or residue.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question"><span>When will I start noticing improvements?</span></button>
-            <div class="faq-answer"><p>Many users feel a difference from the first night—less dry mouth and better rest. Deeper improvements usually appear within 1–2 weeks of consistent use.</p></div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const allFaqItems = document.querySelectorAll("#swas-faq .faq-item");
-    allFaqItems.forEach(item => {
-      const btn = item.querySelector(".faq-question");
-      if (!btn) return;
-      btn.addEventListener("click", () => { item.classList.toggle("active"); });
+  /* ===== REVIEW SUMMARY — only counts cards that have been filled in for real ===== */
+  (function(){
+    var cards = document.querySelectorAll('.review-card');
+    var filled = [];
+    cards.forEach(function(card){
+      var name = card.querySelector('.rc-name');
+      var isPlaceholder = name && name.textContent.trim() === 'Customer Name';
+      if (isPlaceholder) {
+        card.style.display = 'none';
+      } else {
+        var starCount = (card.querySelector('.rc-stars').textContent.match(/★/g) || []).length;
+        filled.push(starCount);
+      }
     });
-
-    const showBtn = document.getElementById("showMoreFaqBtn");
-    const hiddenFaqs = document.getElementById("more-faqs");
-    let expanded = false;
-    if (showBtn && hiddenFaqs) {
-      showBtn.addEventListener("click", () => {
-        expanded = !expanded;
-        hiddenFaqs.style.display = expanded ? "block" : "none";
-        showBtn.textContent = expanded ? "Hide FAQs ▲" : "Show More FAQs +";
-      });
+    if (filled.length) {
+      var avg = filled.reduce(function(a,b){ return a+b; }, 0) / filled.length;
+      var rounded = Math.round(avg);
+      var starsHtml = '';
+      for (var i = 1; i <= 5; i++){ starsHtml += (i <= rounded) ? '★' : '☆'; }
+      var summary = document.getElementById('reviewSummary');
+      summary.innerHTML = '<span class="rs-stars">' + starsHtml + '</span>' +
+        '<span class="rs-text">' + avg.toFixed(1) + ' out of 5 · ' + filled.length + ' review' + (filled.length === 1 ? '' : 's') + '</span>';
+      summary.classList.add('show');
     }
-  });
-  </script>
-
-  <!-- FOOTER -->
-  <footer class="swas-footer">
-    <div class="footer-content">
-
-      <div class="footer-section">
-        <h3 class="desktop-header">Customer Support</h3>
-        <h3 class="footer-accordion-header">Customer Support <span class="accordion-icon">+</span></h3>
-        <div class="footer-accordion-content">
-          <p>📞 9740265823</p>
-          <p>📩 patchswas@gmail.com</p>
-          <p>👩‍💻 24 hours Customer Support</p>
-        </div>
-      </div>
-
-      <div class="footer-section">
-        <h3 class="desktop-header">Shipping &#038; Delivery</h3>
-        <h3 class="footer-accordion-header">Shipping &#038; Delivery <span class="accordion-icon">+</span></h3>
-        <div class="footer-accordion-content">
-          <p>Free shipping on all orders</p>
-          <p>2-3 business days delivery</p>
-          <p>Free Cash on Delivery in Nepal</p>
-        </div>
-      </div>
-
-      <div class="footer-section">
-        <h3 class="desktop-header">Our Promise</h3>
-        <h3 class="footer-accordion-header">Our Promise <span class="accordion-icon">+</span></h3>
-        <div class="footer-accordion-content">
-          <p>30-day money-back guarantee</p>
-          <p>Skin-safe adhesive</p>
-          <p>Medical-grade quality</p>
-          <p>Hypoallergenic materials</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="social-links">
-      <a href="https://www.facebook.com/profile.php?id=61578174712829" target="_blank" aria-label="Facebook">
-        <img loading="lazy" decoding="async" src="Images/facebook-logo-facebook-icon-transparent-free-png.png" alt="Facebook">
-      </a>
-      <a href="https://www.instagram.com/swasmouthpatch/" target="_blank" aria-label="Instagram">
-        <img loading="lazy" decoding="async" src="Images/instagram-logo-instagram-social-media-icon-free-png.png" alt="Instagram">
-      </a>
-      <a href="https://www.tiktok.com/@swas.mouth.patch" target="_blank" aria-label="TikTok">
-        <img loading="lazy" decoding="async" src="Images/tiktok-logo-tikok-icon-transparent-tikok-app-logo-free-png.png" alt="TikTok">
-      </a>
-    </div>
-
-    <hr class="footer-divider">
-    <p class="footer-copyright">© 2025 SWAS. All rights reserved. | Transform Your Sleep, Transform Your Life</p>
-  </footer>
-
-</div>
-
-<script>
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-/* WhatsApp button is a direct child of <body> (not inside the isolated container)
-   so position:fixed is relative to the real viewport. */
-document.body.insertAdjacentHTML('beforeend',
-  '<a href="https://wa.me/9779740265823?text=Hi%20SWAS" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>'
-);
-
-document.addEventListener("DOMContentLoaded", () => {
-  const footerSections = document.querySelectorAll('.swas-isolated-container .footer-section');
-  const footerHeaders = document.querySelectorAll('.swas-isolated-container .footer-accordion-header');
-
-  function resetMobileAccordion() {
-    footerSections.forEach(s => s.classList.remove('active'));
-    if (window.innerWidth <= 768 && footerSections[0]) {
-      footerSections[0].classList.add('active');
-    }
-  }
-
-  // Click listeners are attached exactly once (not inside the resize handler).
-  footerHeaders.forEach(header => {
-    header.addEventListener('click', function (e) {
-      e.preventDefault();
-      if (window.innerWidth > 768) return; // accordion behavior is mobile-only
-      const section = this.parentElement;
-      const isActive = section.classList.contains('active');
-      footerSections.forEach(s => s.classList.remove('active'));
-      if (!isActive) section.classList.add('active');
-    });
-  });
-
-  resetMobileAccordion();
-
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(resetMobileAccordion, 150);
-  });
-});
+  })();
 </script>
 
 </body>
