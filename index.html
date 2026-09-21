@@ -110,18 +110,19 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
 
   /* ---------- PDP HERO ---------- */
   .pdp{padding-top:40px;padding-bottom:48px;}
-  .pdp-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
-  @media(max-width:900px){ .pdp-grid{grid-template-columns:1fr;gap:28px;} }
+  .pdp-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start;}
+  .gallery,.buy-box{min-width:0;}
+  @media(max-width:900px){ .pdp-grid{grid-template-columns:minmax(0,1fr);gap:28px;} }
   /* Sticky gallery: stays pinned while the right column scrolls, releases when the section ends (desktop only) */
   @media(min-width:901px){
     .gallery{position:sticky;top:96px;align-self:start;}
   }
-  .gallery-main{border:1px solid var(--gray-line);border-radius:var(--radius-lg);overflow:hidden;background:var(--gray-soft);aspect-ratio:4/3.4;display:flex;align-items:center;justify-content:center;}
-  .gallery-main img{width:100%;height:100%;object-fit:contain;}
+  .gallery-main{border:1px solid var(--gray-line);border-radius:var(--radius-lg);overflow:hidden;background:var(--gray-soft);line-height:0;}
+  .gallery-main img{display:block;width:100%;height:auto;}
   .gallery-thumbs{display:flex;gap:10px;margin-top:12px;}
-  .thumb{width:60px;height:60px;border:1.5px solid var(--gray-line);border-radius:var(--radius-sm);overflow:hidden;background:var(--gray-soft);cursor:pointer;flex:none;}
+  .thumb{flex:1 1 0;min-width:0;max-width:64px;aspect-ratio:1/1;border:1.5px solid var(--gray-line);border-radius:var(--radius-sm);overflow:hidden;background:var(--gray-soft);cursor:pointer;}
   .thumb.active{border-color:var(--black);}
-  .thumb img{width:100%;height:100%;object-fit:contain;}
+  .thumb img{width:100%;height:100%;object-fit:cover;}
 
   .buy-box .trust-top{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--gray-text);margin-bottom:12px;}
   .buy-box h1{font-size:29px;margin-bottom:2px;}
