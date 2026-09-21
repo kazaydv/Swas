@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#D6291F">
 <title>SWAS Mouth Patch — Patch Away The Snore</title>
 <meta name="description" content="SWAS Mouth Patch gently closes your lips at night so you breathe through your nose, not your mouth. Free COD across Nepal.">
 <link rel="icon" href="Images/Untitled-design-10.png">
 <link rel="apple-touch-icon" href="Images/Untitled-design-10.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Load the main hero image first -->
 <link rel="preload" as="image" href="Images/Clinically-trusted-for-peaceful-sleep-10.png" fetchpriority="high">
@@ -137,14 +138,15 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
   .pack-pill{border:1.5px solid var(--gray-line);border-radius:var(--radius-md);padding:12px 15px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:var(--white);}
   .pack-pill:hover{border-color:#bbb;}
   .pack-pill.active{border-color:var(--accent);background:var(--accent-tint);}
-  .pack-pill .pp-left{display:flex;flex-direction:column;}
+  .pack-pill{position:relative;gap:10px;}
+  .pack-pill .pp-left{display:flex;flex-direction:column;min-width:0;}
   .pack-pill .pp-name{font-weight:700;font-size:14.5px;}
   .pack-pill .pp-qty{font-size:12.5px;color:var(--gray-text);}
-  .pack-pill .pp-right{display:flex;align-items:center;gap:9px;}
+  .pack-pill .pp-right{display:flex;align-items:center;gap:9px;white-space:nowrap;flex:none;}
   .pack-pill .pp-price{font-weight:700;font-size:14.5px;}
   .pack-pill.active .pp-price{color:var(--accent);}
   .pack-pill .pp-was{font-size:12.5px;color:var(--gray-text);text-decoration:line-through;}
-  .pack-badge{background:var(--accent);color:var(--white);font-size:10px;font-weight:700;letter-spacing:.03em;padding:3px 8px;border-radius:100px;margin-left:6px;}
+  .pack-badge{position:absolute;top:-9px;right:14px;background:var(--accent);color:var(--white);font-size:10px;font-weight:700;letter-spacing:.03em;padding:3px 9px;border-radius:100px;white-space:nowrap;line-height:1.4;}
   .ship-line{font-size:12.5px;color:var(--gray-text);text-align:center;margin-top:9px;}
   .trust-icons{display:flex;justify-content:space-between;gap:10px;margin:22px 0 0;padding:18px 0;border-top:1px solid var(--gray-line);border-bottom:1px solid var(--gray-line);}
   .trust-icons .ti{display:flex;flex-direction:column;align-items:center;text-align:center;gap:7px;font-size:12px;font-weight:600;flex:1;}
@@ -373,6 +375,58 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
   .nav-toggle{font-size:24px;line-height:1;}
   .whatsapp-fab img{width:30px;height:30px;display:block;}
 
+
+  /* ================= PERFORMANCE + RESPONSIVE POLISH ================= */
+  html{-webkit-text-size-adjust:100%;}
+  body{overflow-x:clip;-webkit-tap-highlight-color:transparent;}
+  button,.pack-pill,.thumb,summary{touch-action:manipulation;}
+  .gallery-main img{aspect-ratio:auto 1/1;}
+
+  /* skip rendering work for sections that are off-screen (big win on phones) */
+  .snore-sec,.effects-img-sec,.chain-sec,.howuse-sec,.compare-sec,.reviews-sec,.faq,.final-cta,.site-footer{
+    content-visibility:auto;contain-intrinsic-size:auto 640px;
+  }
+
+  /* comfortable tap targets + no iOS zoom on inputs */
+  .nav-toggle{min-width:44px;min-height:44px;padding:8px;align-items:center;justify-content:center;}
+  .modal-close{width:44px;height:44px;top:8px;right:8px;display:flex;align-items:center;justify-content:center;}
+  .field input,.field select,.field textarea{font-size:16px;min-height:46px;}
+  .modal{max-height:92vh;max-height:92dvh;}
+  .reels-track{scroll-snap-type:x proximity;overscroll-behavior-x:contain;}
+  .reel-card{scroll-snap-align:start;}
+
+  /* tablets: keep single-column content from stretching too wide */
+  @media(max-width:900px){
+    .gallery{max-width:560px;width:100%;margin:0 auto;}
+    .buy-box{max-width:640px;width:100%;margin:0 auto;}
+    .pdp{padding-top:24px;}
+  }
+
+  /* phones */
+  @media(max-width:480px){
+    .buy-box h1{font-size:26px;}
+    .price-now{font-size:24px;}
+    .buy-box .desc{font-size:14.5px;}
+    .btn{padding:15px 24px;}
+    .pack-pill{padding:13px 12px;}
+    .pack-pill .pp-name{font-size:14px;}
+    .pack-pill .pp-price{font-size:14px;}
+    .modal-overlay{padding:12px;}
+    .modal{padding:26px 18px 20px;}
+    .final-cta .btn{width:100%;}
+    .faq-list details summary{font-size:15px;}
+    .chain-stat-num{font-size:28px;}
+    .sticky-bar-inner{padding:10px 14px;gap:10px;}
+  }
+  @media(max-width:360px){
+    .buy-box h1{font-size:24px;}
+    .pack-pill .pp-was{display:none;}
+    .trust-icons .ti{font-size:11px;}
+  }
+
+  /* large screens */
+  @media(min-width:1400px){ :root{--maxw:1280px;} }
+
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{transition:none !important;animation:none !important;} }
 
 </style>
@@ -409,11 +463,11 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
           <img id="mainImage" src="Images/Clinically-trusted-for-peaceful-sleep-10.png" alt="SWAS Mouth Patch box with three oval patches" fetchpriority="high" decoding="async">
         </div>
         <div class="gallery-thumbs">
-          <div class="thumb active" onclick="setMain(this,'Images/Clinically-trusted-for-peaceful-sleep-10.png')"><img src="Images/Clinically-trusted-for-peaceful-sleep-10.png" alt="" loading="lazy" decoding="async"></div>
-          <div class="thumb" onclick="setMain(this,'Images/02-hook.png')"><img src="Images/02-hook.png" alt="" loading="lazy" decoding="async"></div>
-          <div class="thumb" onclick="setMain(this,'Images/03-sofa-to-bed.png')"><img src="Images/03-sofa-to-bed.png" alt="" loading="lazy" decoding="async"></div>
-          <div class="thumb" onclick="setMain(this,'Images/07-social.png')"><img src="Images/07-social.png" alt="" loading="lazy" decoding="async"></div>
-          <div class="thumb" onclick="setMain(this,'Images/08-thirty-nights.png')"><img src="Images/08-thirty-nights.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="thumb active" onclick="setMain(this,'Images/Clinically-trusted-for-peaceful-sleep-10.png')"><img src="Images/Clinically-trusted-for-peaceful-sleep-10.png" alt="Product view 1" width="64" height="64" decoding="async"></div>
+          <div class="thumb" onclick="setMain(this,'Images/02-hook.png')"><img data-src="Images/02-hook.png" alt="Product view 2" width="64" height="64" decoding="async"></div>
+          <div class="thumb" onclick="setMain(this,'Images/03-sofa-to-bed.png')"><img data-src="Images/03-sofa-to-bed.png" alt="Product view 3" width="64" height="64" decoding="async"></div>
+          <div class="thumb" onclick="setMain(this,'Images/07-social.png')"><img data-src="Images/07-social.png" alt="Product view 4" width="64" height="64" decoding="async"></div>
+          <div class="thumb" onclick="setMain(this,'Images/08-thirty-nights.png')"><img data-src="Images/08-thirty-nights.png" alt="Product view 5" width="64" height="64" decoding="async"></div>
         </div>
       </div>
 
@@ -857,7 +911,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
   <!-- STICKY CART BAR -->
   <div class="sticky-bar" id="stickyBar">
     <div class="sticky-bar-inner">
-      <img class="sticky-thumb" src="Images/Clinically-trusted-for-peaceful-sleep-3.png" alt="">
+      <img class="sticky-thumb" src="Images/Clinically-trusted-for-peaceful-sleep-3.png" alt="" width="42" height="42" loading="lazy" decoding="async">
       <div class="sticky-info">
         <span class="sticky-name">SWAS Mouth Patch</span>
         <span class="sticky-price" id="stickyPrice">Rs 1,900</span>
@@ -933,6 +987,13 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
     document.getElementById('mobileNavPanel').classList.remove('open');
     document.querySelector('.nav-toggle').setAttribute('aria-expanded','false');
   }
+
+  /* Load the extra gallery thumbnails only after the page has finished loading */
+  window.addEventListener('load', function(){
+    (window.requestIdleCallback || function(f){ setTimeout(f, 800); })(function(){
+      document.querySelectorAll('.thumb img[data-src]').forEach(function(img){ img.src = img.getAttribute('data-src'); });
+    });
+  });
 
   function setMain(el, src){
     document.getElementById('mainImage').src = src;
@@ -1086,7 +1147,7 @@ src="https://www.facebook.com/tr?id=1076590971891627&ev=PageView&noscript=1"
             obs.disconnect();
           }
         });
-      }, { rootMargin: '400px 0px' });
+      }, { rootMargin: '200px 0px' });
       thumbObserver.observe(section);
     } else {
       cards.forEach(function(c){ loadThumbnail(c.querySelector('video')); });
